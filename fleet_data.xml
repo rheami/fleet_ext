@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data noupdate="1">
+        <!--states-->
+        <record id="vehicle_state_active" model="fleet.vehicle.state">
+            <field name="name">Active</field>
+        </record>
+        <record id="vehicle_state_inactive" model="fleet.vehicle.state">
+            <field name="name">Inactive</field>
+        </record>
+        <!--tags-->
+        <record id="vehicle_tag_new" model="fleet.vehicle.tag">
+            <field name="name">New</field>
+        </record>
+        <record id="vehicle_tag_used" model="fleet.vehicle.tag">
+            <field name="name">Used</field>
+        </record>
+        <!--brand-->
+        <record id="brand_gmc" model="fleet.vehicle.model.brand">
+      	    <field name="name">GMC</field>
+      	    <field name="image" type="base64" file="fleet_ext/static/img/brand_gmc-image.png"/>
+        </record>
+        <record id="brand_gm" model="fleet.vehicle.model.brand">
+      	    <field name="name">General Motors</field>
+      	    <field name="image" type="base64" file="fleet_ext/static/img/brand_gm-image.png"/>
+        </record>
+        <record id="brand_plymouth" model="fleet.vehicle.model.brand">
+      	    <field name="name">Plymouth</field>
+      	    <field name="image" type="base64" file="fleet_ext/static/img/brand_plymouth-image.png"/>
+        </record>
+        <record id="brand_ram" model="fleet.vehicle.model.brand">
+      	    <field name="name">RAM</field>
+      	    <field name="image" type="base64" file="fleet_ext/static/img/brand_ram-image.png"/>
+        </record>
+        <record id="brand_suzuki" model="fleet.vehicle.model.brand">
+      	    <field name="name">Suzuki</field>
+      	    <field name="image" type="base64" file="fleet_ext/static/img/brand_suzuki-image.png"/>
+        </record>
+        <record id="brand_saturn" model="fleet.vehicle.model.brand">
+      	    <field name="name">Saturn</field>
+      	    <field name="image" type="base64" file="fleet_ext/static/img/brand_saturn-image.png"/>
+        </record>
+    </data>
+</openerp>
