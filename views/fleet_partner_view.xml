@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+	<data>
+
+        <!-- Partner Form View -->
+        <record model="ir.ui.view" id="view_partner_form">
+            <field name="name">partner.clients</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <notebook position="inside">
+                    <page string="Fleet partner" >
+                        <group>
+                            <field name="is_fleet_client" class="oe_inline"/>
+                            <label for="is_fleet_client" string="Is a Client ?"/>
+                            <field name="is_fleet_retailer" class="oe_inline"/>
+                            <label for="is_fleet_retailer" string="Is a Retailer ?"/>
+                        </group>
+                    </page>
+                </notebook>
+            </field>
+        </record>
+
+        <!-- Client Form View -->
+        <record model="ir.ui.view" id="fleet_ext.client_form_view">
+            <field name="name">partner.clients</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="mode">primary</field>
+            <field name="arch" type="xml">
+                <notebook position="inside">
+                    <page string="Client Info" attrs="{'invisible': [('is_fleet_client','=',False)]}" autofocus="autofocus">
+                        <group>
+                            <field name="client_state"/>
+                            <field name="date_begin"/>
+                            <field name="date_terminated"/>
+                            <field name="birthdate"/>
+                            <field name="lang"/>
+                        </group>
+                    </page>
+                    <page string="Vehicule Info" attrs="{'invisible': [('is_fleet_client','=',False)]}" autofocus="autofocus">
+                        <group>
+                            <field name="vehicle_ids"/>
+                        </group>
+                    </page>
+                    <page string="Suivi" attrs="{'invisible': [('is_fleet_client','=',False)]}" autofocus="autofocus">
+                        <group>
+                            <field name="perteClient"/>
+                            <field name="datePerte"/>
+                            <field name="competition"/>
+                            <field name="dateFinSuivi"/>
+                            <field name="retourArr"/>
+                        </group>
+                    </page>
+                </notebook>
+            </field>
+        </record>
+
+        <!-- Retailer Form View -->
+        <record model="ir.ui.view" id="fleet_ext.retailer_form_view">
+            <field name="name">partner.retailer</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="mode">primary</field>
+            <field name="arch" type="xml">
+                <notebook position="inside">
+                    <page string="Retailer Info" attrs="{'invisible': [('is_fleet_retailer','=',False)]}" autofocus="autofocus">
+                        <group>
+                        </group>
+                    </page>
+                </notebook>
+            </field>
+        </record>
+
+        <!-- Retailer actions-->
+        <record model="ir.actions.act_window" id="action_fleet_retailers">
+            <field name="name">Retailers</field>
+            <field name="res_model">res.partner</field>
+            <!--<field name="search_view_id" ref="view_res_partner_retailer_filter"/>-->
+            <field name="context">{"is_fleet_retailer": True}</field>
+            <field name="domain" eval="[('is_fleet_retailer', '=', True)]"/>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Click to add a retailer in your address book.
+                </p>
+            </field>
+        </record>
+
+		<!-- Client actions-->
+        <record model="ir.actions.act_window" id="action_fleet_clients">
+            <field name="name">Clients</field>
+            <field name="res_model">res.partner</field>
+            <!--<field name="search_view_id" ref="view_res_partner_client_filter"/>-->
+            <field name="context">{"is_fleet_client": True}</field>
+            <field name="domain" eval="[('is_fleet_client', '=', True)]"/>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Click to add a client in your address book.
+                </p>
+            </field>
+        </record>
+
+        <!--retailer view type-->
+        <record id="action_fleet_retailers_kanban" model="ir.actions.act_window.view">
+            <field eval="0" name="sequence"/>
+            <field name="view_mode">kanban</field>
+            <!--<field name="view_id" ref="base.res_partner_kanban_view"/>-->
+            <field name="act_window_id" ref="action_fleet_retailers"/>
+        </record>
+
+        <record id="action_fleet_retailers_tree" model="ir.actions.act_window.view">
+            <field eval="1" name="sequence"/>
+            <field name="view_mode">tree</field>
+            <!--<field name="view_id" ref="fleet_ext.retailer_tree_view"/> -->
+            <field name="act_window_id" ref="action_fleet_retailers"/>
+        </record>
+
+        <record id="action_fleet_retailers_form" model="ir.actions.act_window.view">
+            <field eval="2" name="sequence"/>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="retailer_form_view"/>
+            <field name="act_window_id" ref="action_fleet_retailers"/>
+        </record>
+
+        <!--client view type-->
+        <record id="action_fleet_clients_kanban" model="ir.actions.act_window.view">
+            <field eval="0" name="sequence"/>
+            <field name="view_mode">kanban</field>
+            <!--<field name="view_id" ref="base.res_partner_kanban_view"/>-->
+            <field name="act_window_id" ref="action_fleet_clients"/>
+        </record>
+
+        <record id="action_fleet_clients_tree" model="ir.actions.act_window.view">
+            <field eval="1" name="sequence"/>
+            <field name="view_mode">tree</field>
+            <!--<field name="view_id" ref="fleet_ext.client_tree_view"/> -->
+            <field name="act_window_id" ref="action_fleet_clients"/>
+        </record>
+
+        <record id="action_fleet_clients_form" model="ir.actions.act_window.view">
+            <field eval="2" name="sequence"/>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="client_form_view"/>
+            <field name="act_window_id" ref="action_fleet_clients"/>
+        </record>
+
+        <!-- Fleet Retailer and Fleet Client filters in contact view -->
+        <record id="view_res_partner_filter" model="ir.ui.view">
+            <field name="name">res.partner.fleet_ext.inherit.search</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_res_partner_filter"/>
+            <field name="arch" type="xml">
+                <search string="Search Partner" position="inside">
+                    <group string="Fleet">
+                        <filter icon="terp-personal" name="retailer" domain="[('is_fleet_retailer', '=', 1)]" string="Retailer" />
+                        <filter icon="terp-personal" name="all_clients" domain="[('is_fleet_client', '=', 1)]" string="Clients" />
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <!--menu-->
+        <menuitem name="Retailer" parent="fleet.menu_root" id="menu_fleet_retailer" sequence="2" groups="fleet.group_fleet_manager"/>
+		<!--menu action-->
+        <menuitem action="action_fleet_retailers" name="Retailers" parent="menu_fleet_retailer" id="fleet_retailer_menu" groups="fleet.group_fleet_manager"/>
+        <menuitem action="action_fleet_clients" name="Clients" parent="menu_fleet_retailer" id="fleet_client_menu" sequence="2" groups="fleet.group_fleet_manager"/>
+        <!--<menuitem action="action_fleet_members" name="Members" parent="menu_fleet" id="menu_members" sequence="2" />-->
+
+
+	</data>
+</openerp>

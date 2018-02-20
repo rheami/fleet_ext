@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+	<data>
+
+		<record id="fleet_vehicle_form_inherit" model="ir.ui.view">
+			<field name="name">fleet.vehicle.form.inherit</field>
+			<field name="model">fleet.vehicle</field>
+			<field name="inherit_id" ref="fleet.fleet_vehicle_form" />
+			<field name="arch" type="xml">
+
+                <!--<field name="driver_id" on_change="onchange_partner_id(partner_id, context)" domain="[('customer','=',True)]" context="{'search_default_customer':1, 'show_address': 1}" options='{"always_reload": True}'/>-->
+
+                <field name="model_id" position="after">
+					<field name="manufacture_year" />
+				</field>
+				<field name="driver_id" position="after">
+					<field name="ownership" />
+				</field>
+
+				<field name="acquisition_date" position="replace">
+					<field name="acquisition_date" invisible="1" />
+				</field>
+				<field name="car_value" position="replace">
+					<field name="car_value" invisible="1" />
+				</field>
+
+				<xpath expr="/form/sheet/group[position()=last()]" position="after">
+					<notebook>
+						<page string="Purchase Info">
+						<group>
+							<group col="2" string="Retailer">
+                                <group>
+                                    <field name="retailer_id" required="1" />
+                                    <field name="actualVendor_id" />
+									<!--<field name="actualVendor_id" domain="{[('retailer_id','=', parent_id)]}"/>-->
+                                    <field name="firstVendor_id" />
+                                    <field name="car_value" />
+                                    <field name="acquisition_date" />
+                                </group>
+                                <group>
+                                    <field name="registration_date" />
+                                    <field name="date_originale" />
+                                    <field name="extended_warranty" />
+                                    <field name="replacement_warranty" />
+                                    <field name="extended_warranty_expiration" />
+                                </group>
+							</group>
+						</group>
+						</page>
+						<page string="Internal Note">
+							<field name="note" />
+						</page>
+					</notebook>
+				</xpath>
+
+			</field>
+		</record>
+
+		<!--&lt;!&ndash;Overriding log contract filter &ndash;&gt;-->
+
+		<!--<record id="view_res_contract_filter" model="ir.ui.view">-->
+			<!--<field name="name">fleet.vehicle.log.contract.select</field>-->
+			<!--<field name="model">fleet.vehicle.log.contract</field>-->
+			<!--<field name="arch" type="xml">-->
+				<!--<search string="Search Contracts">-->
+					<!--<field name="name" />-->
+					<!--<field name="vehicle_id" />-->
+					<!--<field name="insurer_id" />-->
+					<!--<separator />-->
+					<!--<filter icon="terp-camera_test" domain="[('state','=','open')]"-->
+						<!--string="In-Process." name="open" />-->
+					<!--<filter icon="terp-camera_test" domain="[('state','=','closed')]"-->
+						<!--string="Closed" name="terminated" />-->
+					<!--<filter icon="terp-camera_test" domain="[('state','=','toclose')]"-->
+						<!--string="To Close" name="toclose" />-->
+					<!--<separator />-->
+					<!--<group expand="0" string="Group By">-->
+						<!--<filter string="Vehicle" context="{'group_by': 'vehicle_id'}" />-->
+						<!--<filter string="Supplier" context="{'group_by': 'insurer_id'}" />-->
+						<!--<filter string="Type" context="{'group_by': 'cost_subtype_id'}" />-->
+					<!--</group>-->
+				<!--</search>-->
+			<!--</field>-->
+		<!--</record>-->
+
+		<record id="fleet_vehicle_log_contract_form" model="ir.ui.view">
+			<field name="name">fleet.vehicle.log_contract.form.inherit</field>
+			<field name="model">fleet.vehicle.log.contract</field>
+			<field name="inherit_id" ref="fleet.fleet_vehicle_log_contract_form" />
+			<field name="arch" type="xml">
+				<xpath expr="/form/sheet/group[position()=2]" position="after">
+					<group string="Financing details" col="2">
+                        <group>
+                            <field name="pdsf"/>
+                            <field name="purchase_Price"/>
+                            <field name="exchange_value"/>
+                            <field name="residuel" />
+                            <field name="residuel_percent"/>
+                        </group>
+                        <group>
+                            <field name="depot" />
+                            <field name="cout_a_amortir" />
+                            <field name="mensualite" />
+                            <field name="TauxInteret" />
+                            <field name="terme" />
+                        </group>
+
+					</group>
+				</xpath>
+			</field>
+		</record>
+
+        <!-- Lost Reason -->
+        <record model='ir.actions.act_window' id='fleet_client_lost_reason_act'>
+            <field name="name">Client Lost Reason</field>
+            <field name="res_model">fleet.client.lost.reason</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click to create a client lost reason.
+              </p>
+            </field>
+        </record>
+
+        <menuitem action="fleet_client_lost_reason_act" parent="fleet.fleet_configuration" id="fleet_client_lost_reason_menu" groups="fleet.group_fleet_manager"/>
+
+	</data>
+</openerp>
