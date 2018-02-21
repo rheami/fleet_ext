@@ -96,18 +96,23 @@ class Partner(models.Model):
 
     @api.model
     def create(self, vals):
-        print(vals)
+        ctx = dict(self._context or {})
+        if ctx and 'is_fleet_client' in ctx:
+            vals['is_fleet_client'] = True
+        if ctx and 'is_fleet_retailer' in ctx:
+            vals['is_fleet_retailer'] = True
+            vals['is_company'] = True
         record = super(Partner, self).create(vals)
         return record
 
-    @api.multi
-    def write(self, vals):
-        ctx = dict(self._context or {})
-        # ctx.update({'create_company': True})
-        print "===========", ctx
-        print(vals)
-        record = super(Partner, self.with_context(ctx)).write(vals)
-        return record
+    # @api.multi
+    # def write(self, vals):
+    #     ctx = dict(self._context or {})
+    #     # ctx.update({'create_company': True})
+    #     print "===========", ctx
+    #     print(vals)
+    #     record = super(Partner, self.with_context(ctx)).write(vals)
+    #     return record
 
 # class fleet_retailler(models.Model):  # les concessionaires
 #     _name = 'fleet.retailer'

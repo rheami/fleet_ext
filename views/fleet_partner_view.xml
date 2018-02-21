@@ -9,12 +9,15 @@
             <field name="inherit_id" ref="base.view_partner_form"/>
             <field name="arch" type="xml">
                 <notebook position="inside">
-                    <page string="Fleet partner" >
+                    <page string="Fleet partner" invisible="context.get('is_fleet_client', False) or context.get('is_fleet_retailer', False)">
                         <group>
-                            <field name="is_fleet_client" class="oe_inline"/>
-                            <label for="is_fleet_client" string="Is a Client ?"/>
-                            <field name="is_fleet_retailer" class="oe_inline"/>
-                            <label for="is_fleet_retailer" string="Is a Retailer ?"/>
+                            <div class="oe_edit_only">
+                                <label for="Fleet Partner"/>
+                                    <field name="is_fleet_client" class="oe_inline"/>
+                                    <label for="is_fleet_client" string="Is a Fleet Client?"/>
+                                    <field name="is_fleet_retailer" class="oe_inline"/>
+                                    <label for="is_fleet_retailer" string="Is a Fleet Retailer?"/>
+                            </div>
                         </group>
                     </page>
                 </notebook>
