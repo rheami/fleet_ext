@@ -22,17 +22,15 @@ class fleet_vehicle(models.Model):
     driver_id = fields.Many2one('res.partner', string="Owner of the vehicule",
                                 domain=[('is_fleet_client', '=', True)])
     # purchase info
-    retailer_id = fields.Many2one('res.partner', string="Retailer (Concessionnaire)",
+    retailer_id = fields.Many2one('res.partner', string="Retailer", # (Concessionnaire)
                                   domain=[('is_fleet_retailer', '=', True)])
 
-    actualVendor_id = fields.Many2one('res.partner', 'Vendeur actuel') # todo lister seulement les vendeurs associes au concessionaire choisi
+    actualVendor_id = fields.Many2one('res.partner', 'Actual Vendor') #'Vendeur actuel'
+    firstVendor_id = fields.Many2one('res.partner', 'First Vendor') # 'Vendeur original'
 
-    firstVendor_id = fields.Many2one('res.partner', 'Vendeur original')
-    # todo readonly = "true" on create if empty set as actualVendor_id
-
-    extended_warranty = fields.Boolean('Garantie Prolongée')
-    replacement_warranty = fields.Boolean('Garantie de Remplacement')
-    extended_warranty_expiration = fields.Date('Date', help="date Fin Garantie Prolongée")
+    extended_warranty = fields.Boolean('Extended Warranty') #'Garantie Prolongée'
+    replacement_warranty = fields.Boolean('Replacement Warranty') # 'Garantie de Remplacement'
+    extended_warranty_expiration = fields.Date('Extended Warranty Expiration') # "date Fin Garantie Prolongée"
 
     _sql_constraints = [
         ('uniq_license_plate', 'unique(license_plate)', 'This license plate is already used'),
@@ -71,14 +69,20 @@ class Partner(models.Model):
     is_fleet_retailer = fields.Boolean(string="Is Fleet Retailer", default=False, store=True)
     is_fleet_active = fields.Boolean(string="Is Fleet Active", default=False, store=True)
 
-    # visible si fleet_client ou fleet_retailer
-    client_state = fields.Boolean()
-
     vehicle_ids = fields.One2many(
         comodel_name='fleet.vehicle',
         inverse_name="driver_id",
         string="Vehicle",
         readonly=True)
+
+    fleet_vehicle_ids = fields.One2many(
+        comodel_name='fleet.vehicle',
+        inverse_name="retailer_id",
+        string="Vehicle",
+        readonly=True)
+
+    # fleet_client_ids = fields.One2many(
+    #     = fleet_vehicle_ids . driver_id
 
     # visible si fleet_client
 
@@ -93,6 +97,32 @@ class Partner(models.Model):
     competition = fields.Char('Competition')
     dateFinSuivi = fields.Date('Date Fin de Suivi', help="date Fin Suivi")
     retourArr = fields.Boolean('retour Arr')
+    contract_count = fields.Integer('Vehicles', compute='_get_contract_count', readonly=True)
+
+    # def _get_contract_count(self):
+    #     self.ensure_one()
+    #     self.contract_count = self.env['fleet.vehicle.log.contract'].search_count([('vehicle_id', 'in', self.vehicle_ids)])
+
+    @api.multi
+    @api.depends("vehicle_ids")
+    def _get_contract_count(self):
+        for record in self:
+            toto = record.vehicle_ids
+            if toto:
+                contracts = self.env['fleet.vehicle.log.contract'].search([('state', '!=', 'closed'), ('vehicle_id','in', record.vehicle_ids.ids)])
+                record.vehicle_count = len(contracts)
+
+    @api.multi
+    def return_action_to_open(self):
+        """ This opens the xml view specified in xml_id for the current vehicle """
+        ctx = dict(self._context or {})
+        partner_id = ctx.get('active_id')
+        if ctx.get('xml_id'):
+            res = self.env['ir.actions.act_window'].for_xml_id('fleet', ctx.get('xml_id'))
+            res['context'] = ctx
+            res['domain'] = [('vehicle_id','in', self.vehicle_ids)]
+            return res
+        return False
 
     @api.model
     def create(self, vals):

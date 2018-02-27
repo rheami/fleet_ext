@@ -31,22 +31,34 @@
             <field name="inherit_id" ref="base.view_partner_form"/>
             <field name="mode">primary</field>
             <field name="arch" type="xml">
+                <xpath expr="//div[@name='buttons']" position="inside">
+                    <button class="oe_inline oe_stat_button" type="action" name="%(fleet.fleet_vehicle_log_contract_act)d"
+                        context="{'search_default_partner_id': active_id, 'default_partner_id': active_id}"
+                        icon="fa-linux">
+                        <field  string="Contract" name="contract_count" widget="statinfo"/>
+                    </button>
+                </xpath>
+                <field name="parent_id" position="replace">
+                    <field name="parent_id"
+                           domain="[('is_company', '=', True),('is_fleet_client', '=', True)]"
+                           context="{'form_view_ref': 'fleet_ext.client_form_view', 'default_is_company': True, 'default_supplier': supplier, 'default_customer': customer, 'is_fleet_client': True}"
+                           attrs="{'invisible': [('is_company','=', True),('parent_id', '=', False)]}"
+                           on_change="onchange_address(use_parent_address, parent_id)"/>
+                </field>
                 <notebook position="inside">
-                    <page string="Client Info" attrs="{'invisible': [('is_fleet_client','=',False)]}" autofocus="autofocus">
+                    <page string="Client Info" autofocus="autofocus">  <!--autofocus work on odoo 9+-->
                         <group>
-                            <field name="client_state"/>
+                            <field name="is_fleet_active"/>
                             <field name="date_begin"/>
                             <field name="date_terminated"/>
                             <field name="birthdate"/>
                             <field name="lang"/>
                         </group>
                     </page>
-                    <page string="Vehicule Info" attrs="{'invisible': [('is_fleet_client','=',False)]}" autofocus="autofocus">
-                        <group>
-                            <field name="vehicle_ids"/>
-                        </group>
+                    <page string="Vehicles">
+                        <field name="vehicle_ids" />
                     </page>
-                    <page string="Suivi" attrs="{'invisible': [('is_fleet_client','=',False)]}" autofocus="autofocus">
+                    <page string="Suivi">
                         <group>
                             <field name="perteClient"/>
                             <field name="datePerte"/>
@@ -67,9 +79,11 @@
             <field name="mode">primary</field>
             <field name="arch" type="xml">
                 <notebook position="inside">
-                    <page string="Retailer Info" attrs="{'invisible': [('is_fleet_retailer','=',False)]}" autofocus="autofocus">
-                        <group>
-                        </group>
+                    <page string="Clients">
+                        <!--todo ajouter client_ids-->
+                    </page>
+                    <page string="Vehicles" autofocus="autofocus"> <!--autofocus work on odoo 9+-->
+                        <field name="fleet_vehicle_ids" />
                     </page>
                 </notebook>
             </field>
@@ -148,15 +162,35 @@
         </record>
 
         <!-- Fleet Retailer and Fleet Client filters in contact view -->
-        <record id="view_res_partner_filter" model="ir.ui.view">
+        <record id="view_res_partner_filter_inherit" model="ir.ui.view">
             <field name="name">res.partner.fleet_ext.inherit.search</field>
             <field name="model">res.partner</field>
             <field name="inherit_id" ref="base.view_res_partner_filter"/>
             <field name="arch" type="xml">
-                <search string="Search Partner" position="inside">
+                <group string="Group By" position="before">
                     <group string="Fleet">
-                        <filter icon="terp-personal" name="retailer" domain="[('is_fleet_retailer', '=', 1)]" string="Retailer" />
-                        <filter icon="terp-personal" name="all_clients" domain="[('is_fleet_client', '=', 1)]" string="Clients" />
+                        <filter name="fleet_retailer" domain="[('is_fleet_retailer', '=', 1)]" string="Retailer" />
+                        <filter name="fleet_clients" domain="[('is_fleet_client', '=', 1)]" string="Clients" />
+                    </group>
+                </group>
+            </field>
+        </record>
+
+        <!-- Fleet Client filters in Fleet Client view -->
+        <record id="view_res_partner_fleet_client_filter" model="ir.ui.view">
+            <field name="name">res.partner.fleet_client.search</field>
+            <field name="model">res.partner</field>
+            <field name="arch" type="xml">
+                <search string="Search Partner" position="replace">
+                    <field name="name"
+                       filter_domain="['|','|',('display_name','ilike',self),('ref','=',self),('email','ilike',self)]"/>
+                    <filter help="My Partners" icon="terp-personal+" domain="[('user_id','=',uid)]"/>
+                    <separator/>
+                    <filter string="Persons" name="type_person" domain="[('is_company','=',0)]"/>
+                    <filter string="Companies" name="type_company" domain="[('is_company','=',1)]"/>
+                    <separator/>
+                    <group string="Group By">
+                        <filter string="Country" context="{'group_by': 'country_id'}"/>
                     </group>
                 </search>
             </field>
@@ -168,7 +202,6 @@
         <menuitem action="action_fleet_retailers" name="Retailers" parent="menu_fleet_retailer" id="fleet_retailer_menu" groups="fleet.group_fleet_manager"/>
         <menuitem action="action_fleet_clients" name="Clients" parent="menu_fleet_retailer" id="fleet_client_menu" sequence="2" groups="fleet.group_fleet_manager"/>
         <!--<menuitem action="action_fleet_members" name="Members" parent="menu_fleet" id="menu_members" sequence="2" />-->
-
 
 	</data>
 </openerp>

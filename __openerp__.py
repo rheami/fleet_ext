@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 {
     'name': "Fleet Extension",
-    'summary': "This is an extension of Fleet Management module",
-    'description': "This is an extension of Fleet Management module",
+    'summary': "This is an extension of Fleet Management Module",
+    'description': "This is an extension of Fleet Management Module",
     'author': "Michel Rheault, Osha / Sciantek",
     'website': "",
     'category': 'Managing vehicles and contracts',

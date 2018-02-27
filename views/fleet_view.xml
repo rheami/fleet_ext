@@ -2,18 +2,36 @@
 <openerp>
 	<data>
 
+		<record id='fleet_vehicle_tree_inherit' model='ir.ui.view'>
+            <field name="name">fleet.vehicle.tree.inherit</field>
+            <field name="model">fleet.vehicle</field>
+            <field name="inherit_id" ref="fleet.fleet_vehicle_tree" />
+            <field name="arch" type="xml">
+
+                <field name="acquisition_date" position="after">
+				    <field name="retailer_id" />
+				</field>
+                <field name="odometer" position="replace">
+    				<field name="odometer" invisible="1" />
+                </field>
+                <field name="odometer_unit" position="replace">
+                    <field name="odometer_unit" invisible="1" />
+                </field>
+
+            </field>
+        </record>
+
 		<record id="fleet_vehicle_form_inherit" model="ir.ui.view">
 			<field name="name">fleet.vehicle.form.inherit</field>
 			<field name="model">fleet.vehicle</field>
 			<field name="inherit_id" ref="fleet.fleet_vehicle_form" />
 			<field name="arch" type="xml">
 
-                <!--<field name="driver_id" on_change="onchange_partner_id(partner_id, context)" domain="[('customer','=',True)]" context="{'search_default_customer':1, 'show_address': 1}" options='{"always_reload": True}'/>-->
-
                 <field name="model_id" position="after">
 					<field name="manufacture_year" />
 				</field>
-				<field name="driver_id" position="after">
+				<field name="driver_id" position="replace">
+					<field name="driver_id" context="{'form_view_ref': 'fleet_ext.client_form_view'}"/>
 					<field name="ownership" />
 				</field>
 
@@ -31,9 +49,8 @@
 							<group col="2" string="Retailer">
                                 <group>
                                     <field name="retailer_id" required="1" />
-                                    <field name="actualVendor_id" />
-									<!--<field name="actualVendor_id" domain="{[('retailer_id','=', parent_id)]}"/>-->
-                                    <field name="firstVendor_id" />
+									<field name="actualVendor_id" domain="[('parent_id','=', retailer_id), ('is_fleet_active','=', True)]"/>
+                                    <field name="firstVendor_id" domain="[('parent_id','=', retailer_id)]"/>
                                     <field name="car_value" />
                                     <field name="acquisition_date" />
                                 </group>
@@ -55,33 +72,6 @@
 
 			</field>
 		</record>
-
-		<!--&lt;!&ndash;Overriding log contract filter &ndash;&gt;-->
-
-		<!--<record id="view_res_contract_filter" model="ir.ui.view">-->
-			<!--<field name="name">fleet.vehicle.log.contract.select</field>-->
-			<!--<field name="model">fleet.vehicle.log.contract</field>-->
-			<!--<field name="arch" type="xml">-->
-				<!--<search string="Search Contracts">-->
-					<!--<field name="name" />-->
-					<!--<field name="vehicle_id" />-->
-					<!--<field name="insurer_id" />-->
-					<!--<separator />-->
-					<!--<filter icon="terp-camera_test" domain="[('state','=','open')]"-->
-						<!--string="In-Process." name="open" />-->
-					<!--<filter icon="terp-camera_test" domain="[('state','=','closed')]"-->
-						<!--string="Closed" name="terminated" />-->
-					<!--<filter icon="terp-camera_test" domain="[('state','=','toclose')]"-->
-						<!--string="To Close" name="toclose" />-->
-					<!--<separator />-->
-					<!--<group expand="0" string="Group By">-->
-						<!--<filter string="Vehicle" context="{'group_by': 'vehicle_id'}" />-->
-						<!--<filter string="Supplier" context="{'group_by': 'insurer_id'}" />-->
-						<!--<filter string="Type" context="{'group_by': 'cost_subtype_id'}" />-->
-					<!--</group>-->
-				<!--</search>-->
-			<!--</field>-->
-		<!--</record>-->
 
 		<record id="fleet_vehicle_log_contract_form" model="ir.ui.view">
 			<field name="name">fleet.vehicle.log_contract.form.inherit</field>
@@ -107,6 +97,20 @@
 
 					</group>
 				</xpath>
+			</field>
+		</record>
+
+		<record id="fleet_vehicle_search" model="ir.ui.view">
+			<field name="name">fleet.vehicle.search.inherit</field>
+			<field name="model">fleet.vehicle</field>
+			<field name="inherit_id" ref="fleet.fleet_vehicle_search" />
+			<field name="arch" type="xml">
+				<filter name="groupby_status" position="before">
+				    <filter name="groupby_retailer" context="{'group_by' : 'retailer_id'}"
+                        string="Retailer" />
+					<filter name="groupby_client" context="{'group_by' : 'driver_id'}"
+						string="Client" />
+				</filter>
 			</field>
 		</record>
 
