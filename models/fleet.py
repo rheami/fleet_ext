@@ -9,6 +9,7 @@ class fleet_vehicle(models.Model):
 
     note = fields.Text('Internal Note')
     manufacture_year = fields.Char('Year of Manufacture', size=4)
+    manufacture_year = fields.Integer('Year of Manufacture')
 
     ownership = fields.Selection([
                         ('owned', 'Owned'),

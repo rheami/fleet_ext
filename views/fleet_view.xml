@@ -7,6 +7,9 @@
             <field name="model">fleet.vehicle</field>
             <field name="inherit_id" ref="fleet.fleet_vehicle_tree" />
             <field name="arch" type="xml">
+				<field name="model_id" position="after">
+				    <field name="manufacture_year" string="Year Model" />
+				</field>
 
                 <field name="acquisition_date" position="after">
 				    <field name="retailer_id" />
@@ -113,6 +116,17 @@
 				</filter>
 			</field>
 		</record>
+
+		<record id='fleet_vehicle_model_search' model='ir.ui.view'>
+            <field name="name">fleet.vehicle.model.search.inherit</field>
+            <field name="model">fleet.vehicle.model</field>
+			<field name="inherit_id" ref="fleet.fleet_vehicle_model_search" />
+            <field name="arch" type="xml">
+				<field name="brand_id" position="before">
+				     <field name="name" filter_domain="[('name','ilike',self)]"/>
+				</field>
+            </field>
+        </record>
 
         <!-- Lost Reason -->
         <record model='ir.actions.act_window' id='fleet_client_lost_reason_act'>
