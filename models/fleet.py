@@ -41,15 +41,15 @@ class fleet_vehicle(models.Model):
 class fleet_vehicle_log_contract(models.Model):
     _inherit = 'fleet.vehicle.log.contract'
 
-    purchase_Price = fields.Float('Purchase Price')  # Prix d'achat
-    pdsf = fields.Float('PDSF', help="Manufacturer's suggested retail price")  # Prix de Détail Suggéré par le Fabricant
-    exchange_value = fields.Float('Exchange value')
-    residuel = fields.Float('Residuel')
-    residuel_percent = fields.Float('Residuel %')
-    depot = fields.Float('depot')
-    cout_a_amortir = fields.Float('cout_a_amortir')
-    mensualite = fields.Float('mensualite')
-    TauxInteret = fields.Float('TauxInteret')
+    purchase_Price = fields.Float(digits=(9,2), string='Purchase Price')  # Prix d'achat
+    pdsf = fields.Float(digits=(9,2), string='PDSF', help="Manufacturer's suggested retail price")  # Prix de Détail Suggéré par le Fabricant
+    exchange_value = fields.Float(digits=(9,2), string='Exchange value')
+    residuel = fields.Float(digits=(9,2), string='Residuel')
+    residuel_percent = fields.Float(digits=(4,1), string='Residuel %')
+    depot = fields.Float(digits=(6,2), string='depot')
+    cout_a_amortir = fields.Float(digits=(9,2), string='cout_a_amortir')
+    mensualite = fields.Float(string='mensualite')
+    TauxInteret = fields.Float(digits=(4,1), string='TauxInteret')
     terme = fields.Integer('Terme', help='Nombre de Mois')
 
 
