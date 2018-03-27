@@ -91,7 +91,7 @@
                             <field name="residuel_percent"/>
                         </group>
                         <group>
-                            <field name="depot" />
+                            <field name="deposit"/>
                             <field name="cout_a_amortir" />
                             <field name="mensualite" />
                             <field name="TauxInteret" />

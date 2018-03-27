@@ -3,7 +3,7 @@
 	<data>
 
         <!-- Partner Form View -->
-        <record model="ir.ui.view" id="view_partner_form">
+        <record id="view_partner_form" model="ir.ui.view">
             <field name="name">partner.clients</field>
             <field name="model">res.partner</field>
             <field name="inherit_id" ref="base.view_partner_form"/>
@@ -25,7 +25,7 @@
         </record>
 
         <!-- Client Form View -->
-        <record model="ir.ui.view" id="fleet_ext.client_form_view">
+        <record id="fleet_ext.client_form_view" model="ir.ui.view">
             <field name="name">partner.clients</field>
             <field name="model">res.partner</field>
             <field name="inherit_id" ref="base.view_partner_form"/>
@@ -72,7 +72,7 @@
         </record>
 
         <!-- Retailer Form View -->
-        <record model="ir.ui.view" id="fleet_ext.retailer_form_view">
+        <record id="fleet_ext.retailer_form_view" model="ir.ui.view">
             <field name="name">partner.retailer</field>
             <field name="model">res.partner</field>
             <field name="inherit_id" ref="base.view_partner_form"/>
@@ -90,7 +90,7 @@
         </record>
 
         <!-- Retailer actions-->
-        <record model="ir.actions.act_window" id="action_fleet_retailers">
+        <record id="action_fleet_retailers" model="ir.actions.act_window">
             <field name="name">Retailers</field>
             <field name="res_model">res.partner</field>
             <!--<field name="search_view_id" ref="view_res_partner_retailer_filter"/>-->
@@ -104,7 +104,7 @@
         </record>
 
 		<!-- Client actions-->
-        <record model="ir.actions.act_window" id="action_fleet_clients">
+        <record id="action_fleet_clients" model="ir.actions.act_window">
             <field name="name">Clients</field>
             <field name="res_model">res.partner</field>
             <!--<field name="search_view_id" ref="view_res_partner_client_filter"/>-->

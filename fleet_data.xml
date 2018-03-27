@@ -17,7 +17,7 @@
         </record>
         <!--brand-->
         <record id="brand_gmc" model="fleet.vehicle.model.brand">
-      	    <field name="name">GMC</field>
+      	    <field name="name">Gmc</field>
       	    <field name="image" type="base64" file="fleet_ext/static/img/brand_gmc-image.png"/>
         </record>
         <record id="brand_gm" model="fleet.vehicle.model.brand">
@@ -29,7 +29,7 @@
       	    <field name="image" type="base64" file="fleet_ext/static/img/brand_plymouth-image.png"/>
         </record>
         <record id="brand_ram" model="fleet.vehicle.model.brand">
-      	    <field name="name">RAM</field>
+      	    <field name="name">Ram</field>
       	    <field name="image" type="base64" file="fleet_ext/static/img/brand_ram-image.png"/>
         </record>
         <record id="brand_suzuki" model="fleet.vehicle.model.brand">
