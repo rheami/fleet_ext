@@ -58,13 +58,13 @@
                     <page string="Vehicles">
                         <field name="vehicle_ids" />
                     </page>
-                    <page string="Suivi">
+                    <page string="Follow-up">
                         <group>
-                            <field name="perteClient"/>
-                            <field name="datePerte"/>
-                            <field name="competition"/>
-                            <field name="dateFinSuivi"/>
-                            <field name="retourArr"/>
+                            <field name="lost_reason"/>
+                            <field name="lost_date"/>
+                            <field name="competitor"/>
+                            <field name="end_date_of_follow_up"/>
+                            <field name="return_arr"/>
                         </group>
                     </page>
                 </notebook>

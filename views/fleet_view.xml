@@ -59,7 +59,7 @@
                                 </group>
                                 <group>
                                     <field name="registration_date" />
-                                    <field name="date_originale" />
+                                    <field name="original_date" />
                                     <field name="extended_warranty" />
                                     <field name="replacement_warranty" />
                                     <field name="extended_warranty_expiration" />
@@ -84,18 +84,18 @@
 				<xpath expr="/form/sheet/group[position()=2]" position="after">
 					<group string="Financing details" col="2">
                         <group>
-                            <field name="pdsf"/>
+                            <field name="msrp"/>
                             <field name="purchase_Price"/>
                             <field name="exchange_value"/>
-                            <field name="residuel" />
-                            <field name="residuel_percent"/>
+                            <field name="residual" />
+                            <field name="residual_percent"/>
                         </group>
                         <group>
-                            <field name="depot" />
-                            <field name="cout_a_amortir" />
-                            <field name="mensualite" />
-                            <field name="TauxInteret" />
-                            <field name="terme" />
+                            <field name="deposit"/>
+                            <field name="cost_to_amortize" />
+                            <field name="montly_payment" />
+                            <field name="interest_rate" />
+                            <field name="term" />
                         </group>
 
 					</group>

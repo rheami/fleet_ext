@@ -16,11 +16,13 @@ class fleet_vehicle(models.Model):
                         ('leased', 'Leased'),
                         ], 'Ownership', default="owned")
 
-    registration_date = fields.Date("Date d'inscription", help="date d'inscription")
-    date_originale = fields.Date('Date originale', help="date originale")
+    #registration_date = fields.Date("Date d'inscription", help="date d'inscription")
+    #date_originale = fields.Date('Date originale', help="date originale")
+    registration_date = fields.Date("Registration Date")
+    original_date = fields.Date('Original Date')
 
     # 'driver_id': fields.many2one('res.partner', 'Driver', help='Driver of the vehicle'),
-    driver_id = fields.Many2one('res.partner', string="Owner of the vehicule",
+    driver_id = fields.Many2one('res.partner', string="Owner", help='Owner of the vehicle',
                                 domain=[('is_fleet_client', '=', True)])
     # purchase info
     retailer_id = fields.Many2one('res.partner', string="Retailer", # (Concessionnaire)
@@ -42,15 +44,15 @@ class fleet_vehicle_log_contract(models.Model):
     _inherit = 'fleet.vehicle.log.contract'
 
     purchase_Price = fields.Float(digits=(9,2), string='Purchase Price')  # Prix d'achat
-    pdsf = fields.Float(digits=(9,2), string='PDSF', help="Manufacturer's suggested retail price")  # Prix de Détail Suggéré par le Fabricant
+    msrp = fields.Float(digits=(9,2), string='MSRP', help="Manufacturer's suggested retail price")  # Prix de Détail Suggéré par le Fabricant
     exchange_value = fields.Float(digits=(9,2), string='Exchange value')
-    residuel = fields.Float(digits=(9,2), string='Residuel')
-    residuel_percent = fields.Float(digits=(4,1), string='Residuel %')
-    depot = fields.Float(digits=(6,2), string='depot')
-    cout_a_amortir = fields.Float(digits=(9,2), string='cout_a_amortir')
-    mensualite = fields.Float(string='mensualite')
-    TauxInteret = fields.Float(digits=(4,1), string='TauxInteret')
-    terme = fields.Integer('Terme', help='Nombre de Mois')
+    residual = fields.Float(digits=(9,2), string='Residual')
+    residual_percent = fields.Float(digits=(4,1), string='Residual %')
+    deposit = fields.Float(related='amount', store=False, readonly=True, copy=False, string='Deposit')
+    cost_to_amortize = fields.Float(digits=(9,2), string='Cost to amortize')
+    montly_payment = fields.Float(string='Montly Payment')
+    interest_rate = fields.Float(digits=(4,1), string='Interest Rate')
+    term = fields.Integer('Term')
 
 
 class fleet_client_lost_reason(models.Model):
@@ -93,11 +95,11 @@ class Partner(models.Model):
                                   readonly=True)
 
     # lost info
-    perteClient = fields.Many2one('fleet.client.lost.reason', 'Raison Perte du Client')
-    datePerte = fields.Date('Date Perte', help="date perte")
-    competition = fields.Char('Competition')
-    dateFinSuivi = fields.Date('Date Fin de Suivi', help="date Fin Suivi")
-    retourArr = fields.Boolean('retour Arr')
+    lost_reason = fields.Many2one('fleet.client.lost.reason', 'Lost Reason')
+    lost_date = fields.Date('Lost Date')
+    competitor = fields.Char('Competitor')
+    end_date_of_follow_up = fields.Date('End date of follow up')
+    return_arr = fields.Boolean('return Arr')
     contract_count = fields.Integer('Vehicles', compute='_get_contract_count', readonly=True)
 
     # def _get_contract_count(self):
