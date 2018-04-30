@@ -1,0 +1,450 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* fleet_ext
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 8.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-04-26 19:49+0000\n"
+"PO-Revision-Date: 2018-04-30 13:45-0400\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Poedit 2.0.6\n"
+"Last-Translator: \n"
+"Language: fr_CA\n"
+
+#. module: fleet_ext
+#: model:ir.actions.act_window,help:fleet_ext.action_fleet_clients
+msgid ""
+"<p class=\"oe_view_nocontent_create\">\n"
+"                    Click to add a client in your address book.\n"
+"                </p>\n"
+"            "
+msgstr ""
+"<p class=\"oe_view_nocontent_create\">\n"
+"                    Clicketer pour ajouter un client dans votre address book.\n"
+"                </p>\n"
+"            "
+
+#. module: fleet_ext
+#: model:ir.actions.act_window,help:fleet_ext.action_fleet_retailers
+msgid ""
+"<p class=\"oe_view_nocontent_create\">\n"
+"                    Click to add a retailer in your address book.\n"
+"                </p>\n"
+"            "
+msgstr ""
+"<p class=\"oe_view_nocontent_create\">\n"
+"                    Clicketer pour ajouter un retailer dans votre address book.\n"
+"                </p>\n"
+"            "
+
+#. module: fleet_ext
+#: model:ir.actions.act_window,help:fleet_ext.fleet_client_lost_reason_act
+msgid ""
+"<p class=\"oe_view_nocontent_create\">\n"
+"                Click to create a client lost reason.\n"
+"              </p>\n"
+"            "
+msgstr ""
+"<p class=\"oe_view_nocontent_create\">\n"
+"                Clicketer pour creer un client perdu sans raison.\n"
+"              </p>\n"
+"            "
+
+#. module: fleet_ext
+#: field:fleet.vehicle,actualVendor_id:0
+msgid "Actual Vendor"
+msgstr "Vendeur actuel"
+
+#. module: fleet_ext
+#: view:fleet.vehicle:fleet_ext.fleet_vehicle_search
+msgid "Client"
+msgstr "Client"
+
+#. module: fleet_ext
+#: view:res.partner:fleet_ext.client_form_view
+msgid "Client Info"
+msgstr "Info Client"
+
+#. module: fleet_ext
+#: model:ir.actions.act_window,name:fleet_ext.fleet_client_lost_reason_act
+#: model:ir.ui.menu,name:fleet_ext.fleet_client_lost_reason_menu
+msgid "Client Lost Reason"
+msgstr "Raison de la perte du client"
+
+#. module: fleet_ext
+#: model:ir.actions.act_window,name:fleet_ext.action_fleet_clients
+#: model:ir.ui.menu,name:fleet_ext.fleet_client_menu
+#: view:res.partner:fleet_ext.retailer_form_view
+#: view:res.partner:fleet_ext.view_res_partner_filter_inherit
+msgid "Clients"
+msgstr "Clients"
+
+#. module: fleet_ext
+#: view:res.partner:fleet_ext.view_res_partner_fleet_client_filter
+msgid "Companies"
+msgstr "Compagnie"
+
+#. module: fleet_ext
+#: field:res.partner,competitor:0
+msgid "Competitor"
+msgstr "Concurent"
+
+#. module: fleet_ext
+#: view:res.partner:fleet_ext.client_form_view
+msgid "Contract"
+msgstr "Contrat"
+
+#. module: fleet_ext
+#: model:ir.model,name:fleet_ext.model_fleet_vehicle_log_contract
+msgid "Contract information on a vehicle"
+msgstr "Information du contrat sur le véhicule"
+
+#. module: fleet_ext
+#: field:fleet.vehicle.log.contract,cost_to_amortize:0
+msgid "Cost to amortize"
+msgstr "Coût à amortir"
+
+#. module: fleet_ext
+#: view:res.partner:fleet_ext.view_res_partner_fleet_client_filter
+msgid "Country"
+msgstr "Pays"
+
+#. module: fleet_ext
+#: field:fleet.client.lost.reason,create_uid:0
+msgid "Created by"
+msgstr "Créé par"
+
+#. module: fleet_ext
+#: field:fleet.client.lost.reason,create_date:0
+msgid "Created on"
+msgstr "Créé le"
+
+#. module: fleet_ext
+#: help:res.partner,date_begin:0
+msgid "Date when the client is acquired"
+msgstr "Date d'acquisition du client"
+
+#. module: fleet_ext
+#: help:res.partner,date_terminated:0
+msgid "Date when the client is lost"
+msgstr "Date de perte du client"
+
+#. module: fleet_ext
+#: field:fleet.vehicle.log.contract,deposit:0
+msgid "Deposit"
+msgstr "Dépôt"
+
+#. module: fleet_ext
+#: field:fleet.client.lost.reason,display_name:0
+msgid "Display Name"
+msgstr "Nom affiché"
+
+#. module: fleet_ext
+#: field:res.partner,end_date_of_follow_up:0
+msgid "End date of follow up"
+msgstr "Date de fin de suivi"
+
+#. module: fleet_ext
+#: field:fleet.vehicle.log.contract,exchange_value:0
+msgid "Exchange value"
+msgstr "Valeur d'échange"
+
+#. module: fleet_ext
+#: field:fleet.vehicle,extended_warranty:0
+msgid "Extended Warranty"
+msgstr "Garanti Étendu"
+
+#. module: fleet_ext
+#: field:fleet.vehicle,extended_warranty_expiration:0
+msgid "Extended Warranty Expiration"
+msgstr "Date d'expiration de la garanti étrendu"
+
+#. module: fleet_ext
+#: view:fleet.vehicle.log.contract:fleet_ext.fleet_vehicle_log_contract_form
+msgid "Financing details"
+msgstr "Détails financier"
+
+#. module: fleet_ext
+#: field:fleet.vehicle,firstVendor_id:0
+msgid "First Vendor"
+msgstr "Vendeur original"
+
+#. module: fleet_ext
+#: view:res.partner:fleet_ext.view_res_partner_filter_inherit
+msgid "Fleet"
+msgstr "Parc Automobile"
+
+#. module: fleet_ext
+#: model:ir.actions.report.xml,name:fleet_ext.report_fleet_action
+msgid "Fleet Report"
+msgstr "Rapports"
+
+#. module: fleet_ext
+#: view:res.partner:fleet_ext.view_partner_form
+msgid "Fleet partner"
+msgstr ""
+
+#. module: fleet_ext
+#: view:res.partner:fleet_ext.client_form_view
+msgid "Follow-up"
+msgstr "suivi"
+
+#. module: fleet_ext
+#: view:res.partner:fleet_ext.view_res_partner_filter_inherit
+#: view:res.partner:fleet_ext.view_res_partner_fleet_client_filter
+msgid "Group By"
+msgstr "Regroupement"
+
+#. module: fleet_ext
+#: field:fleet.client.lost.reason,id:0
+msgid "ID"
+msgstr "ID"
+
+#. module: fleet_ext
+#: model:ir.model,name:fleet_ext.model_fleet_vehicle
+msgid "Information on a vehicle"
+msgstr "Information du véhicule"
+
+#. module: fleet_ext
+#: field:fleet.vehicle.log.contract,interest_rate:0
+msgid "Interest Rate"
+msgstr "Taux d'Intérêt"
+
+#. module: fleet_ext
+#: view:fleet.vehicle:fleet_ext.fleet_vehicle_form_inherit
+#: field:fleet.vehicle,note:0
+msgid "Internal Note"
+msgstr "Note interne"
+
+#. module: fleet_ext
+#: field:res.partner,is_fleet_active:0
+msgid "Is Fleet Active"
+msgstr ""
+
+#. module: fleet_ext
+#: field:res.partner,is_fleet_client:0
+msgid "Is Fleet Client"
+msgstr ""
+
+#. module: fleet_ext
+#: field:res.partner,is_fleet_retailer:0
+msgid "Is Fleet Retailer"
+msgstr ""
+
+#. module: fleet_ext
+#: view:res.partner:fleet_ext.view_partner_form
+msgid "Is a Fleet Client?"
+msgstr ""
+
+#. module: fleet_ext
+#: view:res.partner:fleet_ext.view_partner_form
+msgid "Is a Fleet Retailer?"
+msgstr ""
+
+#. module: fleet_ext
+#: field:fleet.client.lost.reason,__last_update:0
+msgid "Last Modified on"
+msgstr "Dernière modification"
+
+#. module: fleet_ext
+#: field:fleet.client.lost.reason,write_uid:0
+msgid "Last Updated by"
+msgstr "Dernière mise à jour par"
+
+#. module: fleet_ext
+#: field:fleet.client.lost.reason,write_date:0
+msgid "Last Updated on"
+msgstr "Dernière mise à jour"
+
+#. module: fleet_ext
+#: selection:fleet.vehicle,ownership:0
+msgid "Leased"
+msgstr "Location"
+
+#. module: fleet_ext
+#: field:res.partner,lost_date:0
+msgid "Lost Date"
+msgstr "Date de Perte"
+
+#. module: fleet_ext
+#: field:res.partner,lost_reason:0
+msgid "Lost Reason"
+msgstr "Raison de la perte"
+
+#. module: fleet_ext
+#: field:fleet.vehicle.log.contract,msrp:0
+msgid "MSRP"
+msgstr "PDSF"
+
+#. module: fleet_ext
+#: help:fleet.vehicle.log.contract,msrp:0
+msgid "Manufacturer's suggested retail price"
+msgstr "Prix de Détail Suggéré par le Fabricant"
+
+#. module: fleet_ext
+#: field:fleet.vehicle.log.contract,montly_payment:0
+msgid "Montly Payment"
+msgstr "Mensualité"
+
+#. module: fleet_ext
+#: view:res.partner:fleet_ext.view_res_partner_fleet_client_filter
+msgid "My Partners"
+msgstr "Mes partenaires"
+
+#. module: fleet_ext
+#: model:fleet.vehicle.tag,name:fleet_ext.vehicle_tag_new
+msgid "New"
+msgstr "Nouveau"
+
+#. module: fleet_ext
+#: field:fleet.vehicle,original_date:0
+msgid "Original Date"
+msgstr "Date originale"
+
+#. module: fleet_ext
+#: selection:fleet.vehicle,ownership:0
+msgid "Owned"
+msgstr "Possession"
+
+#. module: fleet_ext
+#: view:website:fleet_ext.report_vehicle_document
+msgid "Owner"
+msgstr "Propriétaire"
+
+#. module: fleet_ext
+#: field:fleet.vehicle,ownership:0
+msgid "Ownership"
+msgstr "Possession"
+
+#. module: fleet_ext
+#: model:ir.model,name:fleet_ext.model_res_partner
+msgid "Partner"
+msgstr "Partenaire"
+
+#. module: fleet_ext
+#: view:res.partner:fleet_ext.view_res_partner_fleet_client_filter
+msgid "Persons"
+msgstr "Personnes"
+
+#. module: fleet_ext
+#: view:fleet.vehicle:fleet_ext.fleet_vehicle_form_inherit
+msgid "Purchase Info"
+msgstr "Informations d'achat"
+
+#. module: fleet_ext
+#: field:fleet.vehicle.log.contract,purchase_Price:0
+msgid "Purchase Price"
+msgstr "Prix d'achat"
+
+#. module: fleet_ext
+#: field:fleet.client.lost.reason,name:0
+msgid "Reason"
+msgstr "Raison"
+
+#. module: fleet_ext
+#: model:ir.model,name:fleet_ext.model_fleet_client_lost_reason
+msgid "Reason for the lost of the client"
+msgstr "Raison de la perte du client"
+
+#. module: fleet_ext
+#: field:fleet.vehicle,registration_date:0 field:res.partner,date_begin:0
+msgid "Registration Date"
+msgstr "Date d'enregistrement"
+
+#. module: fleet_ext
+#: field:fleet.vehicle,replacement_warranty:0
+msgid "Replacement Warranty"
+msgstr "Garanti de remplacement"
+
+#. module: fleet_ext
+#: field:fleet.vehicle.log.contract,residual:0
+msgid "Residual"
+msgstr "Résiduel"
+
+#. module: fleet_ext
+#: field:fleet.vehicle.log.contract,residual_percent:0
+msgid "Residual %"
+msgstr "Résiduel %"
+
+#. module: fleet_ext
+#: view:fleet.vehicle:fleet_ext.fleet_vehicle_form_inherit
+#: view:fleet.vehicle:fleet_ext.fleet_vehicle_search
+#: field:fleet.vehicle,retailer_id:0
+#: model:ir.ui.menu,name:fleet_ext.menu_fleet_retailer
+#: view:res.partner:fleet_ext.view_res_partner_filter_inherit
+msgid "Retailer"
+msgstr "Concessionnaire"
+
+#. module: fleet_ext
+#: model:ir.actions.act_window,name:fleet_ext.action_fleet_retailers
+#: model:ir.ui.menu,name:fleet_ext.fleet_retailer_menu
+msgid "Retailers"
+msgstr "Concessionnaires"
+
+#. module: fleet_ext
+#: view:res.partner:fleet_ext.view_res_partner_fleet_client_filter
+msgid "Search Partner"
+msgstr "Recherche (partenaires)"
+
+#. module: fleet_ext
+#: field:fleet.vehicle.log.contract,term:0
+msgid "Term"
+msgstr "Terme"
+
+#. module: fleet_ext
+#: field:res.partner,date_terminated:0
+msgid "Terminated Date"
+msgstr "Date de fin"
+
+#. module: fleet_ext
+#: sql_constraint:fleet.vehicle:0
+msgid "This Chassis number is already used for another vehicle"
+msgstr "Ce numéro de chassis est déjà utilisé par un autre véhicule"
+
+#. module: fleet_ext
+#: sql_constraint:fleet.vehicle:0
+msgid "This license plate is already used"
+msgstr "Ce numéro de license est déjà utilisé"
+
+#. module: fleet_ext
+#: sql_constraint:fleet.client.lost.reason:0
+msgid "This name for the reason exist already"
+msgstr "Ce nom de raison existe déjà"
+
+#. module: fleet_ext
+#: model:fleet.vehicle.tag,name:fleet_ext.vehicle_tag_used
+msgid "Used"
+msgstr "Usagé"
+
+#. module: fleet_ext
+#: field:res.partner,fleet_vehicle_ids:0 field:res.partner,vehicle_ids:0
+msgid "Vehicle"
+msgstr "Véhicule"
+
+#. module: fleet_ext
+#: view:res.partner:fleet_ext.client_form_view
+#: view:res.partner:fleet_ext.retailer_form_view
+#: field:res.partner,contract_count:0
+msgid "Vehicles"
+msgstr "Véhicule"
+
+#. module: fleet_ext
+#: view:fleet.vehicle:fleet_ext.fleet_vehicle_tree_inherit
+msgid "Year Model"
+msgstr "Année du modèle"
+
+#. module: fleet_ext
+#: field:fleet.vehicle,manufacture_year:0
+msgid "Year of Manufacture"
+msgstr "Année de fabrication"
+
+#. module: fleet_ext
+#: field:res.partner,return_arr:0
+msgid "return Arr"
+msgstr "Retour Arr"
