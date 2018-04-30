@@ -37,7 +37,7 @@ class fleet_vehicle(models.Model):
 
     _sql_constraints = [
         ('uniq_license_plate', 'unique(license_plate)', 'This license plate is already used'),
-        ('uniq_vin', 'unique(vin_sn)', 'This Chassis number is already used for another vehicle')
+        ('uniq_vin', 'unique(vin_sn)', 'This serial number is already used for another vehicle')
     ]
 
 class fleet_vehicle_log_contract(models.Model):

@@ -37,7 +37,9 @@
 					<field name="driver_id" context="{'form_view_ref': 'fleet_ext.client_form_view'}"/>
 					<field name="ownership" />
 				</field>
-
+				<field name="vin_sn" position="attributes">
+					<attribute name="string" >Serial Number</attribute>
+				</field>
 				<field name="acquisition_date" position="replace">
 					<field name="acquisition_date" invisible="1" />
 				</field>
