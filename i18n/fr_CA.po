@@ -1,58 +1,50 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-# 	* fleet_ext
+#	* fleet_ext
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-26 19:49+0000\n"
-"PO-Revision-Date: 2018-04-30 13:45-0400\n"
+"POT-Creation-Date: 2018-04-30 19:46+0000\n"
+"PO-Revision-Date: 2018-04-30 19:46+0000\n"
+"Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 2.0.6\n"
-"Last-Translator: \n"
-"Language: fr_CA\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
 
 #. module: fleet_ext
 #: model:ir.actions.act_window,help:fleet_ext.action_fleet_clients
-msgid ""
-"<p class=\"oe_view_nocontent_create\">\n"
+msgid "<p class=\"oe_view_nocontent_create\">\n"
 "                    Click to add a client in your address book.\n"
 "                </p>\n"
 "            "
-msgstr ""
-"<p class=\"oe_view_nocontent_create\">\n"
-"                    Clicketer pour ajouter un client dans votre address book.\n"
+msgstr "<p class=\"oe_view_nocontent_create\">\n"
+"                    Clicker pour ajouter un client dans votre carnet d'addresse.\n"
 "                </p>\n"
 "            "
 
 #. module: fleet_ext
 #: model:ir.actions.act_window,help:fleet_ext.action_fleet_retailers
-msgid ""
-"<p class=\"oe_view_nocontent_create\">\n"
+msgid "<p class=\"oe_view_nocontent_create\">\n"
 "                    Click to add a retailer in your address book.\n"
 "                </p>\n"
 "            "
-msgstr ""
-"<p class=\"oe_view_nocontent_create\">\n"
-"                    Clicketer pour ajouter un retailer dans votre address book.\n"
+msgstr "<p class=\"oe_view_nocontent_create\">\n"
+"                    Clicker pour ajouter un concessionnaire dans votre carnet d'addresse.\n"
 "                </p>\n"
 "            "
 
 #. module: fleet_ext
 #: model:ir.actions.act_window,help:fleet_ext.fleet_client_lost_reason_act
-msgid ""
-"<p class=\"oe_view_nocontent_create\">\n"
+msgid "<p class=\"oe_view_nocontent_create\">\n"
 "                Click to create a client lost reason.\n"
 "              </p>\n"
 "            "
-msgstr ""
-"<p class=\"oe_view_nocontent_create\">\n"
-"                Clicketer pour creer un client perdu sans raison.\n"
+msgstr "<p class=\"oe_view_nocontent_create\">\n"
+"                Clicker pour créer une raison de perte de client.\n"
 "              </p>\n"
 "            "
 
@@ -69,7 +61,7 @@ msgstr "Client"
 #. module: fleet_ext
 #: view:res.partner:fleet_ext.client_form_view
 msgid "Client Info"
-msgstr "Info Client"
+msgstr "Information Client"
 
 #. module: fleet_ext
 #: model:ir.actions.act_window,name:fleet_ext.fleet_client_lost_reason_act
@@ -88,7 +80,7 @@ msgstr "Clients"
 #. module: fleet_ext
 #: view:res.partner:fleet_ext.view_res_partner_fleet_client_filter
 msgid "Companies"
-msgstr "Compagnie"
+msgstr "Sociétés"
 
 #. module: fleet_ext
 #: field:res.partner,competitor:0
@@ -103,7 +95,7 @@ msgstr "Contrat"
 #. module: fleet_ext
 #: model:ir.model,name:fleet_ext.model_fleet_vehicle_log_contract
 msgid "Contract information on a vehicle"
-msgstr "Information du contrat sur le véhicule"
+msgstr "Information du contrat pour un véhicule"
 
 #. module: fleet_ext
 #: field:fleet.vehicle.log.contract,cost_to_amortize:0
@@ -163,12 +155,12 @@ msgstr "Garanti Étendu"
 #. module: fleet_ext
 #: field:fleet.vehicle,extended_warranty_expiration:0
 msgid "Extended Warranty Expiration"
-msgstr "Date d'expiration de la garanti étrendu"
+msgstr "Date d'expiration de la garanti étendu"
 
 #. module: fleet_ext
 #: view:fleet.vehicle.log.contract:fleet_ext.fleet_vehicle_log_contract_form
 msgid "Financing details"
-msgstr "Détails financier"
+msgstr "Détails financiers"
 
 #. module: fleet_ext
 #: field:fleet.vehicle,firstVendor_id:0
@@ -188,18 +180,18 @@ msgstr "Rapports"
 #. module: fleet_ext
 #: view:res.partner:fleet_ext.view_partner_form
 msgid "Fleet partner"
-msgstr ""
+msgstr "Partenaire de"
 
 #. module: fleet_ext
 #: view:res.partner:fleet_ext.client_form_view
 msgid "Follow-up"
-msgstr "suivi"
+msgstr "Suivi"
 
 #. module: fleet_ext
 #: view:res.partner:fleet_ext.view_res_partner_filter_inherit
 #: view:res.partner:fleet_ext.view_res_partner_fleet_client_filter
 msgid "Group By"
-msgstr "Regroupement"
+msgstr "Grouper par"
 
 #. module: fleet_ext
 #: field:fleet.client.lost.reason,id:0
@@ -225,28 +217,27 @@ msgstr "Note interne"
 #. module: fleet_ext
 #: field:res.partner,is_fleet_active:0
 msgid "Is Fleet Active"
-msgstr ""
+msgstr "Is Fleet Active"
 
 #. module: fleet_ext
 #: field:res.partner,is_fleet_client:0
 msgid "Is Fleet Client"
-msgstr ""
+msgstr "Is Fleet Client"
 
 #. module: fleet_ext
 #: field:res.partner,is_fleet_retailer:0
 msgid "Is Fleet Retailer"
-msgstr ""
+msgstr "Is Fleet Retailer"
 
 #. module: fleet_ext
 #: view:res.partner:fleet_ext.view_partner_form
 msgid "Is a Fleet Client?"
-msgstr ""
+msgstr "Is a Fleet Client?"
 
 #. module: fleet_ext
 #: view:res.partner:fleet_ext.view_partner_form
 msgid "Is a Fleet Retailer?"
-msgstr ""
-
+msgstr "Is a Fleet Retailer?"
 #. module: fleet_ext
 #: field:fleet.client.lost.reason,__last_update:0
 msgid "Last Modified on"
@@ -353,7 +344,9 @@ msgid "Reason for the lost of the client"
 msgstr "Raison de la perte du client"
 
 #. module: fleet_ext
-#: field:fleet.vehicle,registration_date:0 field:res.partner,date_begin:0
+#: field:fleet.vehicle,registration_date:0
+#: field:res.partner,date_begin:0
+
 msgid "Registration Date"
 msgstr "Date d'enregistrement"
 
@@ -393,6 +386,11 @@ msgid "Search Partner"
 msgstr "Recherche (partenaires)"
 
 #. module: fleet_ext
+#: view:fleet.vehicle:fleet_ext.fleet_vehicle_form_inherit
+msgid "Serial Number"
+msgstr "Numéro de Série"
+
+#. module: fleet_ext
 #: field:fleet.vehicle.log.contract,term:0
 msgid "Term"
 msgstr "Terme"
@@ -401,11 +399,6 @@ msgstr "Terme"
 #: field:res.partner,date_terminated:0
 msgid "Terminated Date"
 msgstr "Date de fin"
-
-#. module: fleet_ext
-#: sql_constraint:fleet.vehicle:0
-msgid "This Chassis number is already used for another vehicle"
-msgstr "Ce numéro de chassis est déjà utilisé par un autre véhicule"
 
 #. module: fleet_ext
 #: sql_constraint:fleet.vehicle:0
@@ -418,12 +411,18 @@ msgid "This name for the reason exist already"
 msgstr "Ce nom de raison existe déjà"
 
 #. module: fleet_ext
+#: sql_constraint:fleet.vehicle:0
+msgid "This serial number is already used for another vehicle"
+msgstr "Ce numéro de série est déjà utilisé par un autre véhicule"
+
+#. module: fleet_ext
 #: model:fleet.vehicle.tag,name:fleet_ext.vehicle_tag_used
 msgid "Used"
 msgstr "Usagé"
 
 #. module: fleet_ext
-#: field:res.partner,fleet_vehicle_ids:0 field:res.partner,vehicle_ids:0
+#: field:res.partner,fleet_vehicle_ids:0
+#: field:res.partner,vehicle_ids:0
 msgid "Vehicle"
 msgstr "Véhicule"
 
