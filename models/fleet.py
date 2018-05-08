@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
+# © 2018 Michel Rheault
+# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 from __builtin__ import super
-
 from openerp import models, fields, api
 
 
@@ -8,7 +9,6 @@ class fleet_vehicle(models.Model):
     _inherit = 'fleet.vehicle'
 
     note = fields.Text('Internal Note')
-    manufacture_year = fields.Char('Year of Manufacture', size=4)
     manufacture_year = fields.Integer('Year of Manufacture')
 
     ownership = fields.Selection([
@@ -22,11 +22,9 @@ class fleet_vehicle(models.Model):
     original_date = fields.Date('Original Date')
 
     # 'driver_id': fields.many2one('res.partner', 'Driver', help='Driver of the vehicle'),
-    driver_id = fields.Many2one('res.partner', string="Owner", help='Owner of the vehicle',
-                                domain=[('is_fleet_client', '=', True)])
-    # purchase info
-    retailer_id = fields.Many2one('res.partner', string="Retailer", # (Concessionnaire)
-                                  domain=[('is_fleet_retailer', '=', True)])
+    driver_id = fields.Many2one('fleet.client', string="Owner", help='Owner of the vehicle')
+
+    retailer_id = fields.Many2one('fleet.retailer', string="Retailer")# (Concessionnaire)
 
     actualVendor_id = fields.Many2one('res.partner', 'Actual Vendor') #'Vendeur actuel'
     firstVendor_id = fields.Many2one('res.partner', 'First Vendor') # 'Vendeur original'
@@ -39,6 +37,26 @@ class fleet_vehicle(models.Model):
         ('uniq_license_plate', 'unique(license_plate)', 'This license plate is already used'),
         ('uniq_vin', 'unique(vin_sn)', 'This serial number is already used for another vehicle')
     ]
+
+    @api.multi
+    def name_get(self):
+        """display of vin_sn in the name"""
+        result = []
+        for record in self:
+            if self._context.get('show_sn', True):
+                name = '[' + str(record.vin_sn) + ']' + ' ' + record.name
+            else:
+                name = record.name
+            result.append((record.id, name))
+        return result
+
+
+    @api.model
+    def on_install(self):
+        """ on install add vin_sn field in name_search_ids to search vehicle by vin_sn """
+        vin_sn_field = self.env.ref('fleet.field_fleet_vehicle_vin_sn')
+        model = self.env.ref('fleet.model_fleet_vehicle')
+        model.name_search_ids = vin_sn_field
 
 class fleet_vehicle_log_contract(models.Model):
     _inherit = 'fleet.vehicle.log.contract'
@@ -64,12 +82,16 @@ class fleet_client_lost_reason(models.Model):
         ('uniq_name', 'unique(name)', 'This name for the reason exist already'),
     ]
 
+# todo Use Delegation inheritance chap 4 p91
+class FleetClient(models.Model):
+    _name = 'fleet.client'
+    _inherits = {'res.partner': 'partner_id'}
+    partner_id = fields.Many2one(
+        'res.partner',
+        ondelete='cascade')
 
-class Partner(models.Model):
-    _inherit = 'res.partner'
-
-    is_fleet_client = fields.Boolean(string="Is Fleet Client", default=False, store=True)
-    is_fleet_retailer = fields.Boolean(string="Is Fleet Retailer", default=False, store=True)
+    # is_fleet_client = fields.Boolean(string="Is Fleet Client", default=False, store=True)
+    # is_fleet_retailer = fields.Boolean(string="Is Fleet Retailer", default=False, store=True)
     is_fleet_active = fields.Boolean(string="Is Fleet Active", default=False, store=True)
 
     vehicle_ids = fields.One2many(
@@ -83,11 +105,6 @@ class Partner(models.Model):
         inverse_name="retailer_id",
         string="Vehicle",
         readonly=True)
-
-    # fleet_client_ids = fields.One2many(
-    #     = fleet_vehicle_ids . driver_id
-
-    # visible si fleet_client
 
     date_begin = fields.Date('Registration Date', help='Date when the client is acquired')
     date_terminated = fields.Date('Terminated Date',
@@ -108,7 +125,7 @@ class Partner(models.Model):
 
     @api.multi
     @api.depends("vehicle_ids")
-    def _get_contract_count(self):
+    def _get_contract_count(self): # todo !!
         for record in self:
             toto = record.vehicle_ids
             if toto:
@@ -127,36 +144,20 @@ class Partner(models.Model):
             return res
         return False
 
-    @api.model
-    def create(self, vals):
-        ctx = dict(self._context or {})
-        if ctx and 'is_fleet_client' in ctx:
-            vals['is_fleet_client'] = True
-        if ctx and 'is_fleet_retailer' in ctx:
-            vals['is_fleet_retailer'] = True
-            vals['is_company'] = True
-        record = super(Partner, self).create(vals)
-        return record
+    class FleetRetailer(models.Model):
+        _name = 'fleet.retailer'
+        _inherits = {'res.partner': 'partner_id'}
+        partner_id = fields.Many2one(
+            'res.partner',
+            ondelete='cascade')
 
-    # @api.multi
-    # def write(self, vals):
-    #     ctx = dict(self._context or {})
-    #     # ctx.update({'create_company': True})
-    #     print "===========", ctx
-    #     print(vals)
-    #     record = super(Partner, self.with_context(ctx)).write(vals)
-    #     return record
+        is_fleet_active = fields.Boolean(string="Is Fleet Active", default=False, store=True)
 
-# class fleet_retailler(models.Model):  # les concessionaires
-#     _name = 'fleet.retailer'
-#
-#     # ses vehicules
-#     vehicle_ids = fields.One2many(
-#         comodel_name='fleet.vehicle',
-#         inverse_name="retailer",
-#         string="Vehicle",
-#         readonly=True)
-
+        fleet_vehicle_ids = fields.One2many(
+            comodel_name='fleet.vehicle',
+            inverse_name="retailer_id",
+            string="Vehicle",
+            readonly=True)
 
     # ses clients
 

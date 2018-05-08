@@ -7,9 +7,10 @@
     'website': "",
     'category': 'Managing vehicles and contracts',
     'version': '8.0.1',
-    'depends': ['fleet', 'l10n_ca_toponyms'],
+    'depends': ['fleet', 'l10n_ca_toponyms', 'base_name_search_improved'],
     'data': [
         'fleet_data.xml',
+        'wizard/fleet_client_wizard.xml',
         'views/fleet_view.xml',
         'views/fleet_partner_view.xml',
         'views/fleet_board_view.xml',

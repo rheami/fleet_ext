@@ -110,8 +110,11 @@
 			<field name="model">fleet.vehicle</field>
 			<field name="inherit_id" ref="fleet.fleet_vehicle_search" />
 			<field name="arch" type="xml">
-				<filter name="groupby_status" position="before">
-				    <filter name="groupby_retailer" context="{'group_by' : 'retailer_id'}"
+                <field name="driver_id" position="before">
+                    <field name="vin_sn" domain="[('vehicle.vin_sn','ilike',self)]"/>
+                </field>
+                <filter name="groupby_status" position="before">
+                    <filter name="groupby_retailer" context="{'group_by' : 'retailer_id'}"
                         string="Retailer" />
 					<filter name="groupby_client" context="{'group_by' : 'driver_id'}"
 						string="Client" />
@@ -131,7 +134,7 @@
         </record>
 
         <!-- Lost Reason -->
-        <record model='ir.actions.act_window' id='fleet_client_lost_reason_act'>
+        <record id='fleet_client_lost_reason_act' model='ir.actions.act_window' >
             <field name="name">Client Lost Reason</field>
             <field name="res_model">fleet.client.lost.reason</field>
             <field name="view_type">form</field>
@@ -143,7 +146,10 @@
             </field>
         </record>
 
-        <menuitem action="fleet_client_lost_reason_act" parent="fleet.fleet_configuration" id="fleet_client_lost_reason_menu" groups="fleet.group_fleet_manager"/>
+        <menuitem action="fleet_client_lost_reason_act"
+				  parent="fleet.fleet_configuration"
+				  id="fleet_client_lost_reason_menu"
+				  groups="fleet.group_fleet_manager" />
 
 	</data>
 </openerp>

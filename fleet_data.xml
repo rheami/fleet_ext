@@ -15,6 +15,7 @@
         <record id="vehicle_tag_used" model="fleet.vehicle.tag">
             <field name="name">Used</field>
         </record>
+
         <!--brand-->
         <record id="brand_gmc" model="fleet.vehicle.model.brand">
       	    <field name="name">Gmc</field>
@@ -40,5 +41,8 @@
       	    <field name="name">Saturn</field>
       	    <field name="image" type="base64" file="fleet_ext/static/img/brand_saturn-image.png"/>
         </record>
+    <!--</data>-->
+    <!--<data noupdate="0">-->
+        <function id="function_on_install" model="fleet.vehicle" name="on_install"/>
     </data>
 </openerp>

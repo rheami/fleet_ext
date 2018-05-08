@@ -2,32 +2,32 @@
 <openerp>
 	<data>
 
-        <!-- Partner Form View -->
-        <record id="view_partner_form" model="ir.ui.view">
-            <field name="name">partner.clients</field>
-            <field name="model">res.partner</field>
-            <field name="inherit_id" ref="base.view_partner_form"/>
-            <field name="arch" type="xml">
-                <notebook position="inside">
-                    <page string="Fleet partner" invisible="context.get('is_fleet_client', False) or context.get('is_fleet_retailer', False)">
-                        <group>
-                            <div class="oe_edit_only">
-                                <label for="Fleet Partner"/>
-                                    <field name="is_fleet_client" class="oe_inline"/>
-                                    <label for="is_fleet_client" string="Is a Fleet Client?"/>
-                                    <field name="is_fleet_retailer" class="oe_inline"/>
-                                    <label for="is_fleet_retailer" string="Is a Fleet Retailer?"/>
-                            </div>
-                        </group>
-                    </page>
-                </notebook>
-            </field>
-        </record>
+        <!--&lt;!&ndash; Partner Form View &ndash;&gt;-->
+        <!--<record id="view_partner_form" model="ir.ui.view">-->
+            <!--<field name="name">partner.clients</field>-->
+            <!--<field name="model">res.partner</field>-->
+            <!--<field name="inherit_id" ref="base.view_partner_form"/>-->
+            <!--<field name="arch" type="xml">-->
+                <!--<notebook position="inside">-->
+                    <!--<page string="Fleet partner" invisible="context.get('is_fleet_client', False) or context.get('is_fleet_retailer', False)">-->
+                        <!--<group>-->
+                            <!--<div class="oe_edit_only">-->
+                                <!--<label for="Fleet Partner"/>-->
+                                    <!--<field name="is_fleet_client" class="oe_inline"/>-->
+                                    <!--<label for="is_fleet_client" string="Is a Fleet Client?"/>-->
+                                    <!--<field name="is_fleet_retailer" class="oe_inline"/>-->
+                                    <!--<label for="is_fleet_retailer" string="Is a Fleet Retailer?"/>-->
+                            <!--</div>-->
+                        <!--</group>-->
+                    <!--</page>-->
+                <!--</notebook>-->
+            <!--</field>-->
+        <!--</record>-->
 
         <!-- Client Form View -->
         <record id="fleet_ext.client_form_view" model="ir.ui.view">
-            <field name="name">partner.clients</field>
-            <field name="model">res.partner</field>
+            <field name="name">fleet.clients</field>
+            <field name="model">fleet.client</field>
             <field name="inherit_id" ref="base.view_partner_form"/>
             <field name="mode">primary</field>
             <field name="arch" type="xml">
@@ -40,8 +40,8 @@
                 </xpath>
                 <field name="parent_id" position="replace">
                     <field name="parent_id"
-                           domain="[('is_company', '=', True),('is_fleet_client', '=', True)]"
-                           context="{'form_view_ref': 'fleet_ext.client_form_view', 'default_is_company': True, 'default_supplier': supplier, 'default_customer': customer, 'is_fleet_client': True}"
+                           domain="[('is_company', '=', True)]"
+                           context="{'form_view_ref': 'fleet_ext.client_form_view', 'default_is_company': True, 'default_supplier': supplier, 'default_customer': customer}"
                            attrs="{'invisible': [('is_company','=', True),('parent_id', '=', False)]}"
                            on_change="onchange_address(use_parent_address, parent_id)"/>
                 </field>
@@ -73,8 +73,8 @@
 
         <!-- Retailer Form View -->
         <record id="fleet_ext.retailer_form_view" model="ir.ui.view">
-            <field name="name">partner.retailer</field>
-            <field name="model">res.partner</field>
+            <field name="name">fleet.retailer</field>
+            <field name="model">fleet.retailer</field>
             <field name="inherit_id" ref="base.view_partner_form"/>
             <field name="mode">primary</field>
             <field name="arch" type="xml">
@@ -92,10 +92,10 @@
         <!-- Retailer actions-->
         <record id="action_fleet_retailers" model="ir.actions.act_window">
             <field name="name">Retailers</field>
-            <field name="res_model">res.partner</field>
+            <field name="res_model">fleet.retailer</field>
             <!--<field name="search_view_id" ref="view_res_partner_retailer_filter"/>-->
-            <field name="context">{"is_fleet_retailer": True}</field>
-            <field name="domain" eval="[('is_fleet_retailer', '=', True)]"/>
+            <!--<field name="context">{"is_fleet_retailer": True}</field>-->
+            <!--<field name="domain" eval="[('is_fleet_retailer', '=', True)]"/>-->
             <field name="help" type="html">
                 <p class="oe_view_nocontent_create">
                     Click to add a retailer in your address book.
@@ -106,10 +106,10 @@
 		<!-- Client actions-->
         <record id="action_fleet_clients" model="ir.actions.act_window">
             <field name="name">Clients</field>
-            <field name="res_model">res.partner</field>
+            <field name="res_model">fleet.client</field>
             <!--<field name="search_view_id" ref="view_res_partner_client_filter"/>-->
-            <field name="context">{"is_fleet_client": True}</field>
-            <field name="domain" eval="[('is_fleet_client', '=', True)]"/>
+            <!--<field name="context">{"is_fleet_client": True}</field>-->
+            <!--<field name="domain" eval="[('is_fleet_client', '=', True)]"/>-->
             <field name="help" type="html">
                 <p class="oe_view_nocontent_create">
                     Click to add a client in your address book.
@@ -162,19 +162,19 @@
         </record>
 
         <!-- Fleet Retailer and Fleet Client filters in contact view -->
-        <record id="view_res_partner_filter_inherit" model="ir.ui.view">
-            <field name="name">res.partner.fleet_ext.inherit.search</field>
-            <field name="model">res.partner</field>
-            <field name="inherit_id" ref="base.view_res_partner_filter"/>
-            <field name="arch" type="xml">
-                <group string="Group By" position="before">
-                    <group string="Fleet">
-                        <filter name="fleet_retailer" domain="[('is_fleet_retailer', '=', 1)]" string="Retailer" />
-                        <filter name="fleet_clients" domain="[('is_fleet_client', '=', 1)]" string="Clients" />
-                    </group>
-                </group>
-            </field>
-        </record>
+        <!--<record id="view_res_partner_filter_inherit" model="ir.ui.view">-->
+            <!--<field name="name">res.partner.fleet_ext.inherit.search</field>-->
+            <!--<field name="model">res.partner</field>-->
+            <!--<field name="inherit_id" ref="base.view_res_partner_filter"/>-->
+            <!--<field name="arch" type="xml">-->
+                <!--<group string="Group By" position="before">-->
+                    <!--<group string="Fleet">-->
+                        <!--<filter name="fleet_retailer" domain="[('is_fleet_retailer', '=', 1)]" string="Retailer" />-->
+                        <!--<filter name="fleet_clients" domain="[('is_fleet_client', '=', 1)]" string="Clients" />-->
+                    <!--</group>-->
+                <!--</group>-->
+            <!--</field>-->
+        <!--</record>-->
 
         <!-- Fleet Client filters in Fleet Client view -->
         <record id="view_res_partner_fleet_client_filter" model="ir.ui.view">
