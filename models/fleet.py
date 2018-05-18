@@ -129,7 +129,7 @@ class FleetClient(models.Model):
 
     @api.multi
     def return_action_to_open(self):
-        """ This opens the xml view specified in xml_id for the current vehicle """
+        """ This opens the xml view specified in xml_id for the vehicles or current client """
         ctx = dict(self._context or {})
         if ctx.get('xml_id'):
             res = self.env['ir.actions.act_window'].for_xml_id('fleet', ctx.get('xml_id'))
@@ -165,13 +165,25 @@ class FleetClient(models.Model):
 
         is_fleet_active = fields.Boolean(string="Is Fleet Active", default=False, store=True)
 
-        fleet_vehicle_ids = fields.One2many(
+        vehicle_ids = fields.One2many(
             comodel_name='fleet.vehicle',
             inverse_name="retailer_id",
             string="Vehicle",
             readonly=True)
 
         # todo ses clients
+
+        # ses contrats
+        @api.multi
+        def return_action_to_open(self):
+            """ This opens the xml view specified in xml_id for the vehicles or current retailer """
+            ctx = dict(self._context or {})
+            if ctx.get('xml_id'):
+                res = self.env['ir.actions.act_window'].for_xml_id('fleet', ctx.get('xml_id'))
+                res['context'] = ctx
+                res['domain'] = [('vehicle_id', 'in', self.vehicle_ids.ids)]
+                return res
+            return False
 
         def vat_change(self, cr, uid, ids, state_id, context=None):
             partner_ids = [user.partner_id.id for user in self.browse(cr, uid, ids, context=context)]

@@ -9,12 +9,22 @@
             <field name="inherit_id" ref="base.view_partner_form"/>
             <field name="mode">primary</field>
             <field name="arch" type="xml">
+                <xpath expr="//div[@name='buttons']" position="inside">
+                    <button name="return_action_to_open"
+                        type="object"
+                        class="oe_stat_button"
+                        icon="fa-book"
+                        context="{'xml_id':'fleet_vehicle_log_contract_act'}"
+                        help="show the contract for this vehicle">
+                        <!--<field name="contract_count" widget="statinfo" string="Contracts"/>-->
+                    </button>
+                </xpath>
                 <notebook position="inside">
                     <page string="Clients">
                         <!--todo ajouter client_ids-->
                     </page>
                     <page string="Vehicles" autofocus="autofocus"> <!--autofocus work on odoo 9+-->
-                        <field name="fleet_vehicle_ids" />
+                        <field name="vehicle_ids" />
                     </page>
                 </notebook>
             </field>
