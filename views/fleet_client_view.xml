@@ -13,7 +13,15 @@
                     <button class="oe_inline oe_stat_button" type="action" name="%(fleet.fleet_vehicle_log_contract_act)d"
                         context="{'search_default_partner_id': active_id, 'default_partner_id': active_id}"
                         icon="fa-linux">
-                        <field  string="Contract" name="contract_count" widget="statinfo"/>
+                        <field  string="toto" name="contract_count" widget="statinfo"/>
+                    </button>
+                    <button name="return_action_to_open"
+                        type="object"
+                        class="oe_stat_button"
+                        icon="fa-book"
+                        context="{'xml_id':'fleet_vehicle_log_contract_act'}"
+                        help="show the contract for this vehicle">
+                        <field name="contract_count" widget="statinfo" string="Contracts"/>
                     </button>
                 </xpath>
                 <field name="parent_id" position="replace">

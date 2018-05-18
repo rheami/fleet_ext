@@ -16,22 +16,19 @@ class fleet_vehicle(models.Model):
                         ('leased', 'Leased'),
                         ], 'Ownership', default="owned")
 
-    #registration_date = fields.Date("Date d'inscription", help="date d'inscription")
-    #date_originale = fields.Date('Date originale', help="date originale")
     registration_date = fields.Date("Registration Date")
     original_date = fields.Date('Original Date')
 
-    # 'driver_id': fields.many2one('res.partner', 'Driver', help='Driver of the vehicle'),
     driver_id = fields.Many2one('fleet.client', string="Owner", help='Owner of the vehicle')
 
-    retailer_id = fields.Many2one('fleet.retailer', string="Retailer")# (Concessionnaire)
+    retailer_id = fields.Many2one('fleet.retailer', string="Retailer")
 
-    actualVendor_id = fields.Many2one('res.partner', 'Actual Vendor') #'Vendeur actuel'
-    firstVendor_id = fields.Many2one('res.partner', 'First Vendor') # 'Vendeur original'
+    actualVendor_id = fields.Many2one('res.partner', 'Actual Vendor')
+    firstVendor_id = fields.Many2one('res.partner', 'First Vendor')
 
-    extended_warranty = fields.Boolean('Extended Warranty') #'Garantie Prolongée'
-    replacement_warranty = fields.Boolean('Replacement Warranty') # 'Garantie de Remplacement'
-    extended_warranty_expiration = fields.Date('Extended Warranty Expiration') # "date Fin Garantie Prolongée"
+    extended_warranty = fields.Boolean('Extended Warranty')
+    replacement_warranty = fields.Boolean('Replacement Warranty')
+    extended_warranty_expiration = fields.Date('Extended Warranty Expiration')
 
     _sql_constraints = [
         ('uniq_license_plate', 'unique(license_plate)', 'This license plate is already used'),
@@ -50,7 +47,6 @@ class fleet_vehicle(models.Model):
             result.append((record.id, name))
         return result
 
-
     @api.model
     def on_install(self):
         """ on install add vin_sn field in name_search_ids to search vehicle by vin_sn """
@@ -61,8 +57,8 @@ class fleet_vehicle(models.Model):
 class fleet_vehicle_log_contract(models.Model):
     _inherit = 'fleet.vehicle.log.contract'
 
-    purchase_Price = fields.Float(digits=(9,2), string='Purchase Price')  # Prix d'achat
-    msrp = fields.Float(digits=(9,2), string='MSRP', help="Manufacturer's suggested retail price")  # Prix de Détail Suggéré par le Fabricant
+    purchase_Price = fields.Float(digits=(9,2), string='Purchase Price')
+    msrp = fields.Float(digits=(9,2), string='MSRP', help="Manufacturer's suggested retail price")
     exchange_value = fields.Float(digits=(9,2), string='Exchange value')
     residual = fields.Float(digits=(9,2), string='Residual')
     residual_percent = fields.Float(digits=(4,1), string='Residual %') # todo champs calculé
@@ -82,7 +78,7 @@ class fleet_client_lost_reason(models.Model):
         ('uniq_name', 'unique(name)', 'This name for the reason exist already'),
     ]
 
-# todo Use Delegation inheritance chap 4 p91
+
 class FleetClient(models.Model):
     _name = 'fleet.client'
     _inherit = ['mail.thread']
@@ -91,8 +87,6 @@ class FleetClient(models.Model):
         'res.partner',
         ondelete='cascade')
 
-    # is_fleet_client = fields.Boolean(string="Is Fleet Client", default=False, store=True)
-    # is_fleet_retailer = fields.Boolean(string="Is Fleet Retailer", default=False, store=True)
     is_fleet_active = fields.Boolean(string="Is Fleet Active", default=False, store=True)
 
     vehicle_ids = fields.One2many(
@@ -137,11 +131,10 @@ class FleetClient(models.Model):
     def return_action_to_open(self):
         """ This opens the xml view specified in xml_id for the current vehicle """
         ctx = dict(self._context or {})
-        partner_id = ctx.get('active_id')
         if ctx.get('xml_id'):
             res = self.env['ir.actions.act_window'].for_xml_id('fleet', ctx.get('xml_id'))
             res['context'] = ctx
-            res['domain'] = [('vehicle_id','in', self.vehicle_ids)]
+            res['domain'] = [('vehicle_id','in', self.vehicle_ids.ids)]
             return res
         return False
 
