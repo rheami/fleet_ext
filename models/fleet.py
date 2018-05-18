@@ -65,7 +65,7 @@ class fleet_vehicle_log_contract(models.Model):
     msrp = fields.Float(digits=(9,2), string='MSRP', help="Manufacturer's suggested retail price")  # Prix de Détail Suggéré par le Fabricant
     exchange_value = fields.Float(digits=(9,2), string='Exchange value')
     residual = fields.Float(digits=(9,2), string='Residual')
-    residual_percent = fields.Float(digits=(4,1), string='Residual %')
+    residual_percent = fields.Float(digits=(4,1), string='Residual %') # todo champs calculé
     deposit = fields.Float(related='amount', store=False, readonly=True, copy=False, string='Deposit')
     cost_to_amortize = fields.Float(digits=(9,2), string='Cost to amortize')
     montly_payment = fields.Float(string='Montly Payment')
@@ -85,6 +85,7 @@ class fleet_client_lost_reason(models.Model):
 # todo Use Delegation inheritance chap 4 p91
 class FleetClient(models.Model):
     _name = 'fleet.client'
+    _inherit = ['mail.thread']
     _inherits = {'res.partner': 'partner_id'}
     partner_id = fields.Many2one(
         'res.partner',
@@ -144,8 +145,26 @@ class FleetClient(models.Model):
             return res
         return False
 
+    def vat_change(self, cr, uid, ids, state_id, context=None):
+        partner_ids = [user.partner_id.id for user in self.browse(cr, uid, ids, context=context)]
+        return self.pool.get('res.partner').vat_change(cr, uid, partner_ids, state_id, context=context)
+
+    def onchange_state(self, cr, uid, ids, state_id, context=None):
+        partner_ids = [user.partner_id.id for user in self.browse(cr, uid, ids, context=context)]
+        return self.pool.get('res.partner').onchange_state(cr, uid, partner_ids, state_id, context=context)
+
+    def onchange_type(self, cr, uid, ids, is_company, context=None):
+        partner_ids = [user.partner_id.id for user in self.browse(cr, uid, ids, context=context)]
+        return self.pool['res.partner'].onchange_type(cr, uid, partner_ids, is_company, context=context)
+
+    def onchange_address(self, cr, uid, ids, use_parent_address, parent_id, context=None):
+        partner_ids = [user.partner_id.id for user in self.browse(cr, uid, ids, context=context)]
+        return self.pool['res.partner'].onchange_address(cr, uid, partner_ids, use_parent_address, parent_id, context=context)
+
+
     class FleetRetailer(models.Model):
         _name = 'fleet.retailer'
+        _inherit = ['mail.thread']
         _inherits = {'res.partner': 'partner_id'}
         partner_id = fields.Many2one(
             'res.partner',
@@ -159,6 +178,21 @@ class FleetClient(models.Model):
             string="Vehicle",
             readonly=True)
 
-    # ses clients
+        # todo ses clients
 
+        def vat_change(self, cr, uid, ids, state_id, context=None):
+            partner_ids = [user.partner_id.id for user in self.browse(cr, uid, ids, context=context)]
+            return self.pool.get('res.partner').vat_change(cr, uid, partner_ids, state_id, context=context)
+
+        def onchange_state(self, cr, uid, ids, state_id, context=None):
+            partner_ids = [user.partner_id.id for user in self.browse(cr, uid, ids, context=context)]
+            return self.pool.get('res.partner').onchange_state(cr, uid, partner_ids, state_id, context=context)
+
+        def onchange_type(self, cr, uid, ids, is_company, context=None):
+            partner_ids = [user.partner_id.id for user in self.browse(cr, uid, ids, context=context)]
+            return self.pool['res.partner'].onchange_type(cr, uid, partner_ids, is_company, context=context)
+
+        def onchange_address(self, cr, uid, ids, use_parent_address, parent_id, context=None):
+            partner_ids = [user.partner_id.id for user in self.browse(cr, uid, ids, context=context)]
+            return self.pool['res.partner'].onchange_address(cr, uid, partner_ids, use_parent_address, parent_id, context=context)
 

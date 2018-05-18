@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+	<data>
+
+        <!-- Retailer -->
+        <record id="fleet_ext.retailer_form_view" model="ir.ui.view">
+            <field name="name">fleet.retailer</field>
+            <field name="model">fleet.retailer</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="mode">primary</field>
+            <field name="arch" type="xml">
+                <notebook position="inside">
+                    <page string="Clients">
+                        <!--todo ajouter client_ids-->
+                    </page>
+                    <page string="Vehicles" autofocus="autofocus"> <!--autofocus work on odoo 9+-->
+                        <field name="fleet_vehicle_ids" />
+                    </page>
+                </notebook>
+            </field>
+        </record>
+
+        <record id="fleet_ext.retailer_tree_view" model="ir.ui.view">
+            <field name="name">fleet.retailer.tree</field>
+            <field name="model">fleet.retailer</field>
+            <field eval="8" name="priority"/>
+            <field name="arch" type="xml">
+                <tree string="Contacts">
+                    <field name="display_name"/>
+                    <field name="function" invisible="1"/>
+                    <field name="phone"/>
+                    <field name="email"/>
+                    <field name="user_id" invisible="1"/>
+                    <field name="is_company" invisible="1"/>
+                    <field name="country_id" invisible="1"/>
+                    <field name="parent_id" invisible="1"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Retailer kanban view inherted from Partner kanban view-->
+        <record id="fleet_ext.retailer_kanban_view" model="ir.ui.view">
+            <field name="name">fleet.retailer.kanban</field>
+            <field name="model">fleet.retailer</field>
+            <field name="inherit_id" ref="base.res_partner_kanban_view"/>
+            <!--<field name="mode">primary</field>-->
+            <field name="priority" eval="20"/>
+            <field name="arch" type="xml">
+                <field name="mobile" position="after">
+                    <field name="is_fleet_active"/>
+                </field>
+            </field>
+        </record>
+
+                <!--todo : afficher le nombre de voitures-->
+                <!--<field name="mobile" position="after">-->
+                    <!--<field name="sale_order_count"/>-->
+                <!--</field>-->
+                <!--<xpath expr="//div[@class='oe_kanban_partner_links']" position="inside">-->
+                    <!--<a name="%(sale.act_res_partner_2_sale_order)d" type="action" t-if="record.sale_order_count.value>0">-->
+                        <!--<t t-esc="record.sale_order_count.value"/> Sales-->
+                    <!--</a>-->
+                <!--</xpath>-->
+
+        <!--<record id="view_retailer_search" model="ir.ui.view">-->
+            <!--<field name="name">fleet.retailer.search</field>-->
+            <!--<field name="model">fleet.retailer</field>-->
+            <!--<field name="arch" type="xml">-->
+                <!--<search string="Retailer">-->
+                    <!--<field name="name" filter_domain="['|', ('name','ilike',self), ('email','ilike',self)]" string="Retailer"/>-->
+                    <!--<field name="company_ids" string="Company" groups="base.group_multi_company"/>-->
+                <!--</search>-->
+            <!--</field>-->
+        <!--</record>-->
+        <!-- Retailer actions-->
+        <record id="action_fleet_retailers" model="ir.actions.act_window">
+            <field name="name">Retailers</field>
+            <field name="res_model">fleet.retailer</field>
+            <!--<field name="search_view_id" ref="view_retailer_search"/>-->
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Click to add a retailer in your address book.
+                </p>
+            </field>
+        </record>
+
+        <!--retailer view type-->
+        <record id="action_fleet_retailers_kanban" model="ir.actions.act_window.view">
+            <field eval="0" name="sequence"/>
+            <field name="view_mode">kanban</field>
+            <field name="view_id" ref="fleet_ext.retailer_kanban_view"/>
+            <field name="act_window_id" ref="action_fleet_retailers"/>
+        </record>
+
+        <record id="action_fleet_retailers_tree" model="ir.actions.act_window.view">
+            <field eval="1" name="sequence"/>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="fleet_ext.retailer_tree_view"/>
+            <field name="act_window_id" ref="action_fleet_retailers"/>
+        </record>
+
+        <record id="action_fleet_retailers_form" model="ir.actions.act_window.view">
+            <field eval="2" name="sequence"/>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="retailer_form_view"/>
+            <field name="act_window_id" ref="action_fleet_retailers"/>
+        </record>
+
+        <record id="action_fleet_clients_form" model="ir.actions.act_window.view">
+            <field eval="2" name="sequence"/>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="client_form_view"/>
+            <field name="act_window_id" ref="action_fleet_clients"/>
+        </record>
+
+        <!--menu-->
+        <menuitem name="Retailer" parent="fleet.menu_root" id="menu_fleet_retailer" sequence="2" groups="fleet.group_fleet_manager"/>
+		<!--menu action-->
+        <menuitem action="action_fleet_retailers" name="Retailers" parent="menu_fleet_retailer" id="fleet_retailer_menu" groups="fleet.group_fleet_manager"/>
+
+	</data>
+</openerp>
