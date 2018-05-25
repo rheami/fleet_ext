@@ -9,6 +9,7 @@
     'version': '8.0.1',
     'depends': ['fleet', 'l10n_ca_toponyms', 'base_name_search_improved'],
     'data': [
+        # 'security/ir.model.access.csv',
         'fleet_data.xml',
         'wizard/fleet_client_wizard.xml',
         'views/fleet_view.xml',

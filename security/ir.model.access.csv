@@ -1,0 +1,4 @@
+id,name,model_id/id,group_id/id,perm_read,perm_write,perm_create,perm_unlink
+access_fleet_client_lost_reason,access_fleet_client_lost_reason,model_fleet_client_lost_reason,fleet.group_fleet_manager,1,1,1,1
+access_fleet_client,access_fleet_client,model_fleet_client,fleet.group_fleet_user,1,1,0,0
+access_fleet_retailer,access_fleet_retailer,model_fleet_retailer,fleet.group_fleet_user,1,1,0,0
