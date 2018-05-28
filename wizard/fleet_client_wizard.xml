@@ -31,6 +31,13 @@
                     <footer states="choose">
                         <button name="record_clients" string="Ok" class="btn-primary" type="object" />
                         or
+                        <button string="open" name="return_action_to_open"
+                                type="object"
+                                class="btn-primary"
+                                    context="{'xml_id':'fleet_vehicle_simple_act'}"
+                                help="open or create the vehicle">
+                        </button>
+                        or
                         <button string="Cancel" class='btn-default' special="cancel" />
                     </footer>
                     <footer states="get">
@@ -51,6 +58,53 @@
                 Click to create a new client / vehicle.
               </p>
             </field>
+        </record>
+
+        <record id="fleet_vehicle_simple_form" model="ir.ui.view">
+            <field name="name">fleet.vehicle.simplified.form</field>
+            <field name="model">fleet.vehicle</field>
+            <field name="priority">20</field>
+            <field name="arch" type="xml">
+                <form string="Vehicle">
+                    <header>
+                        <field name="state_id"  widget="statusbar" clickable="True" />
+                        <button string="open" name="return_action_to_open"
+                                type="object"
+                                class="btn-primary"
+                                    context="{'xml_id':'fleet_vehicle_simple_act'}"
+                                help="open or create the vehicle">
+                        </button>
+                    </header>
+                    <sheet>
+                        <field name="image_medium" widget='image' class="oe_left oe_avatar"/>
+                        <div class="oe_title">
+                            <label for="model_id" class="oe_edit_only"/>
+                            <h1>
+                                <field name="model_id" class="oe_inline" on_change="on_change_model(model_id)"/>
+                            </h1>
+                            <label for="license_plate" class="oe_edit_only"/>
+                            <h2>
+                                <field name="license_plate" class="oe_inline"/>
+                                <field name="vin_sn" position="attributes">
+					                <attribute name="string" >Serial Number</attribute>
+				                </field>
+                            </h2>
+                            <field string="Existing client" name="driver_id"/>
+					        <field string="Ownership" name="ownership" />
+                            <label for="tag_ids" class="oe_edit_only"/>
+                            <field name="tag_ids" widget="many2many_tags" />
+                        </div>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id='fleet_vehicle_simple_act' model='ir.actions.act_window'>
+            <field name="name">Vehicles</field>
+            <field name="res_model">fleet.vehicle</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="fleet_vehicle_simple_form"/>
         </record>
 
         <menuitem id="new_fleet_vehicle_wizard_menu"
