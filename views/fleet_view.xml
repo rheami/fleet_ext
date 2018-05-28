@@ -34,7 +34,7 @@
 					<field name="manufacture_year" />
 				</field>
 				<field name="driver_id" position="replace">
-					<field name="driver_id" context="{'form_view_ref': 'fleet_ext.client_form_view'}"/>
+					<field name="driver_id"/>
 					<field name="ownership" />
 				</field>
 				<field name="vin_sn" position="attributes">

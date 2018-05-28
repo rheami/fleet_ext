@@ -9,14 +9,22 @@
             <field name="inherit_id" ref="base.view_partner_form"/>
             <field name="mode">primary</field>
             <field name="arch" type="xml">
-                <xpath expr="//div[@name='buttons']" position="inside">
+                <xpath expr="//div[@name='buttons']" position="replace">
+                    <button name="return_action_to_open"
+                        type="object"
+                        class="oe_stat_button"
+                        icon="fa-car"
+                        context="{'xml_id':'fleet_vehicle_act'}"
+                        help="show the vehicle for this retailer">
+                        <field name="vehicle_count" widget="statinfo" string="Vehicles"/>
+                    </button>
                     <button name="return_action_to_open"
                         type="object"
                         class="oe_stat_button"
                         icon="fa-book"
                         context="{'xml_id':'fleet_vehicle_log_contract_act'}"
                         help="show the contract for this vehicle">
-                        <!--<field name="contract_count" widget="statinfo" string="Contracts"/>-->
+                        <field name="contract_count" widget="statinfo" string="Contracts"/>
                     </button>
                 </xpath>
                 <notebook position="inside">

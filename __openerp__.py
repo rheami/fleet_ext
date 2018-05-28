@@ -10,12 +10,13 @@
     'depends': ['fleet', 'l10n_ca_toponyms', 'base_name_search_improved'],
     'data': [
         # 'security/ir.model.access.csv',
+        'views/assets.xml',
         'fleet_data.xml',
-        'wizard/fleet_client_wizard.xml',
         'views/fleet_view.xml',
         'views/fleet_retailer_view.xml',
         'views/fleet_client_view.xml',
         'views/fleet_board_view.xml',
+        'wizard/fleet_client_wizard.xml',
     ],
     'installable': True
 }

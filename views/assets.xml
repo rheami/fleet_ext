@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+
+<template id="assets_backend" name="fleet_ext assets" inherit_id="web.assets_backend">
+    <xpath expr="." position="inside">
+        <link rel="stylesheet" href="/web/static/lib/fontawesome/css/font-awesome.css"/>
+        <!--<script type="text/javascript"-->
+                <!--src="/fleet_ext/static/src/js/fleet_ext.js"/>-->
+    </xpath>
+</template>
+
+</data>
+</openerp>
