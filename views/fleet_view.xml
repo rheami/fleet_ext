@@ -54,7 +54,8 @@
 							<group col="2" string="Retailer">
                                 <group>
                                     <field name="retailer_id" required="1" />
-									<field name="actualVendor_id" domain="[('parent_id','=', retailer_id), ('is_fleet_active','=', True)]"/>
+									<!--<field name="actualVendor_id" domain="[('parent_id','=', retailer_id), ('is_fleet_active','=', True)]"/>-->
+                                    <field name="actualVendor_id" domain="[('parent_id','=', retailer_id)]"/>
                                     <field name="firstVendor_id" domain="[('parent_id','=', retailer_id)]"/>
                                     <field name="car_value" />
                                     <field name="acquisition_date" />

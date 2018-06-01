@@ -1,0 +1,92 @@
+<?xml version="1.0"?>
+<openerp>
+<data>
+
+<record id="fleet_vehicle_simple_form" model="ir.ui.view">
+<field name="name">fleet.vehicle.simplified.form</field>
+<field name="model">fleet.vehicle</field>
+<field name="priority">20</field>
+<field name="arch" type="xml">
+<form string="Vehicle">
+    <header>
+        <field name="state"  widget="statusbar" clickable="True" />
+        <button type="object" name="action_previous_step" attrs="{'invisible': [('state','=','first')]}" string="Back" special="no_save"/>
+        <button type="object" name="action_next_step" attrs="{'invisible': [('state','=','last')]}" class="oe_highlight" string="Next"/>
+    </header>
+    <sheet>
+        <field name="image_medium" widget='image' class="oe_left oe_avatar"/>
+        <div class="oe_title" >
+            <label for="model_id" class="oe_edit_only" attrs="{'invisible': [('state', '!=', 'first')]}"/>
+            <h1>
+                <field name="model_id" class="oe_inline" on_change="on_change_model(model_id)" attrs="{'readonly': [('state', '!=', 'first')]}"/>
+            </h1>
+            <label for="license_plate" class="oe_edit_only" attrs="{'invisible': [('state', '!=', 'first')]}"/>
+            <h2>
+                <field name="license_plate" class="oe_inline" attrs="{'readonly': [('state', '!=', 'first')]}"/>
+            </h2>
+            <label for="vin_sn" class="oe_edit_only" attrs="{'invisible': [('state', '!=', 'first')]}">
+                <attribute name="string" >Serial Number</attribute>
+            </label>
+            <h2>
+                <field name="vin_sn" attrs="{'readonly': [('state', '!=', 'first')]}" position="attributes" />
+            </h2>
+            <label for="car_value" class="oe_edit_only" attrs="{'invisible': [('state', '!=', 'first')]}"/>
+            <field name="car_value" attrs="{'invisible': [('state', '!=', 'first')]}"/>
+        </div>
+        <div attrs="{'invisible':[('state','!=','client')]}">
+            <group>
+                <field name="driver_id"/>
+                <field name="ownership" />
+            </group>
+            <label for="tag_ids" class="oe_edit_only"/>
+            <field name="tag_ids" widget="many2many_tags"/>
+        </div>
+        <div attrs="{'invisible':[('state','!=','contract')]}">
+            <group>
+                <field name="retailer_id" />
+                <!--<field name="actualVendor_id" domain="[('parent_id','=', retailer_id), ('is_fleet_active','=', True)]"/>-->
+                <field name="actualVendor_id" domain="[('parent_id','=', retailer_id)"/>
+                <field name="firstVendor_id" domain="[('parent_id','=', retailer_id)]"/>
+                <field name="acquisition_date" />
+                <field name="registration_date" />
+                <field name="original_date" />
+                <field name="extended_warranty" />
+                <field name="replacement_warranty" />
+                <field name="extended_warranty_expiration" />
+            </group>
+            <button name="return_action_to_open_contract"
+                string="Open Contract"
+                type="object"
+                class="oe_inline oe_link"
+                icon="terp-folder-blue"
+                help="create contract for this vehicle"
+                attrs="{'invisible': [('contract_count', '=', 0)]}"/>
+            <button name="return_action_to_open_contract"
+                string="Create Contract"
+                type="object"
+                class="oe_inline oe_link"
+                icon="terp-folder-green"
+                help="show the contract for this vehicle"
+                attrs="{'invisible': [('contract_count', '!=', 0)]}"/>
+            <field name="log_contracts" />
+            <field name="contract_count" widget="statinfo" string="Contracts"/>
+        </div>
+        </sheet>
+        <div class="oe_chatter" attrs="{'invisible':[('state','!=','last')]}">
+            <field name="message_follower_ids" widget="mail_followers"/>
+            <field name="message_ids" widget="mail_thread" options='{"thread_level": 1}'/>
+        </div>
+</form>
+</field>
+</record>
+
+<record id='fleet_vehicle_simple_act' model='ir.actions.act_window'>
+    <field name="name">Vehicles</field>
+    <field name="res_model">fleet.vehicle</field>
+    <field name="view_type">form</field>
+    <field name="view_mode">form</field>
+    <field name="view_id" ref="fleet_vehicle_simple_form"/>
+</record>
+
+</data>
+</openerp>

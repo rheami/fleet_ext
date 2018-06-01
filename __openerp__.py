@@ -16,7 +16,9 @@
         'views/fleet_retailer_view.xml',
         'views/fleet_client_view.xml',
         'views/fleet_board_view.xml',
-        'wizard/fleet_client_wizard.xml',
+        'views/fleet_vehicle_view.xml',
+        'wizard/fleet_select_view.xml',
+        'views/fleet_vehicle_step_view.xml', # todo a enlever
     ],
     'installable': True
 }
