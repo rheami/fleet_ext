@@ -1,12 +1,7 @@
 # -*- coding: utf-8 -*-
-
-from lxml import etree
-
-from openerp.osv import orm
-from openerp.addons.base.ir.ir_model import _get_fields_type
-
-from openerp import models, fields, api, _
-from openerp.exceptions import Warning, ValidationError
+# © 2018 Michel Rheault
+# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
+from openerp import models, fields, api
 
 
 class FreeSelection(fields.Selection):
@@ -45,26 +40,19 @@ class FleetVehicleStep(models.Model):
     def create(self, vals):
         vals.update(user_id=self.env.uid)
         res = super(FleetVehicleStep, self).create(vals)
-        self.vehicle_id = self.env['fleet.vehicle'].browse(vals.get(
-            'vehicle_id'))
         return res
 
     @api.multi
     def read(self, fields=None, load='_classic_read'):
-        # self.vehicle.read() # todo
+        # todo faire un dict des valeurs avant modification
         res = super(FleetVehicleStep, self).read(fields=fields, load=load)
         return res
 
     @api.multi
     def write(self, vals):
+        # todo do write when state is none
         res = super(FleetVehicleStep, self).write(vals)
         return res
-
-    @api.multi
-    def unlink(self):
-        """Remove parent model as polymorphic inheritance unlinks inheriting
-           model with the parent"""
-        return self.mapped('vehicle').unlink()
 
     @api.multi
     def action_next_step(self):
@@ -92,8 +80,11 @@ class FleetVehicleStep(models.Model):
 
     @api.multi
     def action_config_done(self):
-        self.unlink()
-        return
+        record_id = self.env.ref('fleet_ext.vehicle_state_active')
+        self.state_id = record_id
+        self.state = 'first'
+        res = self.env['ir.actions.act_window'].for_xml_id('fleet_ext', 'new_fleet_select_action')
+        return res
 
     @api.multi
     def return_action_to_open_contract(self):
@@ -105,9 +96,10 @@ class FleetVehicleStep(models.Model):
             res['domain'] = [('vehicle_id', '=', self.ids[0])]
             if self.log_contracts.ids:
                 res['res_id'] = self.log_contracts.ids[0]
-                res['target'] = 'current'
-            else:
-                res['target'] = 'new'
+                #res['target'] = 'current'
+            # else:
+            #     res['target'] = 'new'
+            res['target'] = 'current'
             res['flags'] = {'form': {'action_buttons': True, 'options': {'mode': 'edit'}}}
             return res
         return False

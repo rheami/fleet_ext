@@ -11,7 +11,7 @@
     <header>
         <field name="state"  widget="statusbar" clickable="True" />
         <button type="object" name="action_previous_step" attrs="{'invisible': [('state','=','first')]}" string="Back" special="no_save"/>
-        <button type="object" name="action_next_step" attrs="{'invisible': [('state','=','last')]}" class="oe_highlight" string="Next"/>
+        <button type="object" name="action_next_step" class="oe_highlight" string="Next"/>
     </header>
     <sheet>
         <field name="image_medium" widget='image' class="oe_left oe_avatar"/>
@@ -24,11 +24,10 @@
             <h2>
                 <field name="license_plate" class="oe_inline" attrs="{'readonly': [('state', '!=', 'first')]}"/>
             </h2>
-            <label for="vin_sn" class="oe_edit_only" attrs="{'invisible': [('state', '!=', 'first')]}">
-                <attribute name="string" >Serial Number</attribute>
-            </label>
+            <label for="vin_sn" string="Serial Number" class="oe_edit_only" attrs="{'invisible': [('state', '!=', 'first')]}"/>
             <h2>
-                <field name="vin_sn" attrs="{'readonly': [('state', '!=', 'first')]}" position="attributes" />
+                <!--<field name="vin_sn" string="Serial Number" attrs="{'readonly': [('vin_sn', '!=', False)]}"/>-->
+                <field name="vin_sn" string="Serial Number" attrs="{'readonly': [('state', '!=', 'first')]}"/>
             </h2>
             <label for="car_value" class="oe_edit_only" attrs="{'invisible': [('state', '!=', 'first')]}"/>
             <field name="car_value" attrs="{'invisible': [('state', '!=', 'first')]}"/>
@@ -44,9 +43,9 @@
         <div attrs="{'invisible':[('state','!=','contract')]}">
             <group>
                 <field name="retailer_id" />
-                <!--<field name="actualVendor_id" domain="[('parent_id','=', retailer_id), ('is_fleet_active','=', True)]"/>-->
-                <field name="actualVendor_id" domain="[('parent_id','=', retailer_id)"/>
-                <field name="firstVendor_id" domain="[('parent_id','=', retailer_id)]"/>
+                <field name="retailer_id_partner_id" invisible="1"/>
+                <field name="actualVendor_id" domain="[('parent_id','=', retailer_id_partner_id)]"/>
+                <field name="firstVendor_id" domain="[('parent_id','=', retailer_id_partner_id)]"/>
                 <field name="acquisition_date" />
                 <field name="registration_date" />
                 <field name="original_date" />
@@ -68,11 +67,20 @@
                 icon="terp-folder-green"
                 help="show the contract for this vehicle"
                 attrs="{'invisible': [('contract_count', '!=', 0)]}"/>
-            <field name="log_contracts" />
+            <field name="log_contracts" attrs="{'invisible': [('contract_count', '=', 0)]}">
+            <tree create="false" delete="false" >
+                <field name="name"/>
+            </tree>
+            </field>
             <field name="contract_count" widget="statinfo" string="Contracts"/>
         </div>
         </sheet>
         <div class="oe_chatter" attrs="{'invisible':[('state','!=','last')]}">
+            <h1>
+
+                Press next to set vehicle active
+
+            </h1>
             <field name="message_follower_ids" widget="mail_followers"/>
             <field name="message_ids" widget="mail_thread" options='{"thread_level": 1}'/>
         </div>

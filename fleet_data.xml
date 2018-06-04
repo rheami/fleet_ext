@@ -2,6 +2,9 @@
 <openerp>
     <data noupdate="1">
         <!--states-->
+        <record id="vehicle_state_draft" model="fleet.vehicle.state">
+            <field name="name">Draft</field>
+        </record>
         <record id="vehicle_state_active" model="fleet.vehicle.state">
             <field name="name">Active</field>
         </record>

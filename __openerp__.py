@@ -18,7 +18,6 @@
         'views/fleet_board_view.xml',
         'views/fleet_vehicle_view.xml',
         'wizard/fleet_select_view.xml',
-        'views/fleet_vehicle_step_view.xml', # todo a enlever
     ],
     'installable': True
 }

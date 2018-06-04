@@ -7,28 +7,18 @@
     <field name="model">fleet.select</field>
     <field name="arch" type="xml">
         <form string="Choose to do">
-            <div states="choose">
+
                 <sheet>
                     <div>
                         <p>
                             <label string="Enter the serial number, licence plate or Model to search for existing vehicle"/>
                         </p>
                     </div>
-                    <field name="state" invisible="1"/>
                     <group>
                         <field name='vehicle_id' options="{'no_create': True, 'no_open': True}"/>
                     </group>
                 </sheet>
-            </div>
-            <div states="get">
-                <sheet>
-                    <group col="2" string="General Properties">
-                        <group >
-                        </group>
-                    </group>
-                </sheet>
-            </div>
-            <footer states="choose">
+            <footer>
                 <button string="open" name="return_action_to_open"
                         type="object"
                         class="btn-primary"
@@ -38,15 +28,12 @@
                 or
                 <button string="Cancel" class='btn-default' special="cancel" />
             </footer>
-            <footer states="get">
-                <button string="Cancel" class='btn-default' special="cancel" />
-            </footer>
         </form>
     </field>
 </record>
 
 <record id="new_fleet_select_action" model="ir.actions.act_window">
-    <field name="name">Create or Select new vehicle</field>
+    <field name="name">Create new vehicle or Select existing one</field>
     <field name="res_model">fleet.select</field>
     <field name="view_type">form</field>
     <field name="view_id" ref="fleet_select_form"/>

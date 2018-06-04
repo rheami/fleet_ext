@@ -1,11 +1,10 @@
 # -*- coding: utf-8 -*-
 # © 2018 Michel Rheault
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
-from __builtin__ import super
-from openerp import models, fields, api
+from openerp import models, fields, api, _
 
 
-class fleet_vehicle(models.Model):
+class FleetVehicle(models.Model):
     _inherit = 'fleet.vehicle'
 
     note = fields.Text('Internal Note')
@@ -16,21 +15,35 @@ class fleet_vehicle(models.Model):
                         ('leased', 'Leased'),
                         ], 'Ownership', default="owned")
 
+    acquisition_date = fields.Date('Acquisition Date', required=True,
+                                   help='Date of purchase',
+                                   default=fields.Date.today())
     registration_date = fields.Date("Registration Date")
     original_date = fields.Date('Original Date')
 
     driver_id = fields.Many2one('fleet.client', string="Owner", help='Owner of the vehicle')
 
     retailer_id = fields.Many2one('fleet.retailer', string="Retailer")
+    retailer_id_partner_id = fields.Many2one('res.partner', related="retailer_id.partner_id", store=True)
 
-    actualVendor_id = fields.Many2one('res.partner', 'Actual Vendor')  # todo
-    firstVendor_id = fields.Many2one('res.partner', 'First Vendor')  # todo
-    #actualVendor_id = fields.Many2one('fleet.vendor', 'Actual Vendor')  # todo
-    #firstVendor_id = fields.Many2one('fleet.vendor', 'First Vendor')  # todo
+    actualVendor_id = fields.Many2one('res.partner', 'Actual Vendor')
+    firstVendor_id = fields.Many2one('res.partner', 'First Vendor', context={'active_test': False})
 
     extended_warranty = fields.Boolean('Extended Warranty')
     replacement_warranty = fields.Boolean('Replacement Warranty')
     extended_warranty_expiration = fields.Date('Extended Warranty Expiration')
+
+    @api.multi
+    def _get_default_state(self):
+        try:
+            model_id = self.env.ref('fleet.vehicle_state_draft')
+        except ValueError:
+            model_id = False
+        return model_id
+
+    #todo state draft at wiz create active when done
+    state_id = fields.Many2one('fleet.vehicle.state', 'State', help='Current state of the vehicle',
+                                default=_get_default_state, ondelete="set null")
 
     _sql_constraints = [
         ('uniq_license_plate', 'unique(license_plate)', 'This license plate is already used'),
@@ -56,6 +69,34 @@ class fleet_vehicle(models.Model):
         model = self.env.ref('fleet.model_fleet_vehicle')
         model.name_search_ids = vin_sn_field
 
+    @api.model
+    def create(self, vals):
+        state_id = self.env.ref('fleet_ext.vehicle_state_draft')
+        vals.update(state_id = state_id.id)
+        res = super(FleetVehicle, self).create(vals)
+        return res
+
+    @api.multi
+    def write(self, vals):
+        #     """
+        #     This function write an entry in the openchatter whenever we change important information
+        #     on the vehicle like the model, the drive, the state of the vehicle or its license plate
+        #     """
+        for vehicle in self:
+            changes = []
+            if 'vin_sn' in vals and vehicle.vin_sn != vals['vin_sn']:
+                value = self.env('fleet.vehicle.vin_sn').browse(self.id)
+                oldmodel = vehicle.vin_sn or _('None')
+                changes.append(_("vin_sn: from '%s' to '%s'") %(oldmodel, value))
+
+        return super(FleetVehicle, self).write(vals)
+
+class ResPartner(models.Model):
+    _inherit = 'res.partner'
+    active_vehicle_ids = fields.One2many(
+    'fleet.vehicle', 'actualVendor_id')
+    sold_vehicle_ids = fields.One2many(
+    'fleet.vehicle', 'firstVendor_id')
 
 class fleet_vehicle_log_contract(models.Model):
     _inherit = 'fleet.vehicle.log.contract'
@@ -222,68 +263,3 @@ class FleetRetailer(models.Model):
     def onchange_address(self, cr, uid, ids, use_parent_address, parent_id, context=None):
         partner_ids = [user.partner_id.id for user in self.browse(cr, uid, ids, context=context)]
         return self.pool['res.partner'].onchange_address(cr, uid, partner_ids, use_parent_address, parent_id, context=context)
-
-# class FleetVendor(models.Model):
-#     _name = 'fleet.vendor'
-#     _inherit = ['mail.thread']
-#     _inherits = {'res.partner': 'partner_id'}
-#     partner_id = fields.Many2one(
-#         'res.partner',
-#         required=True,
-#         ondelete='restrict')
-#
-#     is_fleet_active = fields.Boolean(string="Is Fleet Active", default=False, store=True)
-#
-#     # vehicle_ids = fields.One2many(
-#     #     comodel_name='fleet.vehicle',
-#     #     inverse_name="actualVendor_id",
-#     #     string="Vehicle",
-#     #     readonly=True)
-#
-#     # vehicle_count = fields.Integer('Vehicles', compute='_get_vehicle_count', readonly=True)
-#     # contract_count = fields.Integer('Contracts', compute='_get_contract_count', readonly=True)
-#     #
-#     # @api.multi
-#     # @api.depends("vehicle_ids")
-#     # def _get_vehicle_count(self):
-#     #     for record in self:
-#     #         vehicles = record.vehicle_ids
-#     #         if vehicles:
-#     #              record.vehicle_count = len(vehicles)
-#     #
-#     # @api.multi
-#     # @api.depends("vehicle_ids")
-#     # def _get_contract_count(self):
-#     #     for record in self:
-#     #         vehicles = record.vehicle_ids
-#     #         if vehicles:
-#     #             contracts = self.env['fleet.vehicle.log.contract'].search([(('state','!=','closed')), ('vehicle_id','in', record.vehicle_ids.ids)])
-#     #             record.contract_count = len(contracts)
-#     #
-#     # # ses contrats
-#     # @api.multi
-#     # def return_action_to_open(self):
-#     #     """ This opens the xml view specified in xml_id for the vehicles or current retailer """
-#     #     ctx = dict(self._context or {})
-#     #     if ctx.get('xml_id'):
-#     #         res = self.env['ir.actions.act_window'].for_xml_id('fleet', ctx.get('xml_id'))
-#     #         res['context'] = ctx
-#     #         res['domain'] = [('id', 'in', self.vehicle_ids.ids)]
-#     #         return res
-#     #     return False
-#
-#     def vat_change(self, cr, uid, ids, state_id, context=None):
-#         partner_ids = [user.partner_id.id for user in self.browse(cr, uid, ids, context=context)]
-#         return self.pool.get('res.partner').vat_change(cr, uid, partner_ids, state_id, context=context)
-#
-#     def onchange_state(self, cr, uid, ids, state_id, context=None):
-#         partner_ids = [user.partner_id.id for user in self.browse(cr, uid, ids, context=context)]
-#         return self.pool.get('res.partner').onchange_state(cr, uid, partner_ids, state_id, context=context)
-#
-#     def onchange_type(self, cr, uid, ids, is_company, context=None):
-#         partner_ids = [user.partner_id.id for user in self.browse(cr, uid, ids, context=context)]
-#         return self.pool['res.partner'].onchange_type(cr, uid, partner_ids, is_company, context=context)
-#
-#     def onchange_address(self, cr, uid, ids, use_parent_address, parent_id, context=None):
-#         partner_ids = [user.partner_id.id for user in self.browse(cr, uid, ids, context=context)]
-#         return self.pool['res.partner'].onchange_address(cr, uid, partner_ids, use_parent_address, parent_id, context=context)
