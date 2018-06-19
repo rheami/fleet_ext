@@ -143,6 +143,8 @@
             <field name="act_window_id" ref="action_fleet_clients"/>
         </record>
 
+        <!--menu-->
+        <menuitem name="Retailer" parent="fleet.menu_root" id="menu_fleet_retailer" sequence="2" groups="fleet.group_fleet_manager"/>
 		<!--menu action-->
         <menuitem action="action_fleet_clients" name="Clients" parent="menu_fleet_retailer" id="fleet_client_menu" sequence="2" groups="fleet.group_fleet_manager"/>
 
