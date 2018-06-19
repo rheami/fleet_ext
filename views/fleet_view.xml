@@ -2,15 +2,31 @@
 <openerp>
 	<data>
 
+		<record id='fleet_vehicle_kanban_inherit' model='ir.ui.view'>
+            <field name="name">fleet.vehicle.kanban.inherit</field>
+            <field name="model">fleet.vehicle</field>
+			<field name="priority">14</field>
+            <field name="mode">primary</field>
+            <field name="inherit_id" ref="fleet.fleet_vehicle_kanban" />
+            <field name="arch" type="xml">
+				<field name="license_plate" position="after">
+					<field name="vin_sn"/>
+				</field>
+				<xpath expr="//h4/a[1]" position="after">
+					<br />
+					<field name="vin_sn"/>
+				</xpath>
+			</field>
+        </record>
+
 		<record id='fleet_vehicle_tree_inherit' model='ir.ui.view'>
             <field name="name">fleet.vehicle.tree.inherit</field>
             <field name="model">fleet.vehicle</field>
             <field name="inherit_id" ref="fleet.fleet_vehicle_tree" />
             <field name="arch" type="xml">
-				<field name="model_id" position="after">
-				    <field name="manufacture_year" string="Year Model" />
+				<field name="vin_sn" position="attributes">
+					<attribute name="string" >Serial Number</attribute>
 				</field>
-
                 <field name="acquisition_date" position="after">
 				    <field name="retailer_id" />
 				</field>
@@ -111,8 +127,8 @@
 			<field name="model">fleet.vehicle</field>
 			<field name="inherit_id" ref="fleet.fleet_vehicle_search" />
 			<field name="arch" type="xml">
-                <field name="driver_id" position="before">
-                    <field name="vin_sn" domain="[('vehicle.vin_sn','ilike',self)]"/>
+                <field name="name" position="before">
+                    <field name="vin_sn" string="Serial Number" domain="[('vehicle.vin_sn','ilike',self)]"/>
                 </field>
                 <filter name="groupby_status" position="before">
                     <filter name="groupby_retailer" context="{'group_by' : 'retailer_id'}"
