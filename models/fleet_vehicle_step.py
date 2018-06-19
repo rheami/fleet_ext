@@ -104,3 +104,10 @@ class FleetVehicleStep(models.Model):
             return res
         return False
 
+    @api.multi
+    def return_action_to_open_vehicle(self):
+        res = self.env['ir.actions.act_window'].for_xml_id('fleet', 'fleet_vehicle_act')
+        res['domain'] = [('id','=', self.ids[0])]
+        res['view_mode'] = 'form'
+        res['view_id'] = 'fleet_vehicle_simple_form'
+        return res

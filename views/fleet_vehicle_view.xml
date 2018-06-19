@@ -32,6 +32,14 @@
             <label for="car_value" class="oe_edit_only" attrs="{'invisible': [('state', '!=', 'first')]}"/>
             <field name="car_value" attrs="{'invisible': [('state', '!=', 'first')]}"/>
         </div>
+        <div class="oe_right oe_button_box" >
+            <button name="return_action_to_open_vehicle"
+                type="object"
+                class="oe_stat_button"
+                icon="fa-car"
+                help="show the vehicle for this client">
+            </button>
+        </div>
         <div attrs="{'invisible':[('state','!=','client')]}">
             <group>
                 <field name="driver_id"/>
