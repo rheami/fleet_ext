@@ -83,7 +83,7 @@ class FleetVehicleStep(models.Model):
         record_id = self.env.ref('fleet_ext.vehicle_state_active')
         self.state_id = record_id
         self.state = 'first'
-        res = self.env['ir.actions.act_window'].for_xml_id('fleet_ext', 'new_fleet_select_action')
+        res = self.env['ir.actions.act_window'].for_xml_id('fleet', 'fleet_vehicle_act')
         return res
 
     @api.multi
