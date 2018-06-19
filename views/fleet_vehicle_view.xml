@@ -23,7 +23,10 @@
         <div class="oe_title" >
             <label for="model_id" class="oe_edit_only" attrs="{'invisible': [('state', '!=', 'first')]}"/>
             <h1>
-                <field name="model_id" class="oe_inline" on_change="on_change_model(model_id)" attrs="{'readonly': [('state', '!=', 'first')]}"/>
+                <field name="model_id" class="oe_inline"
+                       on_change="on_change_model(model_id)"
+                       options="{'no_open' : True}"
+                       attrs="{'readonly': [('state', '!=', 'first')]}"/>
             </h1>
             <label for="license_plate" class="oe_edit_only" attrs="{'invisible': [('state', '!=', 'first')]}"/>
             <h2>
