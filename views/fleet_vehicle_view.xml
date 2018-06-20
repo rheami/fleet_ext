@@ -101,11 +101,19 @@
 </record>
 
 <record id='fleet_vehicle_simple_act' model='ir.actions.act_window'>
-    <field name="name">Vehicles</field>
+    <field name="name">fleet_vehicle_simple_act</field>
     <field name="res_model">fleet.vehicle</field>
     <field name="view_type">form</field>
     <field name="view_mode">form</field>
     <field name="view_id" ref="fleet_vehicle_simple_form"/>
+</record>
+
+<record id='fleet_vehicle_form_act' model='ir.actions.act_window'>
+    <field name="name">fleet_vehicle_form_act</field>
+    <field name="res_model">fleet.vehicle</field>
+    <field name="view_type">form</field>
+    <field name="view_mode">form</field>
+    <!--<field name="view_id" ref="fleet_vehicle_simple_form"/>-->
 </record>
 
 </data>

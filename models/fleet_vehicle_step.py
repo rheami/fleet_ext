@@ -83,8 +83,7 @@ class FleetVehicleStep(models.Model):
         record_id = self.env.ref('fleet_ext.vehicle_state_active')
         self.state_id = record_id
         self.state = 'first'
-        res = self.env['ir.actions.act_window'].for_xml_id('fleet', 'fleet_vehicle_act')
-        return res
+        return self.return_action_to_open_vehicle()
 
     @api.multi
     def return_action_to_open_contract(self):
@@ -96,9 +95,6 @@ class FleetVehicleStep(models.Model):
             res['domain'] = [('vehicle_id', '=', self.ids[0])]
             if self.log_contracts.ids:
                 res['res_id'] = self.log_contracts.ids[0]
-                #res['target'] = 'current'
-            # else:
-            #     res['target'] = 'new'
             res['target'] = 'current'
             res['flags'] = {'form': {'action_buttons': True, 'options': {'mode': 'edit'}}}
             return res
@@ -106,8 +102,10 @@ class FleetVehicleStep(models.Model):
 
     @api.multi
     def return_action_to_open_vehicle(self):
-        res = self.env['ir.actions.act_window'].for_xml_id('fleet', 'fleet_vehicle_act')
-        res['domain'] = [('id','=', self.ids[0])]
-        res['view_mode'] = 'form'
-        res['view_id'] = 'fleet_vehicle_simple_form'
+        ctx = dict(self._context or {})
+        res = self.env['ir.actions.act_window'].for_xml_id('fleet_ext', 'fleet_vehicle_form_act')
+        res['context'] = ctx
+        res['res_id'] = int(self.ids[0])
+        res['target'] = 'current'
+        res['flags'] = {'form': {'action_buttons': True}}
         return res
