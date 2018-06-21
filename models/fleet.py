@@ -78,18 +78,22 @@ class FleetVehicle(models.Model):
 
     @api.multi
     def write(self, vals):
-        #     """
-        #     This function write an entry in the openchatter whenever we change important information
-        #     on the vehicle like the model, the drive, the state of the vehicle or its license plate
-        #     """
-        for vehicle in self:
-            changes = []
-            if 'vin_sn' in vals and vehicle.vin_sn != vals['vin_sn']:
-                value = self.env('fleet.vehicle.vin_sn').browse(self.id)
-                oldmodel = vehicle.vin_sn or _('None')
-                changes.append(_("vin_sn: from '%s' to '%s'") %(oldmodel, value))
+        changes = []
+        for v in self:
+            if 'vin_sn' in vals and v.vin_sn != vals['vin_sn']:
+                old_val = v.vin_sn or _('None')
+                changes.append(_("Serial Number: from '%s' to '%s'") % (old_val, vals['vin_sn']))
+            # ajouter autres champs a suivre ...
+            if 'car_value' in vals and v.car_value != vals['car_value']:
+                old_val = v.car_value or _('None')
+                changes.append(_("Car Value: from '%s' to '%s'") % (old_val, vals['car_value']))
 
-        return super(FleetVehicle, self).write(vals)
+            if len(changes) > 0:
+                self.message_post(body=", ".join(changes))
+
+        result = super(FleetVehicle, self).write(vals)
+        return result
+
 
 class ResPartner(models.Model):
     _inherit = 'res.partner'
