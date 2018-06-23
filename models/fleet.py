@@ -136,7 +136,7 @@ class FleetClient(models.Model):
         required=True,
         ondelete='restrict')
 
-    is_fleet_active = fields.Boolean(string="Is Fleet Active", default=False, store=True)
+    is_fleet_active = fields.Boolean(string="Is Fleet Active", default=True, store=True)
 
     vehicle_ids = fields.One2many(
         comodel_name='fleet.vehicle',
@@ -212,7 +212,7 @@ class FleetRetailer(models.Model):
         required=True,
         ondelete='restrict')
 
-    is_fleet_active = fields.Boolean(string="Is Fleet Active", default=False, store=True)
+    is_fleet_active = fields.Boolean(string="Is Fleet Active", default=True, store=True)
 
     vehicle_ids = fields.One2many(
         comodel_name='fleet.vehicle',
