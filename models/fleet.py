@@ -22,6 +22,7 @@ class FleetVehicle(models.Model):
     original_date = fields.Date('Original Date')
 
     driver_id = fields.Many2one('fleet.client', string="Owner", help='Owner of the vehicle')
+    license_plate = fields.Char('License Plate', required=False, default="", help='License plate number of the vehicle(ie: plate number for a car)')
 
     retailer_id = fields.Many2one('fleet.retailer', string="Retailer")
     retailer_id_partner_id = fields.Many2one('res.partner', related="retailer_id.partner_id", store=True)
