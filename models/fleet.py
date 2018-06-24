@@ -56,7 +56,7 @@ class FleetVehicle(models.Model):
         """display of vin_sn in the name"""
         result = []
         for record in self:
-            if self._context.get('show_sn', True):
+            if self._context.get('show_sn', True): # todo a debugger
                 name = '[' + str(record.vin_sn) + ']' + ' ' + record.name
             else:
                 name = record.name
