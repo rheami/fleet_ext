@@ -95,7 +95,7 @@ class FleetVehicleStep(models.Model):
             res['domain'] = [('vehicle_id', '=', self.ids[0])]
             if self.log_contracts.ids:
                 res['res_id'] = self.log_contracts.ids[0]
-            res['target'] = 'current'
+            res['target'] = 'new'
             res['flags'] = {'form': {'action_buttons': True, 'options': {'mode': 'edit'}}}
             return res
         return False

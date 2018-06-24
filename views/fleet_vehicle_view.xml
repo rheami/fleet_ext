@@ -70,13 +70,13 @@
                 <field name="replacement_warranty" />
                 <field name="extended_warranty_expiration" />
             </group>
-            <button name="return_action_to_open_contract"
-                string="Open Contract"
-                type="object"
-                class="oe_inline oe_link"
-                icon="terp-folder-blue"
-                help="create contract for this vehicle"
-                attrs="{'invisible': [('contract_count', '=', 0)]}"/>
+            <!--<button name="return_action_to_open_contract"-->
+                <!--string="Open Contract"-->
+                <!--type="object"-->
+                <!--class="oe_inline oe_link"-->
+                <!--icon="terp-folder-blue"-->
+                <!--help="create contract for this vehicle"-->
+                <!--attrs="{'invisible': [('contract_count', '=', 0)]}"/>-->
             <button name="return_action_to_open_contract"
                 string="Create Contract"
                 type="object"
