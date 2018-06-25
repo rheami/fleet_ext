@@ -28,6 +28,11 @@
                        options="{'no_open' : True}"
                        attrs="{'readonly': [('state', '!=', 'first')]}"/>
             </h1>
+            <label for="manufacture_year" class="oe_edit_only" attrs="{'invisible': [('state', '!=', 'first')]}"/>
+            <h3>
+                <field name="manufacture_year" attrs="{'invisible': [('state', '=', 'first')]}"/>
+                <field name="select_manufacture_year" attrs="{'invisible': [('state', '!=', 'first')]}"/>
+            </h3>
             <label for="license_plate" class="oe_edit_only" attrs="{'invisible': [('state', '!=', 'first')]}"/>
             <h2>
                 <field name="license_plate" class="oe_inline" attrs="{'readonly': [('state', '!=', 'first')]}"/>

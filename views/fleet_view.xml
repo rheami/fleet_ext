@@ -1,172 +1,175 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <openerp>
-	<data>
+<data>
 
-		<record id='fleet_vehicle_kanban_inherit' model='ir.ui.view'>
-            <field name="name">fleet.vehicle.kanban.inherit</field>
-            <field name="model">fleet.vehicle</field>
-			<field name="priority">14</field>
-            <field name="mode">primary</field>
-            <field name="inherit_id" ref="fleet.fleet_vehicle_kanban" />
-            <field name="arch" type="xml">
-				<field name="license_plate" position="after">
-					<field name="vin_sn"/>
-				</field>
-				<xpath expr="//h4/a[1]" position="after">
-					<br />
-					<field name="vin_sn"/>
-				</xpath>
-			</field>
-        </record>
+<record id='fleet_vehicle_kanban_inherit' model='ir.ui.view'>
+    <field name="name">fleet.vehicle.kanban.inherit</field>
+    <field name="model">fleet.vehicle</field>
+    <field name="priority">14</field>
+    <field name="mode">primary</field>
+    <field name="inherit_id" ref="fleet.fleet_vehicle_kanban" />
+    <field name="arch" type="xml">
+        <field name="license_plate" position="after">
+            <field name="vin_sn"/>
+        </field>
+        <xpath expr="//h4/a[1]" position="after">
+            <br />
+            <field name="vin_sn"/>
+        </xpath>
+    </field>
+</record>
 
-		<record id='fleet_vehicle_tree_inherit' model='ir.ui.view'>
-            <field name="name">fleet.vehicle.tree.inherit</field>
-            <field name="model">fleet.vehicle</field>
-            <field name="inherit_id" ref="fleet.fleet_vehicle_tree" />
-            <field name="arch" type="xml">
-				<field name="vin_sn" position="attributes">
-					<attribute name="string" >Serial Number</attribute>
-				</field>
-                <field name="acquisition_date" position="after">
-				    <field name="retailer_id" />
-				</field>
-                <field name="odometer" position="replace">
-    				<field name="odometer" invisible="1" />
-                </field>
-                <field name="odometer_unit" position="replace">
-                    <field name="odometer_unit" invisible="1" />
-                </field>
+<record id='fleet_vehicle_tree_inherit' model='ir.ui.view'>
+    <field name="name">fleet.vehicle.tree.inherit</field>
+    <field name="model">fleet.vehicle</field>
+    <field name="inherit_id" ref="fleet.fleet_vehicle_tree" />
+    <field name="arch" type="xml">
+        <field name="vin_sn" position="attributes">
+            <attribute name="string" >Serial Number</attribute>
+        </field>
+        <field name="acquisition_date" position="after">
+            <field name="retailer_id" />
+        </field>
+        <field name="odometer" position="replace">
+            <field name="odometer" invisible="1" />
+        </field>
+        <field name="odometer_unit" position="replace">
+            <field name="odometer_unit" invisible="1" />
+        </field>
 
-            </field>
-        </record>
+    </field>
+</record>
 
-		<record id="fleet_vehicle_form_inherit" model="ir.ui.view">
-			<field name="name">fleet.vehicle.form.inherit</field>
-			<field name="model">fleet.vehicle</field>
-			<field name="inherit_id" ref="fleet.fleet_vehicle_form" />
-			<field name="arch" type="xml">
-
-                <field name="model_id" position="after">
-					<field name="manufacture_year" />
-				</field>
-				<field name="driver_id" position="replace">
-					<field name="driver_id"/>
-					<field name="ownership" />
-				</field>
-				<field name="vin_sn" position="attributes">
-					<attribute name="string" >Serial Number</attribute>
-				</field>
-				<field name="acquisition_date" position="replace">
-					<field name="acquisition_date" invisible="1" />
-				</field>
-				<field name="car_value" position="replace">
-					<field name="car_value" invisible="1" />
-				</field>
-
-				<xpath expr="/form/sheet/group[position()=last()]" position="after">
-					<notebook>
-						<page string="Purchase Info">
-						<group>
-							<group col="2" string="Retailer">
-                                <group>
-                                    <field name="retailer_id" required="1" />
-									<field name="retailer_id_partner_id" invisible="1"/>
-                                    <field name="actualVendor_id" domain="[('parent_id','=', retailer_id_partner_id)]"/>
-                                    <field name="firstVendor_id" domain="[('parent_id','=', retailer_id_partner_id)]"/>
-                                    <field name="car_value" />
-                                    <field name="acquisition_date" />
-                                </group>
-                                <group>
-                                    <field name="registration_date" />
-                                    <field name="original_date" />
-                                    <field name="extended_warranty" />
-                                    <field name="replacement_warranty" />
-                                    <field name="extended_warranty_expiration" />
-                                </group>
-							</group>
-						</group>
-						</page>
-						<page string="Internal Note">
-							<field name="note" />
-						</page>
-					</notebook>
-				</xpath>
-
-			</field>
-		</record>
-
-		<record id="fleet_vehicle_log_contract_form" model="ir.ui.view">
-			<field name="name">fleet.vehicle.log_contract.form.inherit</field>
-			<field name="model">fleet.vehicle.log.contract</field>
-			<field name="inherit_id" ref="fleet.fleet_vehicle_log_contract_form" />
-			<field name="arch" type="xml">
-				<xpath expr="/form/sheet/group[position()=2]" position="after">
-					<group string="Financing details" col="2">
+<record id="fleet_vehicle_form_inherit" model="ir.ui.view">
+    <field name="name">fleet.vehicle.form.inherit</field>
+    <field name="model">fleet.vehicle</field>
+    <field name="inherit_id" ref="fleet.fleet_vehicle_form" />
+    <field name="arch" type="xml">
+        <xpath expr="//h1" position="after">
+            <label for="manufacture_year" class="oe_edit_only"/>
+            <h2>
+            <field name="manufacture_year" class="oe_read_only" />
+            <field name="select_manufacture_year" class="oe_edit_only" />
+            </h2>
+        </xpath>
+        <field name="driver_id" position="replace">
+            <field name="driver_id"/>
+            <field name="ownership" />
+        </field>
+        <field name="vin_sn" position="attributes">
+            <attribute name="string" >Serial Number</attribute>
+        </field>
+        <field name="acquisition_date" position="replace">
+            <field name="acquisition_date" invisible="1" />
+        </field>
+        <field name="car_value" position="replace">
+            <field name="car_value" invisible="1" />
+        </field>
+        <xpath expr="/form/sheet/group[position()=last()]" position="after">
+            <notebook>
+                <page string="Purchase Info">
+                <group>
+                    <group col="2" string="Retailer">
                         <group>
-                            <field name="msrp"/>
-                            <field name="purchase_Price"/>
-                            <field name="exchange_value"/>
-                            <field name="residual" />
-                            <field name="residual_percent"/>
+                            <field name="retailer_id" required="1" />
+                            <field name="retailer_id_partner_id" invisible="1"/>
+                            <field name="actualVendor_id" domain="[('parent_id','=', retailer_id_partner_id)]"/>
+                            <field name="firstVendor_id" domain="[('parent_id','=', retailer_id_partner_id)]"/>
+                            <field name="car_value" />
+                            <field name="acquisition_date" />
                         </group>
                         <group>
-                            <field name="deposit"/>
-                            <field name="cost_to_amortize" />
-                            <field name="montly_payment" />
-                            <field name="interest_rate" />
-                            <field name="term" />
+                            <field name="registration_date" />
+                            <field name="original_date" />
+                            <field name="extended_warranty" />
+                            <field name="replacement_warranty" />
+                            <field name="extended_warranty_expiration" />
                         </group>
+                    </group>
+                </group>
+                </page>
+                <page string="Internal Note">
+                    <field name="note" />
+                </page>
+            </notebook>
+        </xpath>
+    </field>
+</record>
 
-					</group>
-				</xpath>
-			</field>
-		</record>
+<record id="fleet_vehicle_log_contract_form" model="ir.ui.view">
+    <field name="name">fleet.vehicle.log_contract.form.inherit</field>
+    <field name="model">fleet.vehicle.log.contract</field>
+    <field name="inherit_id" ref="fleet.fleet_vehicle_log_contract_form" />
+    <field name="arch" type="xml">
+        <xpath expr="/form/sheet/group[position()=2]" position="after">
+            <group string="Financing details" col="2">
+                <group>
+                    <field name="msrp"/>
+                    <field name="purchase_Price"/>
+                    <field name="exchange_value"/>
+                    <field name="residual" />
+                    <field name="residual_percent"/>
+                </group>
+                <group>
+                    <field name="deposit"/>
+                    <field name="cost_to_amortize" />
+                    <field name="montly_payment" />
+                    <field name="interest_rate" />
+                    <field name="term" />
+                </group>
+            </group>
+        </xpath>
+    </field>
+</record>
 
-		<record id="fleet_vehicle_search" model="ir.ui.view">
-			<field name="name">fleet.vehicle.search.inherit</field>
-			<field name="model">fleet.vehicle</field>
-			<field name="inherit_id" ref="fleet.fleet_vehicle_search" />
-			<field name="arch" type="xml">
-                <field name="name" position="before">
-                    <field name="vin_sn" string="Serial Number" domain="[('vehicle.vin_sn','ilike',self)]"/>
-                </field>
-                <filter name="groupby_status" position="before">
-                    <filter name="groupby_retailer" context="{'group_by' : 'retailer_id'}"
-                        string="Retailer" />
-					<filter name="groupby_client" context="{'group_by' : 'driver_id'}"
-						string="Client" />
-				</filter>
-			</field>
-		</record>
+<record id="fleet_vehicle_search" model="ir.ui.view">
+    <field name="name">fleet.vehicle.search.inherit</field>
+    <field name="model">fleet.vehicle</field>
+    <field name="inherit_id" ref="fleet.fleet_vehicle_search" />
+    <field name="arch" type="xml">
+        <field name="name" position="before">
+            <field name="vin_sn" string="Serial Number" />
+            <field name="manufacture_year" />
+            <field name="brand_id" />
+            <field name="modelname" />
+        </field>
+        <filter name="groupby_status" position="before">
+            <filter name="groupby_brand" context="{'group_by' : 'brand_id'}" string="Brand"/>
+            <filter name="groupby_retailer" context="{'group_by' : 'retailer_id'}" string="Retailer" />
+            <filter name="groupby_client" context="{'group_by' : 'driver_id'}" string="Client" />
+        </filter>
+    </field>
+</record>
 
-		<record id='fleet_vehicle_model_search' model='ir.ui.view'>
-            <field name="name">fleet.vehicle.model.search.inherit</field>
-            <field name="model">fleet.vehicle.model</field>
-			<field name="inherit_id" ref="fleet.fleet_vehicle_model_search" />
-            <field name="arch" type="xml">
-				<field name="brand_id" position="before">
-				     <field name="name" filter_domain="[('name','ilike',self)]"/>
-				</field>
-            </field>
-        </record>
+<record id='fleet_vehicle_model_search' model='ir.ui.view'>
+    <field name="name">fleet.vehicle.model.search.inherit</field>
+    <field name="model">fleet.vehicle.model</field>
+    <field name="inherit_id" ref="fleet.fleet_vehicle_model_search" />
+    <field name="arch" type="xml">
+        <field name="brand_id" position="before">
+            <field name="name" />
+            <field name="modelname"/>
+        </field>
+    </field>
+</record>
 
-        <!-- Lost Reason -->
-        <record id='fleet_client_lost_reason_act' model='ir.actions.act_window' >
-            <field name="name">Client Lost Reason</field>
-            <field name="res_model">fleet.client.lost.reason</field>
-            <field name="view_type">form</field>
-            <field name="view_mode">tree,form</field>
-            <field name="help" type="html">
-              <p class="oe_view_nocontent_create">
-                Click to create a client lost reason.
-              </p>
-            </field>
-        </record>
+<!-- Lost Reason -->
+<record id='fleet_client_lost_reason_act' model='ir.actions.act_window' >
+    <field name="name">Client Lost Reason</field>
+    <field name="res_model">fleet.client.lost.reason</field>
+    <field name="view_type">form</field>
+    <field name="view_mode">tree,form</field>
+    <field name="help" type="html">
+      <p class="oe_view_nocontent_create">
+        Click to create a client lost reason.
+      </p>
+    </field>
+</record>
 
-        <menuitem action="fleet_client_lost_reason_act"
-				  parent="fleet.fleet_configuration"
-				  id="fleet_client_lost_reason_menu"
-				  groups="fleet.group_fleet_manager" />
+<menuitem action="fleet_client_lost_reason_act"
+          parent="fleet.fleet_configuration"
+          id="fleet_client_lost_reason_menu"
+          groups="fleet.group_fleet_manager" />
 
-	</data>
+</data>
 </openerp>

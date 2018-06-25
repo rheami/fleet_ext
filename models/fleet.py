@@ -2,18 +2,25 @@
 # © 2018 Michel Rheault
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 from openerp import models, fields, api, _
+from datetime import datetime
 
 
 class FleetVehicle(models.Model):
     _inherit = 'fleet.vehicle'
 
     note = fields.Text('Internal Note')
-    manufacture_year = fields.Integer('Year of Manufacture')
+    select_manufacture_year = fields.Selection([
+         (y, str(y)) for y in range(2010, (datetime.now().year + 2) + 1)], 'Select Year of Manufacture', default=datetime.now().year)
+    manufacture_year = fields.Integer('Year of Manufacture', compute="_compute_m_years", default=datetime.now().year, store=True)
+
+    brand_id = fields.Many2one(related='model_id.brand_id', store=True)
+    modelname = fields.Char(related='model_id.modelname', store=True)
 
     ownership = fields.Selection([
-                        ('owned', 'Owned'),
-                        ('leased', 'Leased'),
-                        ], 'Ownership', default="owned")
+            ('owned', 'Owned'),
+            ('leased', 'Leased'),
+        ],
+        'Ownership', default="owned")
 
     acquisition_date = fields.Date('Acquisition Date', required=True,
                                    help='Date of purchase',
@@ -22,7 +29,7 @@ class FleetVehicle(models.Model):
     original_date = fields.Date('Original Date')
 
     driver_id = fields.Many2one('fleet.client', string="Owner", help='Owner of the vehicle')
-    license_plate = fields.Char('License Plate', required=False, default="", help='License plate number of the vehicle(ie: plate number for a car)')
+    license_plate = fields.Char('License Plate', required=False, help='License plate number of the vehicle(ie: plate number for a car)')
 
     retailer_id = fields.Many2one('fleet.retailer', string="Retailer")
     retailer_id_partner_id = fields.Many2one('res.partner', related="retailer_id.partner_id", store=True)
@@ -33,6 +40,39 @@ class FleetVehicle(models.Model):
     extended_warranty = fields.Boolean('Extended Warranty')
     replacement_warranty = fields.Boolean('Replacement Warranty')
     extended_warranty_expiration = fields.Date('Extended Warranty Expiration')
+
+    @api.multi
+    @api.depends("select_manufacture_year")
+    def _compute_m_years(self):
+        res = {}
+        self.manufacture_year = self.select_manufacture_year
+
+
+    @api.multi
+    @api.depends("model_id","license_plate","manufacture_year")
+    def vehicle_name_get_fnc(self):
+        res = {}
+        for record in self:
+            name = record.model_id.brand_id.name + '/' + record.model_id.modelname
+            if record.manufacture_year:
+                name += ' / ' + record.manufacture_year
+            if record.license_plate:
+                name += ' / ' + record.license_plate
+            res[record.id] = name
+            # res[record.id] = record.model_id.brand_id.name + '/' + record.model_id.modelname + ' / ' + record.license_plate
+        return res
+
+    @api.multi
+    def name_get(self):
+        """display of vin_sn in the name"""
+        result = []
+        for record in self:
+            if record.vin_sn:
+                name = '[' + str(record.vin_sn) + ']' + ' ' + record.name
+            else:
+                name = record.name
+            result.append((record.id, name))
+        return result
 
     @api.multi
     def _get_default_state(self):
@@ -50,18 +90,6 @@ class FleetVehicle(models.Model):
         ('uniq_license_plate', 'unique(license_plate)', 'This license plate is already used'),
         ('uniq_vin', 'unique(vin_sn)', 'This serial number is already used for another vehicle')
     ]
-
-    @api.multi
-    def name_get(self):
-        """display of vin_sn in the name"""
-        result = []
-        for record in self:
-            if self._context.get('show_sn', True): # todo a debugger
-                name = '[' + str(record.vin_sn) + ']' + ' ' + record.name
-            else:
-                name = record.name
-            result.append((record.id, name))
-        return result
 
     @api.model
     def on_install(self):
