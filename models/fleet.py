@@ -10,17 +10,26 @@ class FleetVehicle(models.Model):
 
     note = fields.Text('Internal Note')
     select_manufacture_year = fields.Selection([
-         (y, str(y)) for y in range(2010, (datetime.now().year + 2) + 1)], 'Select Year of Manufacture', default=datetime.now().year)
-    manufacture_year = fields.Integer('Year of Manufacture', compute="_compute_m_years", default=datetime.now().year, store=True)
+         (y, str(y)) for y in range((datetime.now().year - 10), (datetime.now().year + 2) + 1)], 'Select Year of Manufacture', default=datetime.now().year)
+    manufacture_year = fields.Integer('Year of Manufacture',
+                                      compute="_compute_m_years",
+                                      inverse="_inverse_m_years",
+                                      default=datetime.now().year, store=True)
 
     brand_id = fields.Many2one(related='model_id.brand_id', store=True)
     modelname = fields.Char(related='model_id.modelname', store=True)
 
-    ownership = fields.Selection([
-            ('owned', 'Owned'),
+    purchase_type = fields.Selection([
+            ('purchase', 'Purchase'),
             ('leased', 'Leased'),
         ],
-        'Ownership', default="owned")
+        'Purchase Type', default="leased")
+
+    category = fields.Selection([
+            ('new', 'New'),
+            ('used', 'Used'), # occasion
+        ],
+        'Category', default="new")
 
     acquisition_date = fields.Date('Acquisition Date', required=True,
                                    help='Date of purchase',
@@ -42,25 +51,39 @@ class FleetVehicle(models.Model):
     extended_warranty_expiration = fields.Date('Extended Warranty Expiration')
 
     @api.multi
-    @api.depends("select_manufacture_year")
+    @api.onchange("purchase_type", "category")
+    def _compute_(self):
+        for rec in self:
+            if rec.purchase_type == 'leased':
+                rec.category = 'new'
+
+    @api.multi
+    @api.onchange("select_manufacture_year")
     def _compute_m_years(self):
         res = {}
         self.manufacture_year = self.select_manufacture_year
 
-
     @api.multi
-    @api.depends("model_id","license_plate","manufacture_year")
-    def vehicle_name_get_fnc(self):
+    @api.onchange("manufacture_year")
+    def _inverse_m_years(self):
         res = {}
-        for record in self:
-            name = record.model_id.brand_id.name + '/' + record.model_id.modelname
-            if record.manufacture_year:
-                name += ' / ' + record.manufacture_year
-            if record.license_plate:
-                name += ' / ' + record.license_plate
-            res[record.id] = name
-            # res[record.id] = record.model_id.brand_id.name + '/' + record.model_id.modelname + ' / ' + record.license_plate
-        return res
+        self.select_manufacture_year = self.manufacture_year
+
+    #
+    # def vehicle_name_get_fnc(self, cr, uid, ids, prop, unknow_none, context=None):
+    #     res = {}
+    #     for record in self.browse(cr, uid, ids, context=context):
+    #         name = record.model_id.brand_id.name + '/' + record.model_id.modelname
+    #
+    #         if record.manufacture_year:
+    #             name += ' / ' + str(record.manufacture_year)
+    #         if record.license_plate:
+    #             name += ' / ' + record.license_plate
+    #
+    #         res[record.id] = name
+    #         # res[record.id] = record.model_id.brand_id.name + '/' + record.model_id.modelname + ' / ' + record.license_plate
+    #     return res
+
 
     @api.multi
     def name_get(self):

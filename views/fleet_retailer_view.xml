@@ -6,9 +6,15 @@
         <record id="fleet_ext.retailer_form_view" model="ir.ui.view">
             <field name="name">fleet.retailer</field>
             <field name="model">fleet.retailer</field>
-            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="inherit_id" ref="account.view_partner_property_form"/>
             <field name="mode">primary</field>
             <field name="arch" type="xml">
+                <page name='sales_purchases' position="attributes">
+                    <attribute name='invisible'>1</attribute>
+                </page>
+                <page name='accounting' position="replace">
+                    <!--<attribute name='invisible'>1</attribute>-->
+                </page>
                 <xpath expr="//div[@name='buttons']" position="replace">
                     <button name="return_action_to_open"
                         type="object"
@@ -27,6 +33,13 @@
                         <field name="contract_count" widget="statinfo" string="Contracts"/>
                     </button>
                 </xpath>
+                <field name="parent_id" position="replace">
+                    <field name="parent_id"
+                           domain="[('is_company', '=', True)]"
+                           context="{'form_view_ref': 'fleet_ext.client_form_view', 'default_is_company': True, 'default_supplier': supplier, 'default_customer': customer}"
+                           attrs="{'invisible': [('is_company','=', True),('parent_id', '=', False)]}"
+                           on_change="onchange_address(use_parent_address, parent_id)"/>
+                </field>
                 <notebook position="inside">
                     <page string="Clients">
                         <!--todo ajouter client_ids-->
@@ -61,7 +74,6 @@
             <field name="name">fleet.retailer.kanban</field>
             <field name="model">fleet.retailer</field>
             <field name="inherit_id" ref="base.res_partner_kanban_view"/>
-            <!--<field name="mode">primary</field>-->
             <field name="priority" eval="20"/>
             <field name="arch" type="xml">
                 <field name="mobile" position="after">
@@ -70,31 +82,10 @@
             </field>
         </record>
 
-                <!--todo : afficher le nombre de voitures-->
-                <!--<field name="mobile" position="after">-->
-                    <!--<field name="sale_order_count"/>-->
-                <!--</field>-->
-                <!--<xpath expr="//div[@class='oe_kanban_partner_links']" position="inside">-->
-                    <!--<a name="%(sale.act_res_partner_2_sale_order)d" type="action" t-if="record.sale_order_count.value>0">-->
-                        <!--<t t-esc="record.sale_order_count.value"/> Sales-->
-                    <!--</a>-->
-                <!--</xpath>-->
-
-        <!--<record id="view_retailer_search" model="ir.ui.view">-->
-            <!--<field name="name">fleet.retailer.search</field>-->
-            <!--<field name="model">fleet.retailer</field>-->
-            <!--<field name="arch" type="xml">-->
-                <!--<search string="Retailer">-->
-                    <!--<field name="name" filter_domain="['|', ('name','ilike',self), ('email','ilike',self)]" string="Retailer"/>-->
-                    <!--<field name="company_ids" string="Company" groups="base.group_multi_company"/>-->
-                <!--</search>-->
-            <!--</field>-->
-        <!--</record>-->
         <!-- Retailer actions-->
         <record id="action_fleet_retailers" model="ir.actions.act_window">
             <field name="name">Retailers</field>
             <field name="res_model">fleet.retailer</field>
-            <!--<field name="search_view_id" ref="view_retailer_search"/>-->
             <field name="help" type="html">
                 <p class="oe_view_nocontent_create">
                     Click to add a retailer in your address book.

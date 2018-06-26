@@ -30,8 +30,8 @@
             </h1>
             <label for="manufacture_year" class="oe_edit_only" attrs="{'invisible': [('state', '!=', 'first')]}"/>
             <h3>
-                <field name="manufacture_year" attrs="{'invisible': [('state', '=', 'first')]}"/>
-                <field name="select_manufacture_year" attrs="{'invisible': [('state', '!=', 'first')]}"/>
+                <field name="manufacture_year" attrs="{'invisible': 1}"/>
+                <field name="select_manufacture_year" attrs="{'readonly': [('state', '!=', 'first')]}"/>
             </h3>
             <label for="license_plate" class="oe_edit_only" attrs="{'invisible': [('state', '!=', 'first')]}"/>
             <h2>
@@ -39,7 +39,6 @@
             </h2>
             <label for="vin_sn" string="Serial Number" class="oe_edit_only" attrs="{'invisible': [('state', '!=', 'first')]}"/>
             <h2>
-                <!--<field name="vin_sn" string="Serial Number" attrs="{'readonly': [('vin_sn', '!=', False)]}"/>-->
                 <field name="vin_sn" string="Serial Number" attrs="{'readonly': [('state', '!=', 'first')]}"/>
             </h2>
             <label for="car_value" class="oe_edit_only" attrs="{'invisible': [('state', '!=', 'first')]}"/>
@@ -57,7 +56,8 @@
         <div attrs="{'invisible':[('state','!=','client')]}">
             <group>
                 <field name="driver_id"/>
-                <field name="ownership" />
+                <field name="purchase_type" />
+                <field name="category" attrs="{'readonly': [('purchase_type','=','leased')]}"/>
             </group>
             <label for="tag_ids" class="oe_edit_only"/>
             <field name="tag_ids" widget="many2many_tags"/>

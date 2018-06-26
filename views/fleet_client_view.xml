@@ -6,7 +6,6 @@
         <record id="fleet_ext.client_form_view" model="ir.ui.view">
             <field name="name">fleet.clients</field>
             <field name="model">fleet.client</field>
-            <!--<field name="inherit_id" ref="base.view_partner_form"/>-->
             <field name="inherit_id" ref="account.view_partner_property_form"/>
             <field name="mode">primary</field>
             <field name="arch" type="xml">
@@ -98,22 +97,10 @@
             </field>
         </record>
 
-        <!--<record id="view_client_search" model="ir.ui.view">-->
-            <!--<field name="name">fleet.client.search</field>-->
-            <!--<field name="model">fleet.client</field>-->
-            <!--<field name="arch" type="xml">-->
-                <!--<search string="Client">-->
-                    <!--<field name="name" filter_domain="['|', '|', ('name','ilike',self), ('email','ilike',self)]" string="Client"/>-->
-                    <!--<field name="company_ids" string="Company" groups="base.group_multi_company"/>-->
-                <!--</search>-->
-            <!--</field>-->
-        <!--</record>-->
-
 		<!-- Client actions-->
         <record id="action_fleet_clients" model="ir.actions.act_window">
             <field name="name">Clients</field>
             <field name="res_model">fleet.client</field>
-            <!--<field name="search_view_id" ref="view_client_search"/>-->
             <field name="help" type="html">
                 <p class="oe_view_nocontent_create">
                     Click to add a client in your address book.

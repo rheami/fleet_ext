@@ -46,15 +46,16 @@
     <field name="inherit_id" ref="fleet.fleet_vehicle_form" />
     <field name="arch" type="xml">
         <xpath expr="//h1" position="after">
-            <label for="manufacture_year" class="oe_edit_only"/>
-            <h2>
-            <field name="manufacture_year" class="oe_read_only" />
-            <field name="select_manufacture_year" class="oe_edit_only" />
-            </h2>
+            <label for="manufacture_year" class="oe_edit_only" />
+            <h3>
+                <field name="manufacture_year" attrs="{'invisible': 1}"/>
+                <field name="select_manufacture_year" />
+            </h3>
         </xpath>
         <field name="driver_id" position="replace">
             <field name="driver_id"/>
-            <field name="ownership" />
+            <field name="purchase_type" />
+            <field name="category" attrs="{'readonly': [('purchase_type','=','leased')]}"/>
         </field>
         <field name="vin_sn" position="attributes">
             <attribute name="string" >Serial Number</attribute>
