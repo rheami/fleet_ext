@@ -161,7 +161,7 @@ msgstr "Valeur de la voiture: de '%s' à '%s'"
 #. module: fleet_ext
 #: field:fleet.vehicle,category:0
 msgid "Category"
-msgstr "Catégorie"
+msgstr "Neuf ou d'ocassion"
 
 #. module: fleet_ext
 #: help:fleet.client,is_company:0
@@ -750,7 +750,7 @@ msgstr "Nom"
 #: selection:fleet.vehicle,category:0
 #: model:fleet.vehicle.tag,name:fleet_ext.vehicle_tag_new
 msgid "New"
-msgstr "Nouveau"
+msgstr "Neuf"
 
 #. module: fleet_ext
 #: view:fleet.vehicle:fleet_ext.fleet_vehicle_simple_form
@@ -871,7 +871,7 @@ msgstr "Purchase Pricelist"
 #. module: fleet_ext
 #: field:fleet.vehicle,purchase_type:0
 msgid "Purchase Type"
-msgstr "Purchase Type"
+msgstr "Achat ou Location"
 
 #. module: fleet_ext
 #: field:fleet.client.lost.reason,name:0
