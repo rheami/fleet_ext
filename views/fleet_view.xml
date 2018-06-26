@@ -24,6 +24,9 @@
     <field name="model">fleet.vehicle</field>
     <field name="inherit_id" ref="fleet.fleet_vehicle_tree" />
     <field name="arch" type="xml">
+        <field name="model_id" position="after">
+            <field name="manufacture_year" />
+        </field>
         <field name="vin_sn" position="attributes">
             <attribute name="string" >Serial Number</attribute>
         </field>
@@ -133,6 +136,7 @@
             <field name="manufacture_year" />
             <field name="brand_id" />
             <field name="modelname" />
+            <field name="retailer_id" filter_domain="[('retailer_id.name', 'ilike', self)]"/>
         </field>
         <filter name="groupby_status" position="before">
             <filter name="groupby_brand" context="{'group_by' : 'brand_id'}" string="Brand"/>
