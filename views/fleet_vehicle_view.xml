@@ -55,7 +55,7 @@
         </div>
         <div attrs="{'invisible':[('state','!=','client')]}">
             <group>
-                <field name="driver_id"/>
+                <field name="owner_id"/>
                 <field name="purchase_type" />
                 <field name="category" attrs="{'readonly': [('purchase_type','=','leased')]}"/>
             </group>

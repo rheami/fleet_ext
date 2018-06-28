@@ -56,7 +56,7 @@
             </h3>
         </xpath>
         <field name="driver_id" position="replace">
-            <field name="driver_id"/>
+            <field name="owner_id"/>
             <field name="purchase_type" />
             <field name="category" attrs="{'readonly': [('purchase_type','=','leased')]}"/>
         </field>
@@ -134,14 +134,17 @@
         <field name="name" position="before">
             <field name="vin_sn" string="Serial Number" />
             <field name="manufacture_year" />
-            <field name="brand_id" />
+            <field name="brand_id" filter_domain="[('brand_id.name', 'ilike', self)]"/>
             <field name="modelname" />
             <field name="retailer_id" filter_domain="[('retailer_id.name', 'ilike', self)]"/>
+        </field>
+        <field name="driver_id" position="replace">
+            <field name="owner_id" filter_domain="[('owner_id.name', 'ilike', self)]"/>
         </field>
         <filter name="groupby_status" position="before">
             <filter name="groupby_brand" context="{'group_by' : 'brand_id'}" string="Brand"/>
             <filter name="groupby_retailer" context="{'group_by' : 'retailer_id'}" string="Retailer" />
-            <filter name="groupby_client" context="{'group_by' : 'driver_id'}" string="Client" />
+            <filter name="groupby_client" context="{'group_by' : 'owner_id'}" string="Client" />
         </filter>
     </field>
 </record>

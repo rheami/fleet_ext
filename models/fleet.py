@@ -16,6 +16,7 @@ class FleetVehicle(models.Model):
                                       inverse="_inverse_m_years",
                                       default=datetime.now().year, store=True)
 
+    driver_id = fields.Many2one(related='owner_id.partner_id', store=True)
     brand_id = fields.Many2one(related='model_id.brand_id', store=True)
     modelname = fields.Char(related='model_id.modelname', store=True)
 
@@ -37,7 +38,7 @@ class FleetVehicle(models.Model):
     registration_date = fields.Date("Registration Date")
     original_date = fields.Date('Original Date')
 
-    driver_id = fields.Many2one('fleet.client', string="Owner", help='Owner of the vehicle')
+    owner_id = fields.Many2one('fleet.client', string="Owner", help='Owner of the vehicle')
     license_plate = fields.Char('License Plate', required=False, help='License plate number of the vehicle(ie: plate number for a car)')
 
     retailer_id = fields.Many2one('fleet.retailer', string="Retailer")
@@ -49,6 +50,12 @@ class FleetVehicle(models.Model):
     extended_warranty = fields.Boolean('Extended Warranty')
     replacement_warranty = fields.Boolean('Replacement Warranty')
     extended_warranty_expiration = fields.Date('Extended Warranty Expiration')
+
+    # @api.multi
+    # @api.onchange("owner_id")
+    # def on_change_owner(self):
+    #     for rec in self:
+    #         rec.driver_id = rec.owner_id.partner_id
 
     @api.multi
     @api.onchange("purchase_type", "category")
@@ -132,6 +139,16 @@ class FleetVehicle(models.Model):
     def write(self, vals):
         changes = []
         for v in self:
+            if 'owner_id' in vals:
+                if v.owner_id.id:
+                    if v.owner_id.id != vals['owner_id']:
+                        old_val = v.owner_id.name or _('None')
+                        value = self.env['fleet.client'].browse(vals['owner_id']).name
+                        changes.append(_("Owner: from '%s' to '%s'") % (old_val, value))
+                else:
+                    old_val = _('None')
+                    value = self.env['fleet.client'].browse(vals['owner_id']).name
+                    changes.append(_("Owner: from '%s' to '%s'") % (old_val, value))
             if 'vin_sn' in vals and v.vin_sn != vals['vin_sn']:
                 old_val = v.vin_sn or _('None')
                 changes.append(_("Serial Number: from '%s' to '%s'") % (old_val, vals['vin_sn']))
@@ -192,7 +209,7 @@ class FleetClient(models.Model):
 
     vehicle_ids = fields.One2many(
         comodel_name='fleet.vehicle',
-        inverse_name="driver_id",
+        inverse_name="owner_id",
         string="Vehicle",
         readonly=True)
 

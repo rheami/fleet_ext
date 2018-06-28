@@ -139,7 +139,7 @@ msgstr "Birthdate"
 #. module: fleet_ext
 #: view:fleet.vehicle:fleet_ext.fleet_vehicle_search
 msgid "Brand"
-msgstr "Brand"
+msgstr "Marque"
 
 #. module: fleet_ext
 #: help:fleet.vehicle,brand_id:0
@@ -790,12 +790,12 @@ msgid "Original Date"
 msgstr "Date originale"
 
 #. module: fleet_ext
-#: field:fleet.vehicle,driver_id:0
+#: field:fleet.vehicle,owner_id:0
 msgid "Owner"
 msgstr "Propriétaire"
 
 #. module: fleet_ext
-#: help:fleet.vehicle,driver_id:0
+#: help:fleet.vehicle,owner_id:0
 msgid "Owner of the vehicle"
 msgstr "Propriétaire du véhicule"
 

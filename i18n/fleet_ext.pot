@@ -843,12 +843,12 @@ msgid "Original Date"
 msgstr ""
 
 #. module: fleet_ext
-#: field:fleet.vehicle,driver_id:0
+#: field:fleet.vehicle,owner_id:0
 msgid "Owner"
 msgstr ""
 
 #. module: fleet_ext
-#: help:fleet.vehicle,driver_id:0
+#: help:fleet.vehicle,owner_id:0
 msgid "Owner of the vehicle"
 msgstr ""
 
