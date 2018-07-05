@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-07-05 18:07+0000\n"
-"PO-Revision-Date: 2018-07-05 18:07+0000\n"
+"POT-Creation-Date: 2018-07-05 18:27+0000\n"
+"PO-Revision-Date: 2018-07-05 18:27+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -19,13 +19,13 @@ msgstr ""
 #: field:fleet.client,supplier_invoice_count:0
 #: field:fleet.retailer,supplier_invoice_count:0
 msgid "# Supplier Invoices"
-msgstr "Factures Fournisseurs"
+msgstr "# Supplier Invoices"
 
 #. module: fleet_ext
 #: field:fleet.client,purchase_order_count:0
 #: field:fleet.retailer,purchase_order_count:0
 msgid "# of Purchase Order"
-msgstr "No de PO"
+msgstr "# of Purchase Order"
 
 #. module: fleet_ext
 #: field:fleet.client,sale_order_count:0
@@ -34,13 +34,78 @@ msgid "# of Sales Order"
 msgstr "# of Sales Order"
 
 #. module: fleet_ext
+#: selection:fleet.vehicle,select_manufacture_year:0
+msgid "2008"
+msgstr "2008"
+
+#. module: fleet_ext
+#: selection:fleet.vehicle,select_manufacture_year:0
+msgid "2009"
+msgstr "2009"
+
+#. module: fleet_ext
+#: selection:fleet.vehicle,select_manufacture_year:0
+msgid "2010"
+msgstr "2010"
+
+#. module: fleet_ext
+#: selection:fleet.vehicle,select_manufacture_year:0
+msgid "2011"
+msgstr "2011"
+
+#. module: fleet_ext
+#: selection:fleet.vehicle,select_manufacture_year:0
+msgid "2012"
+msgstr "2012"
+
+#. module: fleet_ext
+#: selection:fleet.vehicle,select_manufacture_year:0
+msgid "2013"
+msgstr "2013"
+
+#. module: fleet_ext
+#: selection:fleet.vehicle,select_manufacture_year:0
+msgid "2014"
+msgstr "2014"
+
+#. module: fleet_ext
+#: selection:fleet.vehicle,select_manufacture_year:0
+msgid "2015"
+msgstr "2015"
+
+#. module: fleet_ext
+#: selection:fleet.vehicle,select_manufacture_year:0
+msgid "2016"
+msgstr "2016"
+
+#. module: fleet_ext
+#: selection:fleet.vehicle,select_manufacture_year:0
+msgid "2017"
+msgstr "2017"
+
+#. module: fleet_ext
+#: selection:fleet.vehicle,select_manufacture_year:0
+msgid "2018"
+msgstr "2018"
+
+#. module: fleet_ext
+#: selection:fleet.vehicle,select_manufacture_year:0
+msgid "2019"
+msgstr "2019"
+
+#. module: fleet_ext
+#: selection:fleet.vehicle,select_manufacture_year:0
+msgid "2020"
+msgstr "2020"
+
+#. module: fleet_ext
 #: model:ir.actions.act_window,help:fleet_ext.action_fleet_clients
 msgid "<p class=\"oe_view_nocontent_create\">\n"
 "                    Click to add a client in your address book.\n"
 "                </p>\n"
 "            "
 msgstr "<p class=\"oe_view_nocontent_create\">\n"
-"                    Clicker pour ajouter un client dans votre carnet d'addresse.\n"
+"                    Click to add a client in your address book.\n"
 "                </p>\n"
 "            "
 
@@ -51,7 +116,7 @@ msgid "<p class=\"oe_view_nocontent_create\">\n"
 "                </p>\n"
 "            "
 msgstr "<p class=\"oe_view_nocontent_create\">\n"
-"                    Clicker pour ajouter un concessionnaire dans votre carnet d'addresse.\n"
+"                    Click to add a retailer in your address book.\n"
 "                </p>\n"
 "            "
 
@@ -73,7 +138,7 @@ msgid "<p class=\"oe_view_nocontent_create\">\n"
 "      </p>\n"
 "    "
 msgstr "<p class=\"oe_view_nocontent_create\">\n"
-"        Clicker pour créer un raison de perte de client.\n"
+"        Click to create a client lost reason.\n"
 "      </p>\n"
 "    "
 
@@ -94,7 +159,7 @@ msgstr "Account Receivable"
 #: field:fleet.retailer,active:0
 #: model:fleet.vehicle.state,name:fleet_ext.vehicle_state_active
 msgid "Active"
-msgstr "Actif"
+msgstr "Active"
 
 #. module: fleet_ext
 #: field:fleet.client,active_vehicle_ids:0
@@ -106,13 +171,13 @@ msgstr "Active vehicle ids"
 #. module: fleet_ext
 #: field:fleet.vehicle,actualVendor_id:0
 msgid "Actual Vendor"
-msgstr "Vendeur actuel"
+msgstr "Actual Vendor"
 
 #. module: fleet_ext
 #: field:fleet.client,type:0
 #: field:fleet.retailer,type:0
 msgid "Address Type"
-msgstr ""
+msgstr "Address Type"
 
 #. module: fleet_ext
 #: field:fleet.client,apartment_no:0
@@ -120,12 +185,12 @@ msgstr ""
 #: field:fleet.retailer,apartment_no:0
 #: help:fleet.retailer,apartment_no:0
 msgid "Apartment No."
-msgstr ""
+msgstr "Apartment No."
 
 #. module: fleet_ext
 #: view:fleet.vehicle:fleet_ext.fleet_vehicle_simple_form
 msgid "Back"
-msgstr "Précédant"
+msgstr "Back"
 
 #. module: fleet_ext
 #: field:fleet.client,bank_ids:0
@@ -137,40 +202,40 @@ msgstr "Banks"
 #: field:fleet.client,birthdate:0
 #: field:fleet.retailer,birthdate:0
 msgid "Birthdate"
-msgstr "Date de Naissance"
+msgstr "Birthdate"
 
 #. module: fleet_ext
 #: view:fleet.vehicle:fleet_ext.fleet_vehicle_search
 msgid "Brand"
-msgstr "Marque"
+msgstr "Brand"
 
 #. module: fleet_ext
 #: help:fleet.vehicle,brand_id:0
 msgid "Brand of the vehicle"
-msgstr "Marque du véhicule"
+msgstr "Brand of the vehicle"
 
 #. module: fleet_ext
 #: view:fleet.select:fleet_ext.fleet_select_form
 msgid "Cancel"
-msgstr "Annuler"
+msgstr "Cancel"
 
 #. module: fleet_ext
 #: code:addons/fleet_ext/models/fleet.py:156
 #: code:addons/my-modules-dev/fleet_ext/models/fleet.py:156
 #, python-format
 msgid "Car Value: from '%s' to '%s'"
-msgstr "Valeur de la voiture: de '%s' à '%s'"
+msgstr "Car Value: from '%s' to '%s'"
 
 #. module: fleet_ext
 #: field:fleet.vehicle,category:0
 msgid "Category"
-msgstr "Neuf ou d'ocassion"
+msgstr "Category"
 
 #. module: fleet_ext
 #: help:fleet.client,is_company:0
 #: help:fleet.retailer,is_company:0
 msgid "Check if the contact is a company, otherwise it is a person"
-msgstr "Vérifier si le contact est une compagnie, autrement c'est une personne"
+msgstr "Check if the contact is a company, otherwise it is a person"
 
 #. module: fleet_ext
 #: help:fleet.client,vat_subjected:0
@@ -182,19 +247,19 @@ msgstr "Check this box if the partner is subjected to the VAT. It will be used f
 #: help:fleet.client,customer:0
 #: help:fleet.retailer,customer:0
 msgid "Check this box if this contact is a customer."
-msgstr "Cochez si le contact est un client."
+msgstr "Check this box if this contact is a customer."
 
 #. module: fleet_ext
 #: help:fleet.client,supplier:0
 #: help:fleet.retailer,supplier:0
 msgid "Check this box if this contact is a supplier. If it's not checked, purchase people will not see it when encoding a purchase order."
-msgstr "Cochez si le contact est un fournisseur. If it's not checked, purchase people will not see it when encoding a purchase order."
+msgstr "Check this box if this contact is a supplier. If it's not checked, purchase people will not see it when encoding a purchase order."
 
 #. module: fleet_ext
 #: help:fleet.client,employee:0
 #: help:fleet.retailer,employee:0
 msgid "Check this box if this contact is an Employee."
-msgstr "Cochez si le contact est un Employé."
+msgstr "Check this box if this contact is an Employee."
 
 #. module: fleet_ext
 #: view:fleet.select:fleet_ext.fleet_select_form
@@ -205,13 +270,13 @@ msgstr "Choose to do"
 #: field:fleet.client,city:0
 #: field:fleet.retailer,city:0
 msgid "City"
-msgstr "Ville"
+msgstr "City"
 
 #. module: fleet_ext
 #: field:fleet.client,zip_id:0
 #: field:fleet.retailer,zip_id:0
 msgid "City/Location"
-msgstr "Ville/Lieu"
+msgstr "City/Location"
 
 #. module: fleet_ext
 #: view:fleet.vehicle:fleet_ext.fleet_vehicle_search
@@ -222,13 +287,13 @@ msgstr "Client"
 #. module: fleet_ext
 #: view:fleet.client:fleet_ext.client_form_view
 msgid "Client Info"
-msgstr "Information Client"
+msgstr "Client Info"
 
 #. module: fleet_ext
 #: model:ir.actions.act_window,name:fleet_ext.fleet_client_lost_reason_act
 #: model:ir.ui.menu,name:fleet_ext.fleet_client_lost_reason_menu
 msgid "Client Lost Reason"
-msgstr "Raison de la perte du client"
+msgstr "Client Lost Reason"
 
 #. module: fleet_ext
 #: view:fleet.retailer:fleet_ext.retailer_form_view
@@ -241,25 +306,25 @@ msgstr "Clients"
 #: field:fleet.client,color:0
 #: field:fleet.retailer,color:0
 msgid "Color Index"
-msgstr "Index de Couleur"
+msgstr "Color Index"
 
 #. module: fleet_ext
 #: field:fleet.client,commercial_partner_id:0
 #: field:fleet.retailer,commercial_partner_id:0
 msgid "Commercial Entity"
-msgstr "Entitée Commerciale"
+msgstr "Commercial Entity"
 
 #. module: fleet_ext
 #: view:fleet.client:fleet_ext.view_fleet_client_filter
 #: view:fleet.retailer:fleet_ext.view_fleet_retailer_filter
 msgid "Companies"
-msgstr ""
+msgstr "Companies"
 
 #. module: fleet_ext
 #: field:fleet.client,ref_companies:0
 #: field:fleet.retailer,ref_companies:0
 msgid "Companies that refers to partner"
-msgstr "Entreprises qui sont en référence au partenaire"
+msgstr "Companies that refers to partner"
 
 #. module: fleet_ext
 #: view:fleet.client:fleet_ext.view_fleet_client_filter
@@ -267,18 +332,18 @@ msgstr "Entreprises qui sont en référence au partenaire"
 #: view:fleet.retailer:fleet_ext.view_fleet_retailer_filter
 #: field:fleet.retailer,company_id:0
 msgid "Company"
-msgstr "Entreprises"
+msgstr "Company"
 
 #. module: fleet_ext
 #: field:fleet.client,competitor:0
 msgid "Competitor"
-msgstr "Compétiteur"
+msgstr "Competitor"
 
 #. module: fleet_ext
 #: field:fleet.client,contact_address:0
 #: field:fleet.retailer,contact_address:0
 msgid "Complete Address"
-msgstr "Addresse complète"
+msgstr "Complete Address"
 
 #. module: fleet_ext
 #: field:fleet.client,ref:0
@@ -297,7 +362,7 @@ msgstr "Contacts"
 #. module: fleet_ext
 #: selection:fleet.vehicle,state:0
 msgid "Contract"
-msgstr "Contrat"
+msgstr "Contract"
 
 #. module: fleet_ext
 #: model:ir.model,name:fleet_ext.model_fleet_vehicle_log_contract
@@ -320,24 +385,24 @@ msgstr "Contrats"
 #. module: fleet_ext
 #: field:fleet.vehicle.log.contract,cost_to_amortize:0
 msgid "Cost to amortize"
-msgstr "Coût à amortir"
+msgstr "Cost to amortize"
 
 #. module: fleet_ext
 #: field:fleet.client,country_id:0
 #: field:fleet.retailer,country_id:0
 msgid "Country"
-msgstr "Pays"
+msgstr "Country"
 
 #. module: fleet_ext
 #: view:fleet.vehicle:fleet_ext.fleet_vehicle_simple_form
 msgid "Create Contract"
-msgstr "Créer le contrat"
+msgstr "Create Contract"
 
 #. module: fleet_ext
 #: model:ir.actions.act_window,name:fleet_ext.new_fleet_select_action
 #: model:ir.ui.menu,name:fleet_ext.new_fleet_select_menu
 msgid "Create new vehicle or Select existing one"
-msgstr "Créer un nouveau véhicule ou Sélectionner un existant"
+msgstr "Create new vehicle or Select existing one"
 
 #. module: fleet_ext
 #: field:fleet.client,create_uid:0
@@ -345,7 +410,7 @@ msgstr "Créer un nouveau véhicule ou Sélectionner un existant"
 #: field:fleet.retailer,create_uid:0
 #: field:fleet.select,create_uid:0
 msgid "Created by"
-msgstr "Créé par"
+msgstr "Created by"
 
 #. module: fleet_ext
 #: field:fleet.client,create_date:0
@@ -353,7 +418,7 @@ msgstr "Créé par"
 #: field:fleet.retailer,create_date:0
 #: field:fleet.select,create_date:0
 msgid "Created on"
-msgstr "Créé le"
+msgstr "Created on"
 
 #. module: fleet_ext
 #: field:fleet.client,credit_limit:0
@@ -365,7 +430,7 @@ msgstr "Credit Limit"
 #: field:fleet.client,customer:0
 #: field:fleet.retailer,customer:0
 msgid "Customer"
-msgstr "Client"
+msgstr "Customer"
 
 #. module: fleet_ext
 #: field:fleet.client,property_stock_customer:0
@@ -400,17 +465,17 @@ msgstr "Date on which the partner accounting entries were fully reconciled last 
 #. module: fleet_ext
 #: help:fleet.client,date_begin:0
 msgid "Date when the client is acquired"
-msgstr "Date d'acquisition du client"
+msgstr "Date when the client is acquired"
 
 #. module: fleet_ext
 #: help:fleet.client,date_terminated:0
 msgid "Date when the client is lost"
-msgstr "Date de perte du client"
+msgstr "Date when the client is lost"
 
 #. module: fleet_ext
 #: field:fleet.vehicle.log.contract,deposit:0
 msgid "Deposit"
-msgstr "Dépôt"
+msgstr "Deposit"
 
 #. module: fleet_ext
 #: field:fleet.client,display_name:0
@@ -418,35 +483,35 @@ msgstr "Dépôt"
 #: field:fleet.retailer,display_name:0
 #: field:fleet.select,display_name:0
 msgid "Display Name"
-msgstr "Nom affiché"
+msgstr "Display Name"
 
 #. module: fleet_ext
 #: selection:fleet.vehicle,state:0
 msgid "Done"
-msgstr "Terminé"
+msgstr "Done"
 
 #. module: fleet_ext
 #: model:fleet.vehicle.state,name:fleet_ext.vehicle_state_draft
 msgid "Draft"
-msgstr ""
+msgstr "Draft"
 
 #. module: fleet_ext
 #: field:fleet.client,ean13:0
 #: field:fleet.retailer,ean13:0
 msgid "EAN13"
-msgstr ""
+msgstr "EAN13"
 
 #. module: fleet_ext
 #: field:fleet.client,email:0
 #: field:fleet.retailer,email:0
 msgid "Email"
-msgstr "Courriel"
+msgstr "Email"
 
 #. module: fleet_ext
 #: model:ir.model,name:fleet_ext.model_fleet_client
 #: model:ir.model,name:fleet_ext.model_fleet_retailer
 msgid "Email Thread"
-msgstr "Courriel de cette discussion"
+msgstr "Discussion par courriel"
 
 #. module: fleet_ext
 #: field:fleet.client,employee:0
@@ -457,27 +522,27 @@ msgstr "Employee"
 #. module: fleet_ext
 #: field:fleet.client,end_date_of_follow_up:0
 msgid "End date of follow up"
-msgstr "Date de fin de suivi"
+msgstr "End date of follow up"
 
 #. module: fleet_ext
 #: view:fleet.select:fleet_ext.fleet_select_form
 msgid "Enter the serial number, licence plate or Model to search for existing vehicle"
-msgstr "Entrer le numéro de série, le numéro de licence ou le Modèle du véhicule"
+msgstr "Enter the serial number, licence plate or Model to search for existing vehicle"
 
 #. module: fleet_ext
 #: field:fleet.vehicle.log.contract,exchange_value:0
 msgid "Exchange value"
-msgstr "Valeur d'échange"
+msgstr "Exchange value"
 
 #. module: fleet_ext
 #: field:fleet.vehicle,extended_warranty:0
 msgid "Extended Warranty"
-msgstr "Garantie Prolongée"
+msgstr "Extended Warranty"
 
 #. module: fleet_ext
 #: field:fleet.vehicle,extended_warranty_expiration:0
 msgid "Extended Warranty Expiration"
-msgstr "Date d'expiration de la garantie prolongée"
+msgstr "Extended Warranty Expiration"
 
 #. module: fleet_ext
 #: field:fleet.client,fax:0
@@ -488,12 +553,12 @@ msgstr "Fax"
 #. module: fleet_ext
 #: view:fleet.vehicle.log.contract:fleet_ext.fleet_vehicle_log_contract_form
 msgid "Financing details"
-msgstr "Détails financiers"
+msgstr "Financing details"
 
 #. module: fleet_ext
 #: field:fleet.vehicle,firstVendor_id:0
 msgid "First Vendor"
-msgstr "Vendeur original"
+msgstr "First Vendor"
 
 #. module: fleet_ext
 #: field:fleet.client,property_account_position:0
@@ -504,25 +569,25 @@ msgstr "Fiscal Position"
 #. module: fleet_ext
 #: view:fleet.client:fleet_ext.client_form_view
 msgid "Follow-up"
-msgstr "Suivi"
+msgstr "Follow-up"
 
 #. module: fleet_ext
 #: field:fleet.client,message_follower_ids:0
 #: field:fleet.retailer,message_follower_ids:0
 msgid "Followers"
-msgstr "Suiveurs"
+msgstr "Followers"
 
 #. module: fleet_ext
 #: view:fleet.client:fleet_ext.view_fleet_client_filter
 #: view:fleet.retailer:fleet_ext.view_fleet_retailer_filter
 msgid "Group By"
-msgstr ""
+msgstr "Group By"
 
 #. module: fleet_ext
 #: help:fleet.client,message_summary:0
 #: help:fleet.retailer,message_summary:0
 msgid "Holds the Chatter summary (number of messages, ...). This summary is directly in html format in order to be inserted in kanban views."
-msgstr ""
+msgstr "Holds the Chatter summary (number of messages, ...). This summary is directly in html format in order to be inserted in kanban views."
 
 #. module: fleet_ext
 #: field:fleet.client,house_no:0
@@ -530,7 +595,7 @@ msgstr ""
 #: field:fleet.retailer,house_no:0
 #: help:fleet.retailer,house_no:0
 msgid "House No."
-msgstr ""
+msgstr "House No."
 
 #. module: fleet_ext
 #: field:fleet.client,id:0
@@ -538,82 +603,82 @@ msgstr ""
 #: field:fleet.retailer,id:0
 #: field:fleet.select,id:0
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #. module: fleet_ext
 #: help:fleet.client,message_unread:0
 #: help:fleet.retailer,message_unread:0
 msgid "If checked new messages require your attention."
-msgstr ""
+msgstr "If checked new messages require your attention."
 
 #. module: fleet_ext
 #: help:fleet.client,opt_out:0
 #: help:fleet.retailer,opt_out:0
 msgid "If opt-out is checked, this contact has refused to receive emails for mass mailing and marketing campaign. Filter 'Available for Mass Mailing' allows users to filter the partners when performing mass mailing."
-msgstr ""
+msgstr "If opt-out is checked, this contact has refused to receive emails for mass mailing and marketing campaign. Filter 'Available for Mass Mailing' allows users to filter the partners when performing mass mailing."
 
 #. module: fleet_ext
 #: help:fleet.client,lang:0
 #: help:fleet.retailer,lang:0
 msgid "If the selected language is loaded in the system, all documents related to this contact will be printed in this language. If not, it will be English."
-msgstr ""
+msgstr "If the selected language is loaded in the system, all documents related to this contact will be printed in this language. If not, it will be English."
 
 #. module: fleet_ext
 #: field:fleet.client,image:0
 #: field:fleet.retailer,image:0
 msgid "Image"
-msgstr ""
+msgstr "Image"
 
 #. module: fleet_ext
 #: model:fleet.vehicle.state,name:fleet_ext.vehicle_state_inactive
 msgid "Inactive"
-msgstr "Inactif"
+msgstr "Inactive"
 
 #. module: fleet_ext
 #: model:ir.model,name:fleet_ext.model_fleet_vehicle
 msgid "Information on a vehicle"
-msgstr "Information du véhicule"
+msgstr "Information sur un véhicule"
 
 #. module: fleet_ext
 #: field:fleet.vehicle.log.contract,interest_rate:0
 msgid "Interest Rate"
-msgstr "Taux d'Intérêt"
+msgstr "Interest Rate"
 
 #. module: fleet_ext
 #: view:fleet.vehicle:fleet_ext.fleet_vehicle_form_inherit
 #: field:fleet.vehicle,note:0
 msgid "Internal Note"
-msgstr "Note interne"
+msgstr "Internal Note"
 
 #. module: fleet_ext
 #: field:fleet.client,invoice_ids:0
 #: field:fleet.retailer,invoice_ids:0
 msgid "Invoices"
-msgstr "Factures"
+msgstr "Invoices"
 
 #. module: fleet_ext
 #: field:fleet.client,is_fleet_active:0
 #: field:fleet.retailer,is_fleet_active:0
 msgid "Is Fleet Active"
-msgstr "Est actif"
+msgstr "Is Fleet Active"
 
 #. module: fleet_ext
 #: field:fleet.client,is_company:0
 #: field:fleet.retailer,is_company:0
 msgid "Is a Company"
-msgstr "Est une entreprise"
+msgstr "Is a Company"
 
 #. module: fleet_ext
 #: field:fleet.client,message_is_follower:0
 #: field:fleet.retailer,message_is_follower:0
 msgid "Is a Follower"
-msgstr "Est un Suiveur"
+msgstr "Is a Follower"
 
 #. module: fleet_ext
 #: field:fleet.client,function:0
 #: field:fleet.retailer,function:0
 msgid "Job Position"
-msgstr "Poste"
+msgstr "Job Position"
 
 #. module: fleet_ext
 #: field:fleet.client,journal_item_count:0
@@ -625,7 +690,7 @@ msgstr "Journal Items"
 #: field:fleet.client,lang:0
 #: field:fleet.retailer,lang:0
 msgid "Language"
-msgstr "Langue d'usage"
+msgstr "Language"
 
 #. module: fleet_ext
 #: field:fleet.client,message_last_post:0
@@ -639,7 +704,7 @@ msgstr "Last Message Date"
 #: field:fleet.retailer,__last_update:0
 #: field:fleet.select,__last_update:0
 msgid "Last Modified on"
-msgstr "Dernière modification"
+msgstr "Last Modified on"
 
 #. module: fleet_ext
 #: field:fleet.client,write_uid:0
@@ -647,7 +712,7 @@ msgstr "Dernière modification"
 #: field:fleet.retailer,write_uid:0
 #: field:fleet.select,write_uid:0
 msgid "Last Updated by"
-msgstr "Dernière mise à jour par"
+msgstr "Last Updated by"
 
 #. module: fleet_ext
 #: field:fleet.client,write_date:0
@@ -655,100 +720,100 @@ msgstr "Dernière mise à jour par"
 #: field:fleet.retailer,write_date:0
 #: field:fleet.select,write_date:0
 msgid "Last Updated on"
-msgstr ""
+msgstr "Last Updated on"
 
 #. module: fleet_ext
 #: field:fleet.client,last_reconciliation_date:0
 #: field:fleet.retailer,last_reconciliation_date:0
 msgid "Latest Full Reconciliation Date"
-msgstr ""
+msgstr "Latest Full Reconciliation Date"
 
 #. module: fleet_ext
 #: selection:fleet.vehicle,purchase_type:0
 msgid "Leased"
-msgstr "Location"
+msgstr "Leased"
 
 #. module: fleet_ext
 #: field:fleet.client,lost_date:0
 msgid "Lost Date"
-msgstr "Date de perte"
+msgstr "Lost Date"
 
 #. module: fleet_ext
 #: field:fleet.client,lost_reason:0
 msgid "Lost Reason"
-msgstr "Raison de la perte"
+msgstr "Lost Reason"
 
 #. module: fleet_ext
 #: field:fleet.vehicle.log.contract,msrp:0
 msgid "MSRP"
-msgstr "PDSF"
+msgstr "MSRP"
 
 #. module: fleet_ext
 #: help:fleet.vehicle.log.contract,msrp:0
 msgid "Manufacturer's suggested retail price"
-msgstr "Prix de Détail Suggéré par le Fabricant"
+msgstr "Manufacturer's suggested retail price"
 
 #. module: fleet_ext
 #: field:fleet.client,image_medium:0
 #: field:fleet.retailer,image_medium:0
 msgid "Medium-sized image"
-msgstr ""
+msgstr "Medium-sized image"
 
 #. module: fleet_ext
 #: help:fleet.client,image_medium:0
 #: help:fleet.retailer,image_medium:0
 msgid "Medium-sized image of this contact. It is automatically resized as a 128x128px image, with aspect ratio preserved. Use this field in form views or some kanban views."
-msgstr ""
+msgstr "Medium-sized image of this contact. It is automatically resized as a 128x128px image, with aspect ratio preserved. Use this field in form views or some kanban views."
 
 #. module: fleet_ext
 #: field:fleet.client,message_ids:0
 #: field:fleet.retailer,message_ids:0
 msgid "Messages"
-msgstr ""
+msgstr "Messages"
 
 #. module: fleet_ext
 #: help:fleet.client,message_ids:0
 #: help:fleet.retailer,message_ids:0
 msgid "Messages and communication history"
-msgstr ""
+msgstr "Messages and communication history"
 
 #. module: fleet_ext
 #: field:fleet.client,mobile:0
 #: field:fleet.retailer,mobile:0
 msgid "Mobile"
-msgstr ""
+msgstr "Mobile"
 
 #. module: fleet_ext
 #: field:fleet.vehicle,brand_id:0
 msgid "Model Brand"
-msgstr "Marque"
+msgstr "Model Brand"
 
 #. module: fleet_ext
 #: field:fleet.vehicle,modelname:0
 msgid "Model name"
-msgstr "Modèle"
+msgstr "Model name"
 
 #. module: fleet_ext
 #: field:fleet.vehicle.log.contract,montly_payment:0
 msgid "Montly Payment"
-msgstr "Mensualité"
+msgstr "Montly Payment"
 
 #. module: fleet_ext
 #: field:fleet.client,name:0
 #: field:fleet.retailer,name:0
 msgid "Name"
-msgstr "Nom"
+msgstr "Name"
 
 #. module: fleet_ext
 #: selection:fleet.vehicle,category:0
 #: model:fleet.vehicle.tag,name:fleet_ext.vehicle_tag_new
 msgid "New"
-msgstr "Neuf"
+msgstr "New"
 
 #. module: fleet_ext
 #: view:fleet.vehicle:fleet_ext.fleet_vehicle_simple_form
 msgid "Next"
-msgstr "Suivant"
+msgstr "Next"
 
 #. module: fleet_ext
 #: code:addons/fleet_ext/models/fleet.py:143
@@ -761,34 +826,34 @@ msgstr "Suivant"
 #: code:addons/my-modules-dev/fleet_ext/models/fleet.py:155
 #, python-format
 msgid "None"
-msgstr "Aucun"
+msgstr "None"
 
 #. module: fleet_ext
 #: field:fleet.client,comment:0
 #: field:fleet.retailer,comment:0
 msgid "Notes"
-msgstr ""
+msgstr "Notes"
 
 #. module: fleet_ext
 #: field:fleet.client,opt_out:0
 #: field:fleet.retailer,opt_out:0
 msgid "Opt-Out"
-msgstr ""
+msgstr "Opt-Out"
 
 #. module: fleet_ext
 #: field:fleet.vehicle,original_date:0
 msgid "Original Date"
-msgstr "Date originale"
+msgstr "Original Date"
 
 #. module: fleet_ext
 #: field:fleet.vehicle,owner_id:0
 msgid "Owner"
-msgstr "Propriétaire"
+msgstr "Owner"
 
 #. module: fleet_ext
 #: help:fleet.vehicle,owner_id:0
 msgid "Owner of the vehicle"
-msgstr "Propriétaire du véhicule"
+msgstr "Owner of the vehicle"
 
 #. module: fleet_ext
 #: code:addons/fleet_ext/models/fleet.py:145
@@ -797,13 +862,13 @@ msgstr "Propriétaire du véhicule"
 #: code:addons/my-modules-dev/fleet_ext/models/fleet.py:149
 #, python-format
 msgid "Owner: from '%s' to '%s'"
-msgstr "Propriétaire : de '%s' à '%s'"
+msgstr "Owner: from '%s' to '%s'"
 
 #. module: fleet_ext
 #: field:fleet.client,parent_name:0
 #: field:fleet.retailer,parent_name:0
 msgid "Parent name"
-msgstr ""
+msgstr "Parent name"
 
 #. module: fleet_ext
 #: model:ir.model,name:fleet_ext.model_res_partner
@@ -815,25 +880,25 @@ msgstr "Partenaire"
 #: field:fleet.retailer,partner_id:0
 #: field:fleet.vehicle,retailer_id_partner_id:0
 msgid "Partner id"
-msgstr ""
+msgstr "Partner id"
 
 #. module: fleet_ext
 #: field:fleet.client,debit_limit:0
 #: field:fleet.retailer,debit_limit:0
 msgid "Payable Limit"
-msgstr ""
+msgstr "Payable Limit"
 
 #. module: fleet_ext
 #: view:fleet.client:fleet_ext.view_fleet_client_filter
 #: view:fleet.retailer:fleet_ext.view_fleet_retailer_filter
 msgid "Persons"
-msgstr ""
+msgstr "Persons"
 
 #. module: fleet_ext
 #: field:fleet.client,phone:0
 #: field:fleet.retailer,phone:0
 msgid "Phone"
-msgstr "Téléphone"
+msgstr "Phone"
 
 #. module: fleet_ext
 #: help:fleet.client,notify_email:0
@@ -841,43 +906,45 @@ msgstr "Téléphone"
 msgid "Policy to receive emails for new messages pushed to your personal Inbox:\n"
 "- Never: no emails are sent\n"
 "- All Messages: for every notification you receive in your Inbox"
-msgstr ""
+msgstr "Policy to receive emails for new messages pushed to your personal Inbox:\n"
+"- Never: no emails are sent\n"
+"- All Messages: for every notification you receive in your Inbox"
 
 #. module: fleet_ext
 #: view:fleet.vehicle:fleet_ext.fleet_vehicle_form_inherit
 msgid "Purchase Info"
-msgstr "Informations d'achat"
+msgstr "Purchase Info"
 
 #. module: fleet_ext
 #: field:fleet.vehicle.log.contract,purchase_Price:0
 msgid "Purchase Price"
-msgstr "Prix d'achat"
+msgstr "Purchase Price"
 
 #. module: fleet_ext
 #: field:fleet.client,property_product_pricelist_purchase:0
 #: field:fleet.retailer,property_product_pricelist_purchase:0
 msgid "Purchase Pricelist"
-msgstr ""
+msgstr "Purchase Pricelist"
 
 #. module: fleet_ext
 #: field:fleet.vehicle,purchase_type:0
 msgid "Purchase Type"
-msgstr "Achat ou Location"
+msgstr "Purchase Type"
 
 #. module: fleet_ext
 #: selection:fleet.vehicle,purchase_type:0
 msgid "Purchased"
-msgstr ""
+msgstr "Purchased"
 
 #. module: fleet_ext
 #: field:fleet.client.lost.reason,name:0
 msgid "Reason"
-msgstr "Raison"
+msgstr "Reason"
 
 #. module: fleet_ext
 #: model:ir.model,name:fleet_ext.model_fleet_client_lost_reason
 msgid "Reason for the lost of the client"
-msgstr "Raison de la perte du client"
+msgstr "Reason for the lost of the client"
 
 #. module: fleet_ext
 #: field:fleet.client,notify_email:0
@@ -889,28 +956,28 @@ msgstr "Receive Inbox Notifications by Email"
 #: field:fleet.client,date_begin:0
 #: field:fleet.vehicle,registration_date:0
 msgid "Registration Date"
-msgstr "Date d'enregistrement"
+msgstr "Registration Date"
 
 #. module: fleet_ext
 #: field:fleet.client,parent_id:0
 #: field:fleet.retailer,parent_id:0
 msgid "Related Company"
-msgstr ""
+msgstr "Related Company"
 
 #. module: fleet_ext
 #: field:fleet.vehicle,replacement_warranty:0
 msgid "Replacement Warranty"
-msgstr "Garanti de remplacement"
+msgstr "Replacement Warranty"
 
 #. module: fleet_ext
 #: field:fleet.vehicle.log.contract,residual:0
 msgid "Residual"
-msgstr "Résiduel"
+msgstr "Residual"
 
 #. module: fleet_ext
 #: field:fleet.vehicle.log.contract,residual_percent:0
 msgid "Residual %"
-msgstr "Résiduel %"
+msgstr "Residual %"
 
 #. module: fleet_ext
 #: view:fleet.vehicle:fleet_ext.fleet_vehicle_form_inherit
@@ -918,58 +985,58 @@ msgstr "Résiduel %"
 #: field:fleet.vehicle,retailer_id:0
 #: model:ir.ui.menu,name:fleet_ext.menu_fleet_retailer
 msgid "Retailer"
-msgstr "Concessionnaire"
+msgstr "Retailer"
 
 #. module: fleet_ext
 #: model:ir.actions.act_window,name:fleet_ext.action_fleet_retailers
 #: model:ir.ui.menu,name:fleet_ext.fleet_retailer_menu
 msgid "Retailers"
-msgstr "Concessionnaires"
+msgstr "Retailers"
 
 #. module: fleet_ext
 #: field:fleet.client,property_product_pricelist:0
 #: field:fleet.retailer,property_product_pricelist:0
 msgid "Sale Pricelist"
-msgstr ""
+msgstr "Sale Pricelist"
 
 #. module: fleet_ext
 #: field:fleet.client,sale_order_ids:0
 #: field:fleet.retailer,sale_order_ids:0
 msgid "Sales Order"
-msgstr ""
+msgstr "Sales Order"
 
 #. module: fleet_ext
 #: field:fleet.client,section_id:0
 #: field:fleet.retailer,section_id:0
 msgid "Sales Team"
-msgstr ""
+msgstr "Sales Team"
 
 #. module: fleet_ext
 #: field:fleet.client,user_id:0
 #: field:fleet.retailer,user_id:0
 msgid "Salesperson"
-msgstr ""
+msgstr "Salesperson"
 
 #. module: fleet_ext
 #: view:fleet.client:fleet_ext.view_fleet_client_filter
 msgid "Search Client"
-msgstr ""
+msgstr "Search Client"
 
 #. module: fleet_ext
 #: view:fleet.retailer:fleet_ext.view_fleet_retailer_filter
 msgid "Search Retailer"
-msgstr ""
+msgstr "Search Retailer"
 
 #. module: fleet_ext
 #: field:fleet.vehicle,select_manufacture_year:0
 msgid "Select Year of Manufacture"
-msgstr "Choisir l'année de Fabrication"
+msgstr "Select Year of Manufacture"
 
 #. module: fleet_ext
 #: help:fleet.client,use_parent_address:0
 #: help:fleet.retailer,use_parent_address:0
 msgid "Select this if you want to set company's address information  for this contact"
-msgstr "Sélectionner pour créer les informations d'entreprise pour ce contact"
+msgstr "Select this if you want to set company's address information  for this contact"
 
 #. module: fleet_ext
 #: view:fleet.vehicle:fleet_ext.fleet_vehicle_form_inherit
@@ -977,330 +1044,330 @@ msgstr "Sélectionner pour créer les informations d'entreprise pour ce contact"
 #: view:fleet.vehicle:fleet_ext.fleet_vehicle_simple_form
 #: view:fleet.vehicle:fleet_ext.fleet_vehicle_tree_inherit
 msgid "Serial Number"
-msgstr "Numéro de Série"
+msgstr "Serial Number"
 
 #. module: fleet_ext
 #: code:addons/fleet_ext/models/fleet.py:152
 #: code:addons/my-modules-dev/fleet_ext/models/fleet.py:152
 #, python-format
 msgid "Serial Number: from '%s' to '%s'"
-msgstr "Numéro de Série: de '%s' à '%s'"
+msgstr "Serial Number: from '%s' to '%s'"
 
 #. module: fleet_ext
 #: view:fleet.vehicle:fleet_ext.fleet_vehicle_simple_form
 msgid "Set Active"
-msgstr "Activer"
+msgstr "Set Active"
 
 #. module: fleet_ext
 #: field:fleet.client,signup_expiration:0
 #: field:fleet.retailer,signup_expiration:0
 msgid "Signup Expiration"
-msgstr ""
+msgstr "Signup Expiration"
 
 #. module: fleet_ext
 #: field:fleet.client,signup_token:0
 #: field:fleet.retailer,signup_token:0
 msgid "Signup Token"
-msgstr ""
+msgstr "Signup Token"
 
 #. module: fleet_ext
 #: field:fleet.client,signup_type:0
 #: field:fleet.retailer,signup_type:0
 msgid "Signup Token Type"
-msgstr ""
+msgstr "Signup Token Type"
 
 #. module: fleet_ext
 #: field:fleet.client,signup_valid:0
 #: field:fleet.retailer,signup_valid:0
 msgid "Signup Token is Valid"
-msgstr ""
+msgstr "Signup Token is Valid"
 
 #. module: fleet_ext
 #: field:fleet.client,signup_url:0
 #: field:fleet.retailer,signup_url:0
 msgid "Signup URL"
-msgstr ""
+msgstr "Signup URL"
 
 #. module: fleet_ext
 #: field:fleet.client,image_small:0
 #: field:fleet.retailer,image_small:0
 msgid "Small-sized image"
-msgstr ""
+msgstr "Small-sized image"
 
 #. module: fleet_ext
 #: help:fleet.client,image_small:0
 #: help:fleet.retailer,image_small:0
 msgid "Small-sized image of this contact. It is automatically resized as a 64x64px image, with aspect ratio preserved. Use this field anywhere a small image is required."
-msgstr ""
+msgstr "Small-sized image of this contact. It is automatically resized as a 64x64px image, with aspect ratio preserved. Use this field anywhere a small image is required."
 
 #. module: fleet_ext
 #: field:fleet.client,sold_vehicle_ids:0
 #: field:fleet.retailer,sold_vehicle_ids:0
 #: field:res.partner,sold_vehicle_ids:0
 msgid "Sold vehicle ids"
-msgstr ""
+msgstr "Sold vehicle ids"
 
 #. module: fleet_ext
 #: field:fleet.client,state_id:0
 #: field:fleet.retailer,state_id:0
 msgid "State"
-msgstr "Statut"
+msgstr "State"
 
 #. module: fleet_ext
 #: field:fleet.vehicle,state:0
 msgid "Step State"
-msgstr ""
+msgstr "Step State"
 
 #. module: fleet_ext
 #: field:fleet.client,street:0
 #: field:fleet.retailer,street:0
 msgid "Street"
-msgstr "Rue"
+msgstr "Street"
 
 #. module: fleet_ext
 #: field:fleet.client,street2:0
 #: field:fleet.retailer,street2:0
 msgid "Street2"
-msgstr "Rue2"
+msgstr "Street2"
 
 #. module: fleet_ext
 #: field:fleet.client,message_summary:0
 #: field:fleet.retailer,message_summary:0
 msgid "Summary"
-msgstr "Sommaire"
+msgstr "Summary"
 
 #. module: fleet_ext
 #: field:fleet.client,supplier:0
 #: field:fleet.retailer,supplier:0
 msgid "Supplier"
-msgstr "Fournisseur"
+msgstr "Supplier"
 
 #. module: fleet_ext
 #: field:fleet.client,property_stock_supplier:0
 #: field:fleet.retailer,property_stock_supplier:0
 msgid "Supplier Location"
-msgstr ""
+msgstr "Supplier Location"
 
 #. module: fleet_ext
 #: view:fleet.retailer:fleet_ext.view_fleet_retailer_filter
 msgid "Supplier Partners"
-msgstr ""
+msgstr "Supplier Partners"
 
 #. module: fleet_ext
 #: field:fleet.client,property_supplier_payment_term:0
 #: field:fleet.retailer,property_supplier_payment_term:0
 msgid "Supplier Payment Term"
-msgstr ""
+msgstr "Supplier Payment Term"
 
 #. module: fleet_ext
 #: view:fleet.retailer:fleet_ext.view_fleet_retailer_filter
 msgid "Suppliers"
-msgstr ""
+msgstr "Suppliers"
 
 #. module: fleet_ext
 #: field:fleet.client,vat:0
 #: field:fleet.retailer,vat:0
 msgid "TIN"
-msgstr ""
+msgstr "TIN"
 
 #. module: fleet_ext
 #: view:fleet.client:fleet_ext.view_fleet_client_filter
 #: view:fleet.retailer:fleet_ext.view_fleet_retailer_filter
 msgid "Tag"
-msgstr ""
+msgstr "Tag"
 
 #. module: fleet_ext
 #: field:fleet.client,category_id:0
 #: field:fleet.retailer,category_id:0
 msgid "Tags"
-msgstr ""
+msgstr "Tags"
 
 #. module: fleet_ext
 #: help:fleet.client,vat:0
 #: help:fleet.retailer,vat:0
 msgid "Tax Identification Number. Check the box if this contact is subjected to taxes. Used by the some of the legal statements."
-msgstr ""
+msgstr "Tax Identification Number. Check the box if this contact is subjected to taxes. Used by the some of the legal statements."
 
 #. module: fleet_ext
 #: field:fleet.vehicle.log.contract,term:0
 msgid "Term"
-msgstr "Terme"
+msgstr "Term"
 
 #. module: fleet_ext
 #: field:fleet.client,date_terminated:0
 msgid "Terminated Date"
-msgstr "Date de Fin"
+msgstr "Terminated Date"
 
 #. module: fleet_ext
 #: help:fleet.client,property_account_position:0
 #: help:fleet.retailer,property_account_position:0
 msgid "The fiscal position will determine taxes and accounts used for the partner."
-msgstr ""
+msgstr "The fiscal position will determine taxes and accounts used for the partner."
 
 #. module: fleet_ext
 #: help:fleet.client,user_id:0
 #: help:fleet.retailer,user_id:0
 msgid "The internal user that is in charge of communicating with this contact if any."
-msgstr ""
+msgstr "The internal user that is in charge of communicating with this contact if any."
 
 #. module: fleet_ext
 #: help:fleet.client,tz:0
 #: help:fleet.retailer,tz:0
 msgid "The partner's timezone, used to output proper date and time values inside printed reports. It is important to set a value for this field. You should use the same timezone that is otherwise used to pick and render date and time values: your computer's timezone."
-msgstr ""
+msgstr "The partner's timezone, used to output proper date and time values inside printed reports. It is important to set a value for this field. You should use the same timezone that is otherwise used to pick and render date and time values: your computer's timezone."
 
 #. module: fleet_ext
 #: help:fleet.client,property_account_payable:0
 #: help:fleet.retailer,property_account_payable:0
 msgid "This account will be used instead of the default one as the payable account for the current partner"
-msgstr ""
+msgstr "This account will be used instead of the default one as the payable account for the current partner"
 
 #. module: fleet_ext
 #: help:fleet.client,property_account_receivable:0
 #: help:fleet.retailer,property_account_receivable:0
 msgid "This account will be used instead of the default one as the receivable account for the current partner"
-msgstr ""
+msgstr "This account will be used instead of the default one as the receivable account for the current partner"
 
 #. module: fleet_ext
 #: help:fleet.client,image:0
 #: help:fleet.retailer,image:0
 msgid "This field holds the image used as avatar for this contact, limited to 1024x1024px"
-msgstr ""
+msgstr "This field holds the image used as avatar for this contact, limited to 1024x1024px"
 
 #. module: fleet_ext
 #: sql_constraint:fleet.vehicle:0
 msgid "This license plate is already used"
-msgstr "Ce numéro de license est déjà utilisé"
+msgstr "This license plate is already used"
 
 #. module: fleet_ext
 #: sql_constraint:fleet.client.lost.reason:0
 msgid "This name for the reason exist already"
-msgstr "Ce nom de raison existe déjà"
+msgstr "This name for the reason exist already"
 
 #. module: fleet_ext
 #: help:fleet.client,property_supplier_payment_term:0
 #: help:fleet.retailer,property_supplier_payment_term:0
 msgid "This payment term will be used instead of the default one for purchase orders and supplier invoices"
-msgstr ""
+msgstr "This payment term will be used instead of the default one for purchase orders and supplier invoices"
 
 #. module: fleet_ext
 #: help:fleet.client,property_payment_term:0
 #: help:fleet.retailer,property_payment_term:0
 msgid "This payment term will be used instead of the default one for sale orders and customer invoices"
-msgstr ""
+msgstr "This payment term will be used instead of the default one for sale orders and customer invoices"
 
 #. module: fleet_ext
 #: help:fleet.client,property_product_pricelist_purchase:0
 #: help:fleet.retailer,property_product_pricelist_purchase:0
 msgid "This pricelist will be used, instead of the default one, for purchases from the current partner"
-msgstr ""
+msgstr "This pricelist will be used, instead of the default one, for purchases from the current partner"
 
 #. module: fleet_ext
 #: help:fleet.client,property_product_pricelist:0
 #: help:fleet.retailer,property_product_pricelist:0
 msgid "This pricelist will be used, instead of the default one, for sales to the current partner"
-msgstr ""
+msgstr "This pricelist will be used, instead of the default one, for sales to the current partner"
 
 #. module: fleet_ext
 #: sql_constraint:fleet.vehicle:0
 msgid "This serial number is already used for another vehicle"
-msgstr "Ce numéro de série est déjà utilisé par un autre véhicule"
+msgstr "This serial number is already used for another vehicle"
 
 #. module: fleet_ext
 #: help:fleet.client,property_stock_customer:0
 #: help:fleet.retailer,property_stock_customer:0
 msgid "This stock location will be used, instead of the default one, as the destination location for goods you send to this partner"
-msgstr ""
+msgstr "This stock location will be used, instead of the default one, as the destination location for goods you send to this partner"
 
 #. module: fleet_ext
 #: help:fleet.client,property_stock_supplier:0
 #: help:fleet.retailer,property_stock_supplier:0
 msgid "This stock location will be used, instead of the default one, as the source location for goods you receive from the current partner"
-msgstr ""
+msgstr "This stock location will be used, instead of the default one, as the source location for goods you receive from the current partner"
 
 #. module: fleet_ext
 #: field:fleet.client,tz:0
 #: field:fleet.retailer,tz:0
 msgid "Timezone"
-msgstr ""
+msgstr "Timezone"
 
 #. module: fleet_ext
 #: field:fleet.client,tz_offset:0
 #: field:fleet.retailer,tz_offset:0
 msgid "Timezone offset"
-msgstr ""
+msgstr "Timezone offset"
 
 #. module: fleet_ext
 #: field:fleet.client,title:0
 #: field:fleet.retailer,title:0
 msgid "Title"
-msgstr "Titre"
+msgstr "Title"
 
 #. module: fleet_ext
 #: field:fleet.client,total_invoiced:0
 #: field:fleet.retailer,total_invoiced:0
 msgid "Total Invoiced"
-msgstr ""
+msgstr "Total Invoiced"
 
 #. module: fleet_ext
 #: field:fleet.client,debit:0
 #: field:fleet.retailer,debit:0
 msgid "Total Payable"
-msgstr ""
+msgstr "Total Payable"
 
 #. module: fleet_ext
 #: field:fleet.client,credit:0
 #: field:fleet.retailer,credit:0
 msgid "Total Receivable"
-msgstr ""
+msgstr "Total Receivable"
 
 #. module: fleet_ext
 #: help:fleet.client,credit:0
 #: help:fleet.retailer,credit:0
 msgid "Total amount this customer owes you."
-msgstr ""
+msgstr "Total amount this customer owes you."
 
 #. module: fleet_ext
 #: help:fleet.client,debit:0
 #: help:fleet.retailer,debit:0
 msgid "Total amount you have to pay to this supplier."
-msgstr ""
+msgstr "Total amount you have to pay to this supplier."
 
 #. module: fleet_ext
 #: field:fleet.client,message_unread:0
 #: field:fleet.retailer,message_unread:0
 msgid "Unread Messages"
-msgstr ""
+msgstr "Unread Messages"
 
 #. module: fleet_ext
 #: field:fleet.client,use_parent_address:0
 #: field:fleet.retailer,use_parent_address:0
 msgid "Use Company Address"
-msgstr "Utiliser l'adresse de l'entreprise"
+msgstr "Use Company Address"
 
 #. module: fleet_ext
 #: selection:fleet.vehicle,category:0
 #: model:fleet.vehicle.tag,name:fleet_ext.vehicle_tag_used
 msgid "Used"
-msgstr "Usagé"
+msgstr "Used"
 
 #. module: fleet_ext
 #: help:fleet.client,type:0
 #: help:fleet.retailer,type:0
 msgid "Used to select automatically the right address according to the context in sales and purchases documents."
-msgstr ""
+msgstr "Used to select automatically the right address according to the context in sales and purchases documents."
 
 #. module: fleet_ext
 #: field:fleet.client,user_ids:0
 #: field:fleet.retailer,user_ids:0
 msgid "Users"
-msgstr "Utilisateur"
+msgstr "Users"
 
 #. module: fleet_ext
 #: field:fleet.client,vat_subjected:0
 #: field:fleet.retailer,vat_subjected:0
 msgid "VAT Legal Statement"
-msgstr ""
+msgstr "VAT Legal Statement"
 
 #. module: fleet_ext
 #: field:fleet.client,vehicle_ids:0
@@ -1317,91 +1384,91 @@ msgstr "Véhicule"
 #: view:fleet.retailer:fleet_ext.retailer_form_view
 #: field:fleet.retailer,vehicle_count:0
 msgid "Vehicles"
-msgstr "Véhicules"
+msgstr "Vehicles"
 
 #. module: fleet_ext
 #: field:fleet.client,website:0
 #: field:fleet.retailer,website:0
 msgid "Website"
-msgstr ""
+msgstr "Website"
 
 #. module: fleet_ext
 #: help:fleet.client,website:0
 #: help:fleet.retailer,website:0
 msgid "Website of Partner or Company"
-msgstr ""
+msgstr "Website of Partner or Company"
 
 #. module: fleet_ext
 #: field:fleet.vehicle,manufacture_year:0
 msgid "Year of Manufacture"
-msgstr "Année de fabrication"
+msgstr "Year of Manufacture"
 
 #. module: fleet_ext
 #: field:fleet.client,zip:0
 #: field:fleet.retailer,zip:0
 msgid "Zip"
-msgstr ""
+msgstr "Zip"
 
 #. module: fleet_ext
 #: model:ir.actions.act_window,name:fleet_ext.fleet_vehicle_form_act
 msgid "fleet_vehicle_form_act"
-msgstr ""
+msgstr "fleet_vehicle_form_act"
 
 #. module: fleet_ext
 #: model:ir.actions.act_window,name:fleet_ext.fleet_vehicle_simple_act
 msgid "fleet_vehicle_simple_act"
-msgstr ""
+msgstr "fleet_vehicle_simple_act"
 
 #. module: fleet_ext
 #: view:fleet.select:fleet_ext.fleet_select_form
 msgid "open"
-msgstr "Ouvrir"
+msgstr "open"
 
 #. module: fleet_ext
 #: view:fleet.select:fleet_ext.fleet_select_form
 msgid "open or create the vehicle"
-msgstr "Ouvrir ou créer un véhicule"
+msgstr "open or create the vehicle"
 
 #. module: fleet_ext
 #: view:fleet.select:fleet_ext.fleet_select_form
 msgid "or"
-msgstr "ou"
+msgstr "or"
 
 #. module: fleet_ext
 #: field:fleet.client,return_arr:0
 msgid "return Arr"
-msgstr ""
+msgstr "return Arr"
 
 #. module: fleet_ext
 #: view:fleet.client:fleet_ext.client_form_view
 msgid "show the contract for this client"
-msgstr "afficher les contrats pour ce client"
+msgstr "show the contract for this client"
 
 #. module: fleet_ext
 #: view:fleet.retailer:fleet_ext.retailer_form_view
 #: view:fleet.vehicle:fleet_ext.fleet_vehicle_simple_form
 msgid "show the contract for this vehicle"
-msgstr "afficher les contrats pour ce véhicule"
+msgstr "Afficher le contrat pour ce véhicule"
 
 #. module: fleet_ext
 #: view:fleet.client:fleet_ext.client_form_view
 #: view:fleet.vehicle:fleet_ext.fleet_vehicle_simple_form
 msgid "show the vehicle for this client"
-msgstr "afficher les véhicules du client"
+msgstr "show the vehicle for this client"
 
 #. module: fleet_ext
 #: view:fleet.retailer:fleet_ext.retailer_form_view
 msgid "show the vehicle for this retailer"
-msgstr "afficher les véhicules du concessionnaire"
+msgstr "show the vehicle for this retailer"
 
 #. module: fleet_ext
 #: field:fleet.client,has_image:0
 #: field:fleet.retailer,has_image:0
 msgid "unknown"
-msgstr ""
+msgstr "unknown"
 
 #. module: fleet_ext
 #: model:ir.model,name:fleet_ext.model_fleet_select
 msgid "wizard to create new fleet client or modify existing"
-msgstr "Formulaire de création et modification de client du Parc Automobile"
+msgstr "wizard to create new fleet client or modify existing"
 

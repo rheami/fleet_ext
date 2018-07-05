@@ -6,20 +6,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-25 20:16+0000\n"
-"PO-Revision-Date: 2018-06-25 20:16+0000\n"
+"POT-Creation-Date: 2018-07-05 18:07+0000\n"
+"PO-Revision-Date: 2018-07-05 18:07+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
-
-#. module: fleet_ext
-#: field:fleet.client,meeting_count:0
-#: field:fleet.retailer,meeting_count:0
-msgid "# Meetings"
-msgstr ""
 
 #. module: fleet_ext
 #: field:fleet.client,supplier_invoice_count:0
@@ -151,6 +145,7 @@ msgstr ""
 #. module: fleet_ext
 #: field:fleet.client,active:0
 #: field:fleet.retailer,active:0
+#: model:fleet.vehicle.state,name:fleet_ext.vehicle_state_active
 msgid "Active"
 msgstr ""
 
@@ -170,6 +165,14 @@ msgstr ""
 #: field:fleet.client,type:0
 #: field:fleet.retailer,type:0
 msgid "Address Type"
+msgstr ""
+
+#. module: fleet_ext
+#: field:fleet.client,apartment_no:0
+#: help:fleet.client,apartment_no:0
+#: field:fleet.retailer,apartment_no:0
+#: help:fleet.retailer,apartment_no:0
+msgid "Apartment No."
 msgstr ""
 
 #. module: fleet_ext
@@ -205,8 +208,8 @@ msgid "Cancel"
 msgstr ""
 
 #. module: fleet_ext
-#: code:addons/fleet_ext/models/fleet.py:140
-#: code:addons/my-modules-dev/fleet_ext/models/fleet.py:140
+#: code:addons/fleet_ext/models/fleet.py:156
+#: code:addons/my-modules-dev/fleet_ext/models/fleet.py:156
 #, python-format
 msgid "Car Value: from '%s' to '%s'"
 msgstr ""
@@ -300,13 +303,21 @@ msgid "Commercial Entity"
 msgstr ""
 
 #. module: fleet_ext
+#: view:fleet.client:fleet_ext.view_fleet_client_filter
+#: view:fleet.retailer:fleet_ext.view_fleet_retailer_filter
+msgid "Companies"
+msgstr ""
+
+#. module: fleet_ext
 #: field:fleet.client,ref_companies:0
 #: field:fleet.retailer,ref_companies:0
 msgid "Companies that refers to partner"
 msgstr ""
 
 #. module: fleet_ext
+#: view:fleet.client:fleet_ext.view_fleet_client_filter
 #: field:fleet.client,company_id:0
+#: view:fleet.retailer:fleet_ext.view_fleet_retailer_filter
 #: field:fleet.retailer,company_id:0
 msgid "Company"
 msgstr ""
@@ -468,6 +479,11 @@ msgid "Done"
 msgstr ""
 
 #. module: fleet_ext
+#: model:fleet.vehicle.state,name:fleet_ext.vehicle_state_draft
+msgid "Draft"
+msgstr ""
+
+#. module: fleet_ext
 #: field:fleet.client,ean13:0
 #: field:fleet.retailer,ean13:0
 msgid "EAN13"
@@ -483,18 +499,6 @@ msgstr ""
 #: model:ir.model,name:fleet_ext.model_fleet_client
 #: model:ir.model,name:fleet_ext.model_fleet_retailer
 msgid "Email Thread"
-msgstr ""
-
-#. module: fleet_ext
-#: field:fleet.client,email_bounced:0
-#: field:fleet.retailer,email_bounced:0
-msgid "Email bounced"
-msgstr ""
-
-#. module: fleet_ext
-#: field:fleet.client,email_score:0
-#: field:fleet.retailer,email_score:0
-msgid "Email score"
 msgstr ""
 
 #. module: fleet_ext
@@ -562,9 +566,23 @@ msgid "Followers"
 msgstr ""
 
 #. module: fleet_ext
+#: view:fleet.client:fleet_ext.view_fleet_client_filter
+#: view:fleet.retailer:fleet_ext.view_fleet_retailer_filter
+msgid "Group By"
+msgstr ""
+
+#. module: fleet_ext
 #: help:fleet.client,message_summary:0
 #: help:fleet.retailer,message_summary:0
 msgid "Holds the Chatter summary (number of messages, ...). This summary is directly in html format in order to be inserted in kanban views."
+msgstr ""
+
+#. module: fleet_ext
+#: field:fleet.client,house_no:0
+#: help:fleet.client,house_no:0
+#: field:fleet.retailer,house_no:0
+#: help:fleet.retailer,house_no:0
+msgid "House No."
 msgstr ""
 
 #. module: fleet_ext
@@ -597,6 +615,11 @@ msgstr ""
 #: field:fleet.client,image:0
 #: field:fleet.retailer,image:0
 msgid "Image"
+msgstr ""
+
+#. module: fleet_ext
+#: model:fleet.vehicle.state,name:fleet_ext.vehicle_state_inactive
+msgid "Inactive"
 msgstr ""
 
 #. module: fleet_ext
@@ -688,21 +711,9 @@ msgid "Last Updated on"
 msgstr ""
 
 #. module: fleet_ext
-#: field:fleet.client,calendar_last_notif_ack:0
-#: field:fleet.retailer,calendar_last_notif_ack:0
-msgid "Last notification marked as read from base Calendar"
-msgstr ""
-
-#. module: fleet_ext
 #: field:fleet.client,last_reconciliation_date:0
 #: field:fleet.retailer,last_reconciliation_date:0
 msgid "Latest Full Reconciliation Date"
-msgstr ""
-
-#. module: fleet_ext
-#: field:fleet.client,opportunity_ids:0
-#: field:fleet.retailer,opportunity_ids:0
-msgid "Leads and Opportunities"
 msgstr ""
 
 #. module: fleet_ext
@@ -726,18 +737,6 @@ msgid "MSRP"
 msgstr ""
 
 #. module: fleet_ext
-#: field:fleet.client,mails_from:0
-#: field:fleet.retailer,mails_from:0
-msgid "Mails from"
-msgstr ""
-
-#. module: fleet_ext
-#: field:fleet.client,mails_to:0
-#: field:fleet.retailer,mails_to:0
-msgid "Mails to"
-msgstr ""
-
-#. module: fleet_ext
 #: help:fleet.vehicle.log.contract,msrp:0
 msgid "Manufacturer's suggested retail price"
 msgstr ""
@@ -752,12 +751,6 @@ msgstr ""
 #: help:fleet.client,image_medium:0
 #: help:fleet.retailer,image_medium:0
 msgid "Medium-sized image of this contact. It is automatically resized as a 128x128px image, with aspect ratio preserved. Use this field in form views or some kanban views."
-msgstr ""
-
-#. module: fleet_ext
-#: field:fleet.client,meeting_ids:0
-#: field:fleet.retailer,meeting_ids:0
-msgid "Meetings"
 msgstr ""
 
 #. module: fleet_ext
@@ -811,10 +804,14 @@ msgid "Next"
 msgstr ""
 
 #. module: fleet_ext
-#: code:addons/fleet_ext/models/fleet.py:135
-#: code:addons/fleet_ext/models/fleet.py:139
-#: code:addons/my-modules-dev/fleet_ext/models/fleet.py:135
-#: code:addons/my-modules-dev/fleet_ext/models/fleet.py:139
+#: code:addons/fleet_ext/models/fleet.py:143
+#: code:addons/fleet_ext/models/fleet.py:147
+#: code:addons/fleet_ext/models/fleet.py:151
+#: code:addons/fleet_ext/models/fleet.py:155
+#: code:addons/my-modules-dev/fleet_ext/models/fleet.py:143
+#: code:addons/my-modules-dev/fleet_ext/models/fleet.py:147
+#: code:addons/my-modules-dev/fleet_ext/models/fleet.py:151
+#: code:addons/my-modules-dev/fleet_ext/models/fleet.py:155
 #, python-format
 msgid "None"
 msgstr ""
@@ -823,12 +820,6 @@ msgstr ""
 #: field:fleet.client,comment:0
 #: field:fleet.retailer,comment:0
 msgid "Notes"
-msgstr ""
-
-#. module: fleet_ext
-#: field:fleet.client,opportunity_count:0
-#: field:fleet.retailer,opportunity_count:0
-msgid "Opportunity"
 msgstr ""
 
 #. module: fleet_ext
@@ -850,6 +841,15 @@ msgstr ""
 #. module: fleet_ext
 #: help:fleet.vehicle,owner_id:0
 msgid "Owner of the vehicle"
+msgstr ""
+
+#. module: fleet_ext
+#: code:addons/fleet_ext/models/fleet.py:145
+#: code:addons/fleet_ext/models/fleet.py:149
+#: code:addons/my-modules-dev/fleet_ext/models/fleet.py:145
+#: code:addons/my-modules-dev/fleet_ext/models/fleet.py:149
+#, python-format
+msgid "Owner: from '%s' to '%s'"
 msgstr ""
 
 #. module: fleet_ext
@@ -877,17 +877,15 @@ msgid "Payable Limit"
 msgstr ""
 
 #. module: fleet_ext
-#: field:fleet.client,phone:0
-#: field:fleet.retailer,phone:0
-msgid "Phone"
+#: view:fleet.client:fleet_ext.view_fleet_client_filter
+#: view:fleet.retailer:fleet_ext.view_fleet_retailer_filter
+msgid "Persons"
 msgstr ""
 
 #. module: fleet_ext
-#: field:fleet.client,phonecall_count:0
-#: field:fleet.client,phonecall_ids:0
-#: field:fleet.retailer,phonecall_count:0
-#: field:fleet.retailer,phonecall_ids:0
-msgid "Phonecalls"
+#: field:fleet.client,phone:0
+#: field:fleet.retailer,phone:0
+msgid "Phone"
 msgstr ""
 
 #. module: fleet_ext
@@ -896,11 +894,6 @@ msgstr ""
 msgid "Policy to receive emails for new messages pushed to your personal Inbox:\n"
 "- Never: no emails are sent\n"
 "- All Messages: for every notification you receive in your Inbox"
-msgstr ""
-
-#. module: fleet_ext
-#: selection:fleet.vehicle,purchase_type:0
-msgid "Purchased"
 msgstr ""
 
 #. module: fleet_ext
@@ -922,6 +915,11 @@ msgstr ""
 #. module: fleet_ext
 #: field:fleet.vehicle,purchase_type:0
 msgid "Purchase Type"
+msgstr ""
+
+#. module: fleet_ext
+#: selection:fleet.vehicle,purchase_type:0
+msgid "Purchased"
 msgstr ""
 
 #. module: fleet_ext
@@ -1006,6 +1004,16 @@ msgid "Salesperson"
 msgstr ""
 
 #. module: fleet_ext
+#: view:fleet.client:fleet_ext.view_fleet_client_filter
+msgid "Search Client"
+msgstr ""
+
+#. module: fleet_ext
+#: view:fleet.retailer:fleet_ext.view_fleet_retailer_filter
+msgid "Search Retailer"
+msgstr ""
+
+#. module: fleet_ext
 #: field:fleet.vehicle,select_manufacture_year:0
 msgid "Select Year of Manufacture"
 msgstr ""
@@ -1025,8 +1033,8 @@ msgid "Serial Number"
 msgstr ""
 
 #. module: fleet_ext
-#: code:addons/fleet_ext/models/fleet.py:136
-#: code:addons/my-modules-dev/fleet_ext/models/fleet.py:136
+#: code:addons/fleet_ext/models/fleet.py:152
+#: code:addons/my-modules-dev/fleet_ext/models/fleet.py:152
 #, python-format
 msgid "Serial Number: from '%s' to '%s'"
 msgstr ""
@@ -1127,15 +1135,31 @@ msgid "Supplier Location"
 msgstr ""
 
 #. module: fleet_ext
+#: view:fleet.retailer:fleet_ext.view_fleet_retailer_filter
+msgid "Supplier Partners"
+msgstr ""
+
+#. module: fleet_ext
 #: field:fleet.client,property_supplier_payment_term:0
 #: field:fleet.retailer,property_supplier_payment_term:0
 msgid "Supplier Payment Term"
 msgstr ""
 
 #. module: fleet_ext
+#: view:fleet.retailer:fleet_ext.view_fleet_retailer_filter
+msgid "Suppliers"
+msgstr ""
+
+#. module: fleet_ext
 #: field:fleet.client,vat:0
 #: field:fleet.retailer,vat:0
 msgid "TIN"
+msgstr ""
+
+#. module: fleet_ext
+#: view:fleet.client:fleet_ext.view_fleet_client_filter
+#: view:fleet.retailer:fleet_ext.view_fleet_retailer_filter
+msgid "Tag"
 msgstr ""
 
 #. module: fleet_ext
@@ -1293,12 +1317,6 @@ msgstr ""
 #: help:fleet.client,debit:0
 #: help:fleet.retailer,debit:0
 msgid "Total amount you have to pay to this supplier."
-msgstr ""
-
-#. module: fleet_ext
-#: field:fleet.client,tracking_emails_count:0
-#: field:fleet.retailer,tracking_emails_count:0
-msgid "Tracking emails count"
 msgstr ""
 
 #. module: fleet_ext
