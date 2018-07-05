@@ -82,10 +82,33 @@
             </field>
         </record>
 
+       <record id="view_fleet_retailer_filter" model="ir.ui.view">
+            <field name="name">fleet.retailer.select</field>
+            <field name="model">fleet.retailer</field>
+            <field name="arch" type="xml">
+                <search string="Search Retailer">
+                   <field name="name"
+                       filter_domain="['|','|',('display_name','ilike',self),('ref','=',self),('email','ilike',self)]"/>
+                   <separator/>
+                   <filter string="Persons" name="type_person" domain="[('is_company','=',0)]"/>
+                   <filter string="Companies" name="type_company" domain="[('is_company','=',1)]"/>
+                   <separator/>
+                   <filter string="Suppliers" name="supplier" domain="[('supplier','=',1)]" help="Supplier Partners"/>
+                   <separator/>
+                   <field name="category_id" string="Tag" filter_domain="[('category_id','ilike', self)]"/>
+                   <field name="parent_id" domain="[('is_company','=',1)]" operator="child_of"/>
+                   <group expand="0" string="Group By">
+                       <filter string="Company" context="{'group_by': 'parent_id'}"/>
+                   </group>
+               </search>
+            </field>
+        </record>
+
         <!-- Retailer actions-->
         <record id="action_fleet_retailers" model="ir.actions.act_window">
             <field name="name">Retailers</field>
             <field name="res_model">fleet.retailer</field>
+            <field name="search_view_id" ref="view_fleet_retailer_filter"/>
             <field name="help" type="html">
                 <p class="oe_view_nocontent_create">
                     Click to add a retailer in your address book.

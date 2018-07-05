@@ -849,7 +849,7 @@ msgstr "Policy to receive emails for new messages pushed to your personal Inbox:
 
 #. module: fleet_ext
 #: selection:fleet.vehicle,purchase_type:0
-msgid "Purchase"
+msgid "Purchased"
 msgstr "Achat"
 
 #. module: fleet_ext

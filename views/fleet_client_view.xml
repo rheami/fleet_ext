@@ -84,7 +84,7 @@
             <field name="model">fleet.client</field>
             <field eval="8" name="priority"/>
             <field name="arch" type="xml">
-                <tree string="Contacts">
+                <tree string="Contacts" context="{'active_test':False}">
                     <field name="display_name"/>
                     <field name="function" invisible="1"/>
                     <field name="phone"/>
@@ -97,10 +97,31 @@
             </field>
         </record>
 
+       <record id="view_fleet_client_filter" model="ir.ui.view">
+            <field name="name">fleet.client.select</field>
+            <field name="model">fleet.client</field>
+            <field name="arch" type="xml">
+                <search string="Search Client">
+                   <field name="name"
+                       filter_domain="['|','|',('display_name','ilike',self),('ref','=',self),('email','ilike',self)]"/>
+                   <separator/>
+                   <filter string="Persons" name="type_person" domain="[('is_company','=',0)]"/>
+                   <filter string="Companies" name="type_company" domain="[('is_company','=',1)]"/>
+                   <separator/>
+                   <field name="category_id" string="Tag" filter_domain="[('category_id','ilike', self)]"/>
+                   <field name="parent_id" domain="[('is_company','=',1)]" operator="child_of"/>
+                   <group expand="0" string="Group By">
+                       <filter string="Company" context="{'group_by': 'parent_id'}"/>
+                   </group>
+               </search>
+            </field>
+        </record>
+
 		<!-- Client actions-->
         <record id="action_fleet_clients" model="ir.actions.act_window">
             <field name="name">Clients</field>
             <field name="res_model">fleet.client</field>
+            <field name="search_view_id" ref="view_fleet_client_filter"/>
             <field name="help" type="html">
                 <p class="oe_view_nocontent_create">
                     Click to add a client in your address book.
@@ -133,7 +154,12 @@
         <!--menu-->
         <menuitem name="Retailer" parent="fleet.menu_root" id="menu_fleet_retailer" sequence="2" groups="fleet.group_fleet_manager"/>
 		<!--menu action-->
-        <menuitem action="action_fleet_clients" name="Clients" parent="menu_fleet_retailer" id="fleet_client_menu" sequence="2" groups="fleet.group_fleet_manager"/>
+        <menuitem action="action_fleet_clients"
+                  name="Clients"
+                  parent="menu_fleet_retailer"
+                  id="fleet_client_menu"
+                  sequence="2"
+                  groups="fleet.group_fleet_manager"/>
 
 	</data>
 </openerp>

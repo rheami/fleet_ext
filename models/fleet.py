@@ -21,7 +21,7 @@ class FleetVehicle(models.Model):
     modelname = fields.Char(related='model_id.modelname', store=True)
 
     purchase_type = fields.Selection([
-            ('purchase', 'Purchase'),
+            ('purchased', 'Purchased'),
             ('leased', 'Leased'),
         ],
         'Purchase Type', default="leased")
@@ -130,8 +130,6 @@ class FleetVehicle(models.Model):
 
     @api.model
     def create(self, vals):
-        state_id = self.env.ref('fleet_ext.vehicle_state_draft')
-        vals.update(state_id = state_id.id)
         res = super(FleetVehicle, self).create(vals)
         return res
 
@@ -309,7 +307,6 @@ class FleetRetailer(models.Model):
                 contracts = self.env['fleet.vehicle.log.contract'].search([(('state','!=','closed')), ('vehicle_id','in', record.vehicle_ids.ids)])
                 record.contract_count = len(contracts)
 
-    # ses contrats
     @api.multi
     def return_action_to_open(self):
         """ This opens the xml view specified in xml_id for the vehicles or current retailer """
@@ -336,3 +333,13 @@ class FleetRetailer(models.Model):
     def onchange_address(self, cr, uid, ids, use_parent_address, parent_id, context=None):
         partner_ids = [user.partner_id.id for user in self.browse(cr, uid, ids, context=context)]
         return self.pool['res.partner'].onchange_address(cr, uid, partner_ids, use_parent_address, parent_id, context=context)
+
+    @api.multi
+    def write(self, vals):
+        result = super(FleetRetailer, self).write(vals)
+        return result
+
+class FleetVehicleState(models.Model):
+    _inherit = 'fleet.vehicle.state'
+
+    name = fields.Char(translate=True)

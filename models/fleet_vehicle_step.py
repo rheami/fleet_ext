@@ -38,7 +38,9 @@ class FleetVehicleStep(models.Model):
 
     @api.model
     def create(self, vals):
-        vals.update(user_id=self.env.uid)
+        if 'state_id' not in vals:
+            state_id = self.env.ref('fleet_ext.vehicle_state_draft')
+            vals.update(state_id = state_id.id)
         res = super(FleetVehicleStep, self).create(vals)
         return res
 

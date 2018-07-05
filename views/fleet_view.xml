@@ -141,6 +141,9 @@
         <field name="driver_id" position="replace">
             <field name="owner_id" filter_domain="[('owner_id.name', 'ilike', self)]"/>
         </field>
+        <field name="state_id" position="replace">
+            <field name="state_id" filter_domain="[('state_id.name','=ilike',self)]"/>
+        </field>
         <filter name="groupby_status" position="before">
             <filter name="groupby_brand" context="{'group_by' : 'brand_id'}" string="Brand"/>
             <filter name="groupby_retailer" context="{'group_by' : 'retailer_id'}" string="Retailer" />

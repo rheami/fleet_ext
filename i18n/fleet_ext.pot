@@ -900,7 +900,7 @@ msgstr ""
 
 #. module: fleet_ext
 #: selection:fleet.vehicle,purchase_type:0
-msgid "Purchase"
+msgid "Purchased"
 msgstr ""
 
 #. module: fleet_ext

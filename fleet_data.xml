@@ -4,12 +4,15 @@
         <!--states-->
         <record id="vehicle_state_draft" model="fleet.vehicle.state">
             <field name="name">Draft</field>
+            <field name="sequence">1</field>
         </record>
         <record id="vehicle_state_active" model="fleet.vehicle.state">
             <field name="name">Active</field>
+            <field name="sequence">2</field>
         </record>
         <record id="vehicle_state_inactive" model="fleet.vehicle.state">
             <field name="name">Inactive</field>
+            <field name="sequence">3</field>
         </record>
         <!--tags-->
         <record id="vehicle_tag_new" model="fleet.vehicle.tag">
@@ -34,6 +37,14 @@
         </record>
         <record id="brand_ram" model="fleet.vehicle.model.brand">
       	    <field name="name">Ram</field>
+      	    <field name="image" type="base64" file="fleet_ext/static/img/brand_ram-image.png"/>
+        </record>
+        <!--<record id="brand_ramtrucks" model="fleet.vehicle.model.brand">-->
+            <!--<field name="name">Ram Trucks</field>-->
+      	    <!--<field name="image" type="base64" file="fleet_ext/static/img/brand_ram-image.png"/>-->
+        <!--</record>-->
+        <record id="brand_ramtruck" model="fleet.vehicle.model.brand">
+      	    <field name="name">Ram Truck</field>
       	    <field name="image" type="base64" file="fleet_ext/static/img/brand_ram-image.png"/>
         </record>
         <record id="brand_suzuki" model="fleet.vehicle.model.brand">
