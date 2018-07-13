@@ -67,13 +67,11 @@ class FleetVehicle(models.Model):
     @api.multi
     @api.onchange("select_manufacture_year")
     def _compute_m_years(self):
-        res = {}
         self.manufacture_year = self.select_manufacture_year
 
     @api.multi
     @api.onchange("manufacture_year")
     def _inverse_m_years(self):
-        res = {}
         self.select_manufacture_year = self.manufacture_year
 
     #
@@ -177,11 +175,24 @@ class fleet_vehicle_log_contract(models.Model):
     exchange_value = fields.Float(digits=(9,2), string='Exchange value')
     residual = fields.Float(digits=(9,2), string='Residual')
     residual_percent = fields.Float(digits=(4,1), string='Residual %') # todo champs calculé
-    deposit = fields.Float(related='amount', store=False, readonly=True, copy=False, string='Deposit')
+    deposit = fields.Float('Deposit',
+                                      compute="_compute_deposit",
+                                      inverse="_inverse_deposit",
+                                      )
     cost_to_amortize = fields.Float(digits=(9,2), string='Cost to amortize')
     montly_payment = fields.Float(string='Montly Payment')
     interest_rate = fields.Float(digits=(4,1), string='Interest Rate')
     term = fields.Integer('Term')
+
+    @api.multi
+    @api.onchange("amount")
+    def _compute_deposit(self):
+        self.deposit = self.amount
+
+    @api.multi
+    @api.onchange("deposit")
+    def _inverse_deposit(self):
+        self.amount = self.deposit
 
 
 class fleet_client_lost_reason(models.Model):

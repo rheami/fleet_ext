@@ -7,7 +7,7 @@
     'website': "",
     'category': 'Managing vehicles and contracts',
     'version': '8.0.1',
-    'depends': ['fleet', 'l10n_ca_toponyms', 'base_name_search_improved'],
+    'depends': ['fleet', 'l10n_ca_toponyms', 'base_name_search_improved', 'account'],
     'data': [
         # 'security/ir.model.access.csv',
         'views/assets.xml',
