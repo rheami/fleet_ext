@@ -145,10 +145,11 @@ class FleetVehicle(models.Model):
                     old_val = _('None')
                     value = self.env['fleet.client'].browse(vals['owner_id']).name
                     changes.append(_("Owner: from '%s' to '%s'") % (old_val, value))
-            if 'vin_sn' in vals and v.vin_sn != vals['vin_sn']:
-                old_val = v.vin_sn or _('None')
-                changes.append(_("Serial Number: from '%s' to '%s'") % (old_val, vals['vin_sn']))
-            # ajouter autres champs a suivre ...
+            if 'vin_sn' in vals:
+                vals['vin_sn'] = vals['vin_sn'].upper()
+                if v.vin_sn != vals['vin_sn']:
+                    old_val = v.vin_sn or _('None')
+                    changes.append(_("Serial Number: from '%s' to '%s'") % (old_val, vals['vin_sn']))
             if 'car_value' in vals and v.car_value != vals['car_value']:
                 old_val = v.car_value or _('None')
                 changes.append(_("Car Value: from '%s' to '%s'") % (old_val, vals['car_value']))
