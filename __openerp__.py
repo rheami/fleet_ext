@@ -7,7 +7,13 @@
     'website': "",
     'category': 'Managing vehicles and contracts',
     'version': '8.0.1',
-    'depends': ['fleet', 'l10n_ca_toponyms', 'base_name_search_improved', 'account'],
+    'depends': [
+        'fleet',
+        'l10n_ca_toponyms',
+        'base_name_search_improved',
+        'partner_contact_birthdate',
+        # 'field_char_uppered',
+        'account'], # todo remove this dependance : use brunn addon : base_view_inheritance_extension
     'data': [
         # 'security/ir.model.access.csv',
         'views/assets.xml',
