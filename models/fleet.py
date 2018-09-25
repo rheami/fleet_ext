@@ -119,12 +119,12 @@ class FleetVehicle(models.Model):
         ('uniq_vin', 'unique(vin_sn)', 'This serial number is already used for another vehicle')
     ]
 
-    @api.model
-    def on_install(self):
-        """ on install add vin_sn field in name_search_ids to search vehicle by vin_sn """
-        vin_sn_field = self.env.ref('fleet.field_fleet_vehicle_vin_sn')
-        model = self.env.ref('fleet.model_fleet_vehicle')
-        model.name_search_ids = vin_sn_field
+    # @api.model
+    # def on_install(self):
+    #     """ on install add vin_sn field in name_search_ids to search vehicle by vin_sn """
+    #     vin_sn_field = self.env.ref('fleet.field_fleet_vehicle_vin_sn')
+    #     model = self.env.ref('fleet.model_fleet_vehicle')
+    #     model.name_search_ids = vin_sn_field
 
     @api.model
     def create(self, vals):

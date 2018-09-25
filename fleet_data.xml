@@ -57,6 +57,6 @@
         </record>
     <!--</data>-->
     <!--<data noupdate="0">-->
-        <function id="function_on_install" model="fleet.vehicle" name="on_install"/>
+        <!--<function id="function_on_install" model="fleet.vehicle" name="on_install"/>-->
     </data>
 </openerp>
