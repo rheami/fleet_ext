@@ -3,7 +3,7 @@
     'name': "Fleet Extension",
     'summary': "This is an extension of Fleet Management Module",
     'description': "This is an extension of Fleet Management Module",
-    'author': "Michel Rheault, Osha / Sciantek",
+    'author': "Michel Rheault, Osha-it / Sciantek",
     'website': "",
     'category': 'Managing vehicles and contracts',
     'version': '8.0.1',
@@ -12,7 +12,6 @@
         'l10n_ca_toponyms',
         'base_name_search_improved',
         'partner_contact_birthdate',
-        # 'field_char_uppered',
         'account'], # todo remove this dependance : use brunn addon : base_view_inheritance_extension
     'data': [
         # 'security/ir.model.access.csv',
