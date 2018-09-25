@@ -175,14 +175,14 @@ class fleet_vehicle_log_contract(models.Model):
     msrp = fields.Float(digits=(9,2), string='MSRP', help="Manufacturer's suggested retail price")
     exchange_value = fields.Float(digits=(9,2), string='Exchange value')
     residual = fields.Float(digits=(9,2), string='Residual')
-    residual_percent = fields.Float(digits=(4,1), string='Residual %') # todo champs calculé
+    residual_percent = fields.Float(digits=(4,2), string='Residual %') # todo champs calculé
     deposit = fields.Float('Deposit',
                                       compute="_compute_deposit",
                                       inverse="_inverse_deposit",
                                       )
     cost_to_amortize = fields.Float(digits=(9,2), string='Cost to amortize')
     montly_payment = fields.Float(string='Montly Payment')
-    interest_rate = fields.Float(digits=(4,1), string='Interest Rate')
+    interest_rate = fields.Float(digits=(4,2), string='Interest Rate')
     term = fields.Integer('Term')
 
     @api.multi
